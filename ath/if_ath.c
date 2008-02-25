@@ -328,6 +328,18 @@ static struct ath_buf* cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *buf
 		int direction);
 #endif /* #ifdef IEEE80211_DEBUG_REFCNT */
 
+#if EWA_CCA
+#define AR5K_TUNE_RSSI_THRES            255
+#define AR5K_RSSI_THR			0x8018		/* Register Address */
+
+	
+#define AR5K_RSSI_THR_M			0x000000ff	/* Mask for RSSI threshold [5211+] */ //Mask not used, just for reference
+
+#define AR5K_RSSI_THR_BMISS_5211	0x0000ff00	/* Mask for Beacon Missed threshold [5211+] */
+#define	AR5K_RSSI_THR_BMISS_S		8
+#define AR5K_TUNE_BMISS_THRES           7
+#endif
+
 /* Regulatory agency testing - continuous transmit support */
 static void txcont_on(struct ieee80211com *ic);
 static void txcont_off(struct ieee80211com *ic);
@@ -521,6 +533,9 @@ ath_attach(u_int16_t devid, struct net_device *dev, HAL_BUS_TAG tag)
 	unsigned int i;
 	int autocreatemode = IEEE80211_M_STA;
 	u_int8_t csz;
+#if EWA_CCA
+	u_int32_t data;
+#endif
 
 	sc->devid = devid;
 	ath_debug_global = (ath_debug & ATH_DEBUG_GLOBAL);
@@ -1003,6 +1018,22 @@ ath_attach(u_int16_t devid, struct net_device *dev, HAL_BUS_TAG tag)
 	 * In modes other than HAL_M_STA, it causes receive sensitivity
 	 * problems for OFDM. */
 	sc->sc_hasintmit = ath_hal_hasintmit(ah);
+
+#if EWA_CCA
+	/*
+	 * EWA:  This looks like a good place to put in CCA control	
+	 */
+	printk(KERN_INFO "Attempting to set CCA register\n");
+	
+	/* Translated from ath5k: hw.c */
+	/* May explode of 5210 XXX */
+	data = AR5K_TUNE_RSSI_THRES |
+	   AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
+	ath_reg_write(sc, data, AR5K_RSSI_THR);
+
+	
+
+#endif //EWA_CCA
 
 	/* get mac address from hardware */
 	ath_hal_getmac(ah, ic->ic_myaddr);
@@ -2716,6 +2747,9 @@ ath_reset(struct net_device *dev)
 	struct ieee80211com *ic = &sc->sc_ic;
 	struct ath_hal *ah = sc->sc_ah;
 	struct ieee80211_channel *c;
+#if EWA_CCA
+	u_int32_t data;
+#endif
 	HAL_STATUS status;
 
 	/*
@@ -2741,6 +2775,23 @@ ath_reset(struct net_device *dev)
 	ath_update_txpow(sc);		/* update tx power state */
 	ath_radar_update(sc);
 	ath_setdefantenna(sc, sc->sc_defant);
+#if EWA_CCA
+	/*
+	 * EWA:  This looks like a good place to put in CCA control	
+	 */
+	printk(KERN_INFO "Attempting to set CCA register\n");
+	
+	/* Translated from ath5k: hw.c */
+	/* May explode of 5210 XXX */
+	data = AR5K_TUNE_RSSI_THRES |
+	   AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
+	ath_reg_write(sc, data, AR5K_RSSI_THR);
+
+	
+
+#endif //EWA_CCA
+
+
 	if (ath_startrecv(sc) != 0)	/* restart recv */
 		EPRINTF(sc, "Unable to start receive logic.\n");
 	if (sc->sc_softled)
