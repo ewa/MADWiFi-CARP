@@ -1029,7 +1029,7 @@ ath_attach(u_int16_t devid, struct net_device *dev, HAL_BUS_TAG tag)
 	/* May explode of 5210 XXX */
 	data = AR5K_TUNE_RSSI_THRES |
 	   AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
-	ath_reg_write(sc, data, AR5K_RSSI_THR);
+	OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
 
 	
 
@@ -2782,10 +2782,10 @@ ath_reset(struct net_device *dev)
 	printk(KERN_INFO "Attempting to set CCA register\n");
 	
 	/* Translated from ath5k: hw.c */
-	/* May explode of 5210 XXX */
+	/* May explode on 5210 XXX */
 	data = AR5K_TUNE_RSSI_THRES |
 	   AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
-	ath_reg_write(sc, data, AR5K_RSSI_THR);
+	OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
 
 	
 
@@ -10478,6 +10478,9 @@ enum {
 	ATH_RP_IGNORED 		= 24,
 	ATH_RADAR_IGNORED       = 25,
 	ATH_MAXVAPS  		= 26,
+#if EWA_CCA
+	ATH_RSSI_THRESH         = 27,
+#endif
 };
 
 static int
@@ -10488,6 +10491,11 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 	u_int val;
 	u_int tab_3_val[3];
 	int ret = 0;
+#if EWA_CCA
+	u_int32_t data;
+#endif
+
+	
 
 	ctl->data = &val;
 	ctl->maxlen = sizeof(val);
@@ -10659,6 +10667,17 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 			case ATH_RADAR_IGNORED:
 				sc->sc_radar_ignored = val;
 				break;
+#if EWA_CCA
+			case ATH_RSSI_THRESH:
+			   //data = ath_reg_read(sc, AR5K_RSSI_THR);
+			       data = val |
+				  AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
+			       printk(KERN_INFO "Attempting to set \"RSSI Threshold\" register to 0x%x\n", data);			   
+			       /* Translated from ath5k: hw.c */
+			       /* May explode on 5210 XXX */
+			       OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
+				break;
+#endif //ewa_cca
 			default:
 				ret = -EINVAL;
 				break;
@@ -10723,12 +10742,25 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 			val = sc->sc_rp_ignored;
 			break;
 		case ATH_RADAR_IGNORED:
-			val = sc->sc_radar_ignored;
+		        val = sc->sc_radar_ignored;
+		        break;
+#if EWA_CCA
+		case ATH_RSSI_THRESH:
+		        /* Translated from ath5k: hw.c */
+		        /* May explode on 5210 XXX */
+		   
+		        val = ath_reg_read(sc, AR5K_RSSI_THR);
+		        printk(KERN_INFO "Read \"RSSI Threshold\" register: 0x%x\n", val);
+			val &= (val & AR5K_RSSI_THR_M);
 			break;
+#endif //ewa_cca
+
 		default:
 			ret = -EINVAL;
 			break;
 		}
+		
+
 		if (!ret) {
 			ret = ATH_SYSCTL_PROC_DOINTVEC(ctl, write, filp, 
 					buffer, lenp, ppos);
@@ -10902,6 +10934,14 @@ static const ctl_table ath_sysctl_template[] = {
 	  .proc_handler = ath_sysctl_halparam,
 	  .extra2	= (void *)ATH_RADAR_IGNORED,
 	},
+#if EWA_CCA
+	{ .ctl_name	= CTL_AUTO,
+	  .procname     = "rssi_thresh",
+	  .mode         = 0644,
+	  .proc_handler = ath_sysctl_halparam,
+	  .extra2	= (void *)ATH_RSSI_THRESH,
+	},
+#endif
 	{ 0 }
 };
 
