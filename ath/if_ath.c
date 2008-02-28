@@ -539,7 +539,7 @@ ath_attach(u_int16_t devid, struct net_device *dev, HAL_BUS_TAG tag)
 	unsigned int i;
 	int autocreatemode = IEEE80211_M_STA;
 	u_int8_t csz;
-#if EWA_CCA
+#if (0 && EWA_CCA)
 	u_int32_t data;
 #endif
 
@@ -1025,7 +1025,7 @@ ath_attach(u_int16_t devid, struct net_device *dev, HAL_BUS_TAG tag)
 	 * problems for OFDM. */
 	sc->sc_hasintmit = ath_hal_hasintmit(ah);
 
-#if EWA_CCA
+#if (0 && EWA_CCA)
 	/*
 	 * EWA:  This looks like a good place to put in CCA control	
 	 */
@@ -2755,7 +2755,7 @@ ath_reset(struct net_device *dev)
 	struct ieee80211com *ic = &sc->sc_ic;
 	struct ath_hal *ah = sc->sc_ah;
 	struct ieee80211_channel *c;
-#if EWA_CCA
+#if (0 && EWA_CCA)
 	u_int32_t data;
 #endif
 	HAL_STATUS status;
@@ -2783,7 +2783,7 @@ ath_reset(struct net_device *dev)
 	ath_update_txpow(sc);		/* update tx power state */
 	ath_radar_update(sc);
 	ath_setdefantenna(sc, sc->sc_defant);
-#if EWA_CCA
+#if (0 && EWA_CCA)
 	/*
 	 * EWA:  This looks like a good place to put in CCA control	
 	 */
@@ -10684,7 +10684,8 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 			       printk(KERN_INFO "Attempting to set \"RSSI Threshold\" register to 0x%x\n", data);			   
 			       /* Translated from ath5k: hw.c */
 			       /* May explode on 5210 XXX */
-			       OS_REG_WRITE(sc->sc_ah, AR5K_PHY_SHIFT_5GHZ, AR5K_PHY(0)); /* enable PHY access */
+			       //OS_REG_WRITE(sc->sc_ah, AR5K_PHY_SHIFT_5GHZ, AR5K_PHY(0)); /* enable PHY access */
+			       iowrite32(val, sc->sc_ah->ah_sh + AR5K_RSSI_THR);
 			       OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
 			       break;
 #endif //ewa_cca
