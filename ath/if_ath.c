@@ -338,6 +338,12 @@ static struct ath_buf* cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *buf
 #define AR5K_RSSI_THR_BMISS_5211	0x0000ff00	/* Mask for Beacon Missed threshold [5211+] */
 #define	AR5K_RSSI_THR_BMISS_S		8
 #define AR5K_TUNE_BMISS_THRES           7
+
+#define	AR5K_PHY_BASE			0x9800
+#define	AR5K_PHY(_n)			(AR5K_PHY_BASE + ((_n) << 2))
+#define AR5K_PHY_SHIFT_2GHZ		0x00004007
+#define AR5K_PHY_SHIFT_5GHZ		0x00000007
+
 #endif
 
 /* Regulatory agency testing - continuous transmit support */
@@ -1029,6 +1035,8 @@ ath_attach(u_int16_t devid, struct net_device *dev, HAL_BUS_TAG tag)
 	/* May explode of 5210 XXX */
 	data = AR5K_TUNE_RSSI_THRES |
 	   AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
+	
+	OS_REG_WRITE(sc->sc_ah, AR5K_PHY_SHIFT_5GHZ, AR5K_PHY(0)); /* enable PHY access */
 	OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
 
 	
@@ -2785,6 +2793,7 @@ ath_reset(struct net_device *dev)
 	/* May explode on 5210 XXX */
 	data = AR5K_TUNE_RSSI_THRES |
 	   AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
+	OS_REG_WRITE(sc->sc_ah, AR5K_PHY_SHIFT_5GHZ, AR5K_PHY(0)); /* enable PHY access */
 	OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
 
 	
@@ -10675,8 +10684,9 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 			       printk(KERN_INFO "Attempting to set \"RSSI Threshold\" register to 0x%x\n", data);			   
 			       /* Translated from ath5k: hw.c */
 			       /* May explode on 5210 XXX */
+			       OS_REG_WRITE(sc->sc_ah, AR5K_PHY_SHIFT_5GHZ, AR5K_PHY(0)); /* enable PHY access */
 			       OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
-				break;
+			       break;
 #endif //ewa_cca
 			default:
 				ret = -EINVAL;
