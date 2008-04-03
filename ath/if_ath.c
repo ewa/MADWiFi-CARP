@@ -10489,6 +10489,7 @@ enum {
 	ATH_MAXVAPS  		= 26,
 #if EWA_CCA
 	ATH_RSSI_THRESH         = 27,
+	ATH_TXCONT_MASK         = 28,
 #endif
 };
 
@@ -10688,6 +10689,9 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 			       iowrite32(val, sc->sc_ah->ah_sh + AR5K_RSSI_THR);
 			       OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
 			       break;
+			case ATH_TXCONT_MASK:
+			       sc->sc_txcont_mask = val;
+			       break;
 #endif //ewa_cca
 			default:
 				ret = -EINVAL;
@@ -10763,6 +10767,10 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 		        val = ath_reg_read(sc, AR5K_RSSI_THR);
 		        printk(KERN_INFO "Read \"RSSI Threshold\" register: 0x%x\n", val);
 			val &= (val & AR5K_RSSI_THR_M);
+			break;
+
+		case ATH_TXCONT_MASK:
+		        val=sc->sc_txcont_mask;
 			break;
 #endif //ewa_cca
 
@@ -10947,10 +10955,16 @@ static const ctl_table ath_sysctl_template[] = {
 	},
 #if EWA_CCA
 	{ .ctl_name	= CTL_AUTO,
-	  .procname     = "rssi_thresh",
+	  .procname     = "rssi_thresh", /* DOES NOTHING! */
 	  .mode         = 0644,
 	  .proc_handler = ath_sysctl_halparam,
 	  .extra2	= (void *)ATH_RSSI_THRESH,
+	},
+	{ .ctl_name     = CTL_AUTO,
+	  .procname     = "txcont_mask",
+	  .mode         = 0666,
+	  .proc_handler = ath_sysctl_halparam,
+	  .extra2       = (void *)ATH_TXCONT_MASK
 	},
 #endif
 	{ 0 }

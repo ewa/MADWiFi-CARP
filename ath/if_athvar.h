@@ -820,6 +820,9 @@ struct ath_softc {
 						 * detected radars */
 	u_int32_t sc_nexttbtt;
 	u_int64_t sc_last_tsf;
+#ifdef EWA_CCA
+        u_int32_t sc_txcont_mask;               /* Which operations to perform in txcont configuration */
+#endif //EWA_CCA
 };
 
 typedef void (*ath_callback) (struct ath_softc *);
