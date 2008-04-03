@@ -821,7 +821,7 @@ struct ath_softc {
 	u_int32_t sc_nexttbtt;
 	u_int64_t sc_last_tsf;
 #ifdef EWA_CCA
-        u_int32_t sc_txcont_mask;               /* Which operations to perform in txcont configuration */
+  //        u_int32_t sc_txcont_mask;               /* Which operations to perform in txcont configuration */
 #endif //EWA_CCA
 };
 
@@ -928,5 +928,9 @@ int ar_device(int devid);
 	  DEV_NAME(_v->iv_ic->ic_dev))
 
 void ath_radar_detected(struct ath_softc *sc, const char* message);
+
+#if EWA_CCA
+extern u_int32_t TXCONT_MASK;
+#endif
 
 #endif /* _DEV_ATH_ATHVAR_H */

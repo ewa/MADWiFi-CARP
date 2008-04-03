@@ -525,6 +525,10 @@ MODULE_PARM_DESC(ieee80211_debug, "Load-time 802.11 debug output enable");
 				(bssid)[0] |= (((id) << 2) | 0x02);	\
 		} while (0)
 
+#if EWA_CCA
+u_int32_t TXCONT_MASK;		/* global! */
+#endif
+
 /* Initialize ath_softc structure */
 
 int
@@ -10690,7 +10694,7 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 			       OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
 			       break;
 			case ATH_TXCONT_MASK:
-			       sc->sc_txcont_mask = val;
+			       TXCONT_MASK = val;
 			       break;
 #endif //ewa_cca
 			default:
@@ -10770,7 +10774,7 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 			break;
 
 		case ATH_TXCONT_MASK:
-		        val=sc->sc_txcont_mask;
+		        val=TXCONT_MASK;
 			break;
 #endif //ewa_cca
 
@@ -11253,6 +11257,7 @@ ath_get_txcont_adj_ratecode(struct ath_softc *sc)
 
 /*
 Configure the radio for continuous transmission
+ XXXEWA 
 */
 static void
 txcont_configure_radio(struct ieee80211com *ic)
@@ -11275,6 +11280,10 @@ txcont_configure_radio(struct ieee80211com *ic)
 
 	ath_hal_intrset(ah, 0);
 	
+#define TXCONTMASK(x) ((TXCONT_MASK & (x))>1)
+
+	//if(TXCONTMASK(0x1)){
+	if(1){
 	{
 		int ac;
 
@@ -11365,6 +11374,8 @@ txcont_configure_radio(struct ieee80211com *ic)
 		ath_update_txpow(sc);
 		ath_radar_update(sc);
 		ath_rp_flush(sc);
+
+	        } /*ENDIF TXCONT_BIT0 */
 
 #ifdef ATH_SUPERG_DYNTURBO
 		/*  Turn on dynamic turbo if necessary -- before we get into 
