@@ -11262,6 +11262,10 @@ Configure the radio for continuous transmission
 static void
 txcont_configure_radio(struct ieee80211com *ic)
 {
+#if EWA_CCA
+#define TXCONTMASK(x) ((TXCONT_MASK & (x))>1)
+#endif
+
 	struct net_device           *dev = ic->ic_dev;
 	struct ath_softc            *sc = dev->priv;
 	struct ath_hal              *ah = sc->sc_ah;
@@ -11270,7 +11274,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 
 	HAL_STATUS status;
 	int q;
-
+	printk(KERN_INFO "enter txcont_configure_radio\n");
 	if (IFF_RUNNING != (ic->ic_dev->flags & IFF_RUNNING)) {
 		EPRINTF(sc, "Cannot enable txcont when interface is"
 			" not in running state.\n");
@@ -11279,9 +11283,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 	}
 
 	ath_hal_intrset(ah, 0);
-	
-#define TXCONTMASK(x) ((TXCONT_MASK & (x))>1)
-
+       
 	//if(TXCONTMASK(0x1)){
 	if(1){
 	{
@@ -11318,9 +11320,11 @@ txcont_configure_radio(struct ieee80211com *ic)
 		vap->iv_des_nssid = 1;
 		sc->sc_txantenna = sc->sc_defant = sc->sc_mcastantenna = sc->sc_rxotherant = 1;
 		sc->sc_diversity = 0;
+		printk(KERN_INFO "pt. 1\t(memset)\n");
 		memset(vap->iv_des_ssid[0].ssid, 0, IEEE80211_ADDR_LEN);
 		ath_hal_setdiversity(sc->sc_ah, 0);
-
+		
+		printk(KERN_INFO "pt. 2\t(WMEs)\n");
 		for (ac = 0; ac < WME_NUM_AC; ac++) {
 			/* AIFSN = 1 */
 			wme->wme_wmeBssChanParams.cap_wmeParams[ac].wmep_aifsn   =
@@ -11360,9 +11364,11 @@ txcont_configure_radio(struct ieee80211com *ic)
 			    wme->wme_chanParams.cap_wmeParams[ac].wmep_txopLimit    =
 			    IEEE80211_US_TO_TXOP(8192);
 		}
+		printk(KERN_INFO "pt. 3\t(cancel, wme_updatepatams)\n");
 		ieee80211_cancel_scan(vap);	/* anything current */
 		ieee80211_wme_updateparams(vap);
 		/*  reset the WNIC */
+		printk(KERN_INFO "pt. 4\t(ath_hal_reset)\n");
 		if (!ath_hal_reset(ah, sc->sc_opmode, 
 					&sc->sc_curchan, AH_TRUE, &status)) {
 			EPRINTF(sc, "ath_hal_reset failed: '%s' "
@@ -11370,9 +11376,11 @@ txcont_configure_radio(struct ieee80211com *ic)
 					ath_get_hal_status_desc(status),
 					status);
 		}
-
+		printk(KERN_INFO "pt. 5\t(update_txpow)\n");
 		ath_update_txpow(sc);
+		printk(KERN_INFO "pt. 6\t(radar_update)\n");
 		ath_radar_update(sc);
+		printk(KERN_INFO "pt. 7\t(rp_flush)\n");
 		ath_rp_flush(sc);
 
 	        } /*ENDIF TXCONT_BIT0 */
@@ -11405,6 +11413,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 		}
 #endif /* #ifdef ATH_SUPERG_DYNTURBO */
 		/* clear pending tx frames picked up after reset */
+		printk(KERN_INFO "pt. 8\t(ath_draintxq)\n");
 		ath_draintxq(sc);
 		/* stop receive side */
 		ath_stoprecv(sc);
@@ -11462,6 +11471,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 					OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
 					AR5K_AR5212_DIAG_SW_IGNOREPHYCS |
 					AR5K_AR5212_DIAG_SW_IGNORENAV);
+			printk(KERN_INFO "pt. 8.5\t(pre- SIFS)\n")
 			/*  Set SIFS to rediculously small value...  */
 			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SIFS,
 					(OS_REG_READ(ah, 
@@ -11499,6 +11509,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 			OS_REG_WRITE(ah, AR5K_AR5212_TXCFG, OS_REG_READ(ah, 
 						AR5K_AR5212_TXCFG) | 
 					AR5K_AR5212_TXCFG_TXCONT_ENABLE);
+			printk(KERN_INFO "pt. X\t(OS_REG_WRITEs done)\n");
 #undef AR5K_AR5212_TXCFG
 #undef AR5K_AR5212_TXCFG_TXCONT_ENABLE
 #undef AR5K_AR5212_RSSI_THR
@@ -11536,6 +11547,9 @@ txcont_configure_radio(struct ieee80211com *ic)
 		sc->sc_txcont = 1;
 	}
 	ath_hal_intrset(ah, sc->sc_imask);
+#if EWA_CCA
+#undef TXCONTMASK
+#endif
 }
 
 /* Queue a self-looped packet for the specified hardware queue. */
@@ -11677,6 +11691,7 @@ txcont_on(struct ieee80211com *ic)
 {
 	struct net_device *dev = ic->ic_dev;
 	struct ath_softc *sc = dev->priv;
+	//printk(KERN_INFO "post-locals\n");
 
 	if (IFF_RUNNING != (ic->ic_dev->flags & IFF_RUNNING)) {
 		EPRINTF(sc, "Cannot enable txcont when"
@@ -11684,7 +11699,7 @@ txcont_on(struct ieee80211com *ic)
 		sc->sc_txcont = 0;
 		return;
 	}
-
+	
 	txcont_configure_radio(ic);
 	txcont_queue_packet(ic, sc->sc_ac2q[WME_AC_BE]);
 	txcont_queue_packet(ic, sc->sc_ac2q[WME_AC_BK]);
