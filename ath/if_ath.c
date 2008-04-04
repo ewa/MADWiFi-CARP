@@ -11384,24 +11384,38 @@ txcont_configure_radio(struct ieee80211com *ic)
 		ath_rp_flush(sc);
 
 	        } /*ENDIF TXCONT_BIT0 */
-
+	printk(KERN_INFO "pt. 7.1\t(pre- dynamic turbo)\n");
 #ifdef ATH_SUPERG_DYNTURBO
+	printk(KERN_INFO "pt. 7.11\t(pre- dynamic turbo, in ifdef)\n");
 		/*  Turn on dynamic turbo if necessary -- before we get into 
 		 *  our own implementation -- and before we configures */
-		if (!IEEE80211_IS_CHAN_STURBO(ic->ic_bsschan) &&
-				(IEEE80211_ATHC_TURBOP &
-					TAILQ_FIRST(&ic->ic_vaps)->iv_ath_cap) &&
-				(IEEE80211_IS_CHAN_ANYG(ic->ic_bsschan) ||
-				 IEEE80211_IS_CHAN_A(ic->ic_bsschan))) {
-			u_int32_t newflags = ic->ic_bsschan->ic_flags;
-			if (IEEE80211_ATHC_TURBOP & 
-						TAILQ_FIRST(&ic->ic_vaps)->iv_ath_cap) {
+	{
+	   int accum;
+	   accum = !IEEE80211_IS_CHAN_STURBO(ic->ic_bsschan);
+	   printk(KERN_INFO "pt. 7.12\n");
+	   accum &= (IEEE80211_ATHC_TURBOP & TAILQ_FIRST(&ic->ic_vaps)->iv_ath_cap);
+	   printk(KERN_INFO "pt. 7.13\n");
+	   accum &= (IEEE80211_IS_CHAN_ANYG(ic->ic_bsschan) || IEEE80211_IS_CHAN_A(ic->ic_bsschan));
+	   printk(KERN_INFO "pt. 7.14\n");
+	
+	if (accum) {
+			u_int32_t newflags;
+			printk(KERN_INFO "pt. 7.2\t(in ! IS_CHAN_TURBP)\n");
+ 			newflags = ic->ic_bsschan->ic_flags;
+			printk(KERN_INFO "pt. 7.21\t(got newflags)\n");
+			
+			accum = (IEEE80211_ATHC_TURBOP & 
+				 TAILQ_FIRST(&ic->ic_vaps)->iv_ath_cap);
+			   printk(KERN_INFO "pt. 7.22\n");
+			   if(accum){
+			   printk(KERN_INFO "pt. 7.3A\t(in TURBOP)\n");
 				DPRINTF(sc, ATH_DEBUG_TURBO, 
 					"Enabling dynamic turbo.\n");
 				ic->ic_ath_cap |= IEEE80211_ATHC_BOOST;
 				sc->sc_ignore_ar = 1;
 				newflags |= IEEE80211_CHAN_TURBO;
 			} else {
+			   printk(KERN_INFO "pt. 7.3B\t(in esle of TURBOP)\n");
 				DPRINTF(sc, ATH_DEBUG_TURBO, 
 					"Disabling dynamic turbo.\n");
 				ic->ic_ath_cap &= ~IEEE80211_ATHC_BOOST;
@@ -11411,6 +11425,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 			/*  Keep interupts off, just in case... */
 			ath_hal_intrset(ah, 0);
 		}
+	} /* silly scope block for accum. */
 #endif /* #ifdef ATH_SUPERG_DYNTURBO */
 		/* clear pending tx frames picked up after reset */
 		printk(KERN_INFO "pt. 8\t(ath_draintxq)\n");
@@ -11421,7 +11436,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 		ath_hal_setmcastfilter(ah, 0, 0);
 		ath_set_ack_bitrate(sc, sc->sc_ackrate);
 		netif_wake_queue(dev);		/* restart xmit */
-
+		printk(KERN_INFO "pt. 8.1225\t(pre-register-block)\n");
 		if (ar_device(sc->devid) == 5212 || ar_device(sc->devid) == 5213) {
 			/* registers taken from openhal */
 #define AR5K_AR5212_TXCFG				0x0030
@@ -11463,6 +11478,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 			/*  Blast away at noise floor, assuming AGC has
 			 *  already set it... we want to trash it. */
 			OS_REG_WRITE(ah, AR5K_AR5212_PHY_NF,   0xffffffff);
+			printk(KERN_INFO "pt. 8.25\t(pre-DAC-test)\n");
 			/* Enable continuous transmit mode / DAC test mode */
 			OS_REG_WRITE(ah, AR5K_AR5212_ADDAC_TEST,
 					OS_REG_READ(ah, AR5K_AR5212_ADDAC_TEST) | 1);
@@ -11471,7 +11487,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 					OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
 					AR5K_AR5212_DIAG_SW_IGNOREPHYCS |
 					AR5K_AR5212_DIAG_SW_IGNORENAV);
-			printk(KERN_INFO "pt. 8.5\t(pre- SIFS)\n")
+			printk(KERN_INFO "pt. 8.5\t(pre- SIFS)\n");
 			/*  Set SIFS to rediculously small value...  */
 			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SIFS,
 					(OS_REG_READ(ah, 
