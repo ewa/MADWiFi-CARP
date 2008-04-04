@@ -329,6 +329,8 @@ static struct ath_buf* cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *buf
 #endif /* #ifdef IEEE80211_DEBUG_REFCNT */
 
 #if EWA_CCA
+static int disable_cca(struct ieee80211com *ic);
+
 #define AR5K_TUNE_RSSI_THRES            255
 #define AR5K_RSSI_THR			0x8018		/* Register Address */
 
@@ -344,7 +346,25 @@ static struct ath_buf* cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *buf
 #define AR5K_PHY_SHIFT_2GHZ		0x00004007
 #define AR5K_PHY_SHIFT_5GHZ		0x00000007
 
-#endif
+/* Copied from txcont stuff */
+#define AR5K_AR5212_PHY_NF				0x9864
+#define AR5K_AR5212_DIAG_SW				0x8048
+#define AR5K_AR5212_ADDAC_TEST				0x8054
+#define AR5K_AR5212_DIAG_SW				0x8048
+#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS			0x00100000
+#define AR5K_AR5212_DIAG_SW_IGNORENAV			0x00200000
+#define AR5K_AR5212_RSSI_THR				0x8018
+
+
+#ifdef HEISENBUG
+#define EWA_PRINTK(msg, args...) do {  \
+    printk(KERN_INFO "[%s] " msg , __func__, ##args);\
+} while (0)
+#else  /* ifdef HEISENBUG */
+#define EWA_PRINTK(msg, args...) do {} while (0)
+#endif /* ifdef HEISENBUG */
+
+#endif	/* EWA_CCA */
 
 /* Regulatory agency testing - continuous transmit support */
 static void txcont_on(struct ieee80211com *ic);
@@ -10492,7 +10512,7 @@ enum {
 	ATH_RADAR_IGNORED       = 25,
 	ATH_MAXVAPS  		= 26,
 #if EWA_CCA
-	ATH_RSSI_THRESH         = 27,
+	ATH_NOCCA               = 27,
 	ATH_TXCONT_MASK         = 28,
 #endif
 };
@@ -10505,7 +10525,7 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 	u_int val;
 	u_int tab_3_val[3];
 	int ret = 0;
-#if EWA_CCA
+#if (0 && EWA_CCA)
 	u_int32_t data;
 #endif
 
@@ -10682,18 +10702,11 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 				sc->sc_radar_ignored = val;
 				break;
 #if EWA_CCA
-			case ATH_RSSI_THRESH:
-			   //data = ath_reg_read(sc, AR5K_RSSI_THR);
-			       data = val |
-				  AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
-			       printk(KERN_INFO "Attempting to set \"RSSI Threshold\" register to 0x%x\n", data);			   
-			       /* Translated from ath5k: hw.c */
-			       /* May explode on 5210 XXX */
-			       //OS_REG_WRITE(sc->sc_ah, AR5K_PHY_SHIFT_5GHZ, AR5K_PHY(0)); /* enable PHY access */
-			       iowrite32(val, sc->sc_ah->ah_sh + AR5K_RSSI_THR);
-			       OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
-			       break;
-			case ATH_TXCONT_MASK:
+			case ATH_NOCCA:				
+				disable_cca(&(sc->sc_ic));
+				break;
+
+		        case ATH_TXCONT_MASK:
 			       TXCONT_MASK = val;
 			       break;
 #endif //ewa_cca
@@ -10764,13 +10777,9 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 		        val = sc->sc_radar_ignored;
 		        break;
 #if EWA_CCA
-		case ATH_RSSI_THRESH:
-		        /* Translated from ath5k: hw.c */
-		        /* May explode on 5210 XXX */
-		   
-		        val = ath_reg_read(sc, AR5K_RSSI_THR);
-		        printk(KERN_INFO "Read \"RSSI Threshold\" register: 0x%x\n", val);
-			val &= (val & AR5K_RSSI_THR_M);
+		case ATH_NOCCA:
+			printk(KERN_ALERT "Reading NOCCA sysctl not implemented.\n");
+			ret = -EINVAL;
 			break;
 
 		case ATH_TXCONT_MASK:
@@ -10959,14 +10968,14 @@ static const ctl_table ath_sysctl_template[] = {
 	},
 #if EWA_CCA
 	{ .ctl_name	= CTL_AUTO,
-	  .procname     = "rssi_thresh", /* DOES NOTHING! */
+	  .procname     = "cca_off",
 	  .mode         = 0644,
 	  .proc_handler = ath_sysctl_halparam,
-	  .extra2	= (void *)ATH_RSSI_THRESH,
+	  .extra2	= (void *)ATH_NOCCA,
 	},
 	{ .ctl_name     = CTL_AUTO,
 	  .procname     = "txcont_mask",
-	  .mode         = 0666,
+	  .mode         = 0644,
 	  .proc_handler = ath_sysctl_halparam,
 	  .extra2       = (void *)ATH_TXCONT_MASK
 	},
@@ -11255,6 +11264,37 @@ ath_get_txcont_adj_ratecode(struct ath_softc *sc)
 	return rt->info[closest_rate_ix].rateCode;
 }
 
+static int disable_cca(struct ieee80211com *ic)
+{
+   struct net_device           *dev = ic->ic_dev;	
+   struct ath_softc            *sc = dev->priv;
+   struct ath_hal              *ah = sc->sc_ah;
+   
+   if (ar_device(sc->devid) == 5212 || ar_device(sc->devid) == 5213) {
+      /* registers taken from openhal */
+      
+      EWA_PRINTK("pt. 8.2\t(CCA regs)\n");
+      /*  Set RSSI threshold to extreme, hear nothing */
+      OS_REG_WRITE(ah, AR5K_AR5212_RSSI_THR, 0xffffffff);
+      /*  Blast away at noise floor, assuming AGC has
+       *  already set it... we want to trash it. */
+      OS_REG_WRITE(ah, AR5K_AR5212_PHY_NF,   0xffffffff);
+      EWA_PRINTK("pt. 8.25\t(pre-DAC-test)\n");
+      /* Enable continuous transmit mode / DAC test mode */
+      OS_REG_WRITE(ah, AR5K_AR5212_ADDAC_TEST,
+		   OS_REG_READ(ah, AR5K_AR5212_ADDAC_TEST) | 1);
+      /* Ignore real and virtual carrier sensing, and reception */
+      OS_REG_WRITE(ah, AR5K_AR5212_DIAG_SW,
+		   OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
+		   AR5K_AR5212_DIAG_SW_IGNOREPHYCS |
+		   AR5K_AR5212_DIAG_SW_IGNORENAV);
+      return 0;
+   }  else {
+      return -1;
+   }
+   
+}
+
 /*
 Configure the radio for continuous transmission
  XXXEWA 
@@ -11264,13 +11304,6 @@ txcont_configure_radio(struct ieee80211com *ic)
 {
 #if EWA_CCA
 #define TXCONTMASK(x) ((TXCONT_MASK & (x))>0)
-#ifdef HEISENBUG
-#define EWA_PRINTK(msg, args...) do {  \
-    printk(KERN_INFO "[%s] " msg , __func__, ##args);\
-} while (0)
-#else  /* ifdef HEISENBUG */
-#define EWA_PRINTK(msg, args...) do {} while (0)
-#endif /* ifdef HEISENBUG */
 #endif /* EWA_CCA */
 
 	struct net_device           *dev = ic->ic_dev;
@@ -11291,7 +11324,6 @@ txcont_configure_radio(struct ieee80211com *ic)
 
 	ath_hal_intrset(ah, 0);
 	
-	/* foo */
 	{
 	   int ac;
 	   
@@ -11391,9 +11423,9 @@ txcont_configure_radio(struct ieee80211com *ic)
 		EWA_PRINTK("pt. 7\t(rp_flush)\n");
 		ath_rp_flush(sc);
 
-	EWA_PRINTK("pt. 7.1\t(pre- dynamic turbo)\n");
+		EWA_PRINTK("pt. 7.1\t(pre- dynamic turbo)\n");
 #ifdef ATH_SUPERG_DYNTURBO
-	EWA_PRINTK("pt. 7.11\t(pre- dynamic turbo, in ifdef)\n");
+		EWA_PRINTK("pt. 7.11\t(pre- dynamic turbo, in ifdef)\n");
 		/*  Turn on dynamic turbo if necessary -- before we get into 
 		 *  our own implementation -- and before we configures */
 	{
@@ -11413,33 +11445,33 @@ txcont_configure_radio(struct ieee80211com *ic)
 	   accum &= (IEEE80211_IS_CHAN_ANYG(ic->ic_bsschan) || IEEE80211_IS_CHAN_A(ic->ic_bsschan));
 	   EWA_PRINTK("pt. 7.14\n");
 	
-	if (accum) {
-			u_int32_t newflags;
-			EWA_PRINTK("pt. 7.2\t(in ! IS_CHAN_TURBP)\n");
- 			newflags = ic->ic_bsschan->ic_flags;
-			EWA_PRINTK("pt. 7.21\t(got newflags)\n");
-			
-			accum = (IEEE80211_ATHC_TURBOP & 
-				 TAILQ_FIRST(&ic->ic_vaps)->iv_ath_cap);
-			   EWA_PRINTK("pt. 7.22\n");
-			   if(accum){
-			   EWA_PRINTK("pt. 7.3A\t(in TURBOP)\n");
-				DPRINTF(sc, ATH_DEBUG_TURBO, 
-					"Enabling dynamic turbo.\n");
-				ic->ic_ath_cap |= IEEE80211_ATHC_BOOST;
-				sc->sc_ignore_ar = 1;
-				newflags |= IEEE80211_CHAN_TURBO;
-			} else {
-			   EWA_PRINTK("pt. 7.3B\t(in esle of TURBOP)\n");
-				DPRINTF(sc, ATH_DEBUG_TURBO, 
-					"Disabling dynamic turbo.\n");
-				ic->ic_ath_cap &= ~IEEE80211_ATHC_BOOST;
-				newflags &= ~IEEE80211_CHAN_TURBO;
-			}
-			ieee80211_dturbo_switch(ic, newflags);
-			/*  Keep interupts off, just in case... */
-			ath_hal_intrset(ah, 0);
-		}
+	   if (accum) {
+	      u_int32_t newflags;
+	      EWA_PRINTK("pt. 7.2\t(in ! IS_CHAN_TURBP)\n");
+	      newflags = ic->ic_bsschan->ic_flags;
+	      EWA_PRINTK("pt. 7.21\t(got newflags)\n");
+	      
+	      accum = (IEEE80211_ATHC_TURBOP & 
+		       TAILQ_FIRST(&ic->ic_vaps)->iv_ath_cap);
+	      EWA_PRINTK("pt. 7.22\n");
+	      if(accum){
+		 EWA_PRINTK("pt. 7.3A\t(in TURBOP)\n");
+		 DPRINTF(sc, ATH_DEBUG_TURBO, 
+			 "Enabling dynamic turbo.\n");
+		 ic->ic_ath_cap |= IEEE80211_ATHC_BOOST;
+		 sc->sc_ignore_ar = 1;
+		 newflags |= IEEE80211_CHAN_TURBO;
+	      } else {
+		 EWA_PRINTK("pt. 7.3B\t(in esle of TURBOP)\n");
+		 DPRINTF(sc, ATH_DEBUG_TURBO, 
+			 "Disabling dynamic turbo.\n");
+		 ic->ic_ath_cap &= ~IEEE80211_ATHC_BOOST;
+		 newflags &= ~IEEE80211_CHAN_TURBO;
+	      }
+	      ieee80211_dturbo_switch(ic, newflags);
+	      /*  Keep interupts off, just in case... */
+	      ath_hal_intrset(ah, 0);
+	   }
 	} /* silly scope block for accum. */
 #endif /* #ifdef ATH_SUPERG_DYNTURBO */
 		/* clear pending tx frames picked up after reset */
@@ -11451,9 +11483,10 @@ txcont_configure_radio(struct ieee80211com *ic)
 		ath_hal_setmcastfilter(ah, 0, 0);
 		ath_set_ack_bitrate(sc, sc->sc_ackrate);
 		netif_wake_queue(dev);		/* restart xmit */
-	   } /*ENDIF TXCONT_BIT0 */
-	   
 		EWA_PRINTK("pt. 8.1225\t(pre-register-block)\n");
+		
+	   }/*ENDIF TXCONT_BIT1 */
+	   
 		if (ar_device(sc->devid) == 5212 || ar_device(sc->devid) == 5213) {
 			/* registers taken from openhal */
 #define AR5K_AR5212_TXCFG				0x0030
@@ -11506,7 +11539,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 					OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
 					AR5K_AR5212_DIAG_SW_IGNOREPHYCS |
 					AR5K_AR5212_DIAG_SW_IGNORENAV);
-		   }
+		   } /* mask 0x2 */
 		   if(TXCONTMASK(0x4)){
 
 			EWA_PRINTK("pt. 8.5\t(pre- SIFS)\n");
@@ -11531,7 +11564,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 			    ~AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR &
 			    ~AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY &
 			    ~AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE);
-		   }
+		   } /* mask 0x4 */
 		   if(TXCONTMASK(0x8)){
 
 			/*  Disable queue backoff (default was like 256 or 0x100) */
@@ -11549,7 +11582,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 			OS_REG_WRITE(ah, AR5K_AR5212_TXCFG, OS_REG_READ(ah, 
 						AR5K_AR5212_TXCFG) | 
 					AR5K_AR5212_TXCFG_TXCONT_ENABLE);
-		   }
+		   } /* mask 0x8 */
 			EWA_PRINTK("pt. X\t(OS_REG_WRITEs done)\n");
 #undef AR5K_AR5212_TXCFG
 #undef AR5K_AR5212_TXCFG_TXCONT_ENABLE
@@ -11580,14 +11613,19 @@ txcont_configure_radio(struct ieee80211com *ic)
 #undef AR5K_AR5212_DCU_CHAN_TIME
 		}
 		
+	  if(TXCONTMASK(0x10)){
 		/* Disable beacons and beacon miss interrupts */
 		sc->sc_beacons = 0;
 		sc->sc_imask &= ~(HAL_INT_SWBA | HAL_INT_BMISS);
 
 		/* Enable continuous transmit register bit */
 		sc->sc_txcont = 1;
+	  } /* mask 0x10 */
 	}
-	ath_hal_intrset(ah, sc->sc_imask);
+	
+	if(TXCONTMASK(0x20)){
+	   ath_hal_intrset(ah, sc->sc_imask);
+	} /* mask 0x20 */
 #if EWA_CCA
 #undef TXCONTMASK
 #undef EWA_PRINTK
