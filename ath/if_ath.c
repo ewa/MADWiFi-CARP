@@ -329,7 +329,7 @@ static struct ath_buf* cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *buf
 #endif /* #ifdef IEEE80211_DEBUG_REFCNT */
 
 #if EWA_CCA
-static int disable_cca(struct ieee80211com *ic);
+static int disable_cca(struct ieee80211com *ic, u_int32_t mask);
 
 #define AR5K_TUNE_RSSI_THRES            255
 #define AR5K_RSSI_THR			0x8018		/* Register Address */
@@ -346,14 +346,6 @@ static int disable_cca(struct ieee80211com *ic);
 #define AR5K_PHY_SHIFT_2GHZ		0x00004007
 #define AR5K_PHY_SHIFT_5GHZ		0x00000007
 
-/* Copied from txcont stuff */
-#define AR5K_AR5212_PHY_NF				0x9864
-#define AR5K_AR5212_DIAG_SW				0x8048
-#define AR5K_AR5212_ADDAC_TEST				0x8054
-#define AR5K_AR5212_DIAG_SW				0x8048
-#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS			0x00100000
-#define AR5K_AR5212_DIAG_SW_IGNORENAV			0x00200000
-#define AR5K_AR5212_RSSI_THR				0x8018
 
 
 #ifdef HEISENBUG
@@ -10703,7 +10695,7 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 				break;
 #if EWA_CCA
 			case ATH_NOCCA:				
-				disable_cca(&(sc->sc_ic));
+			   disable_cca(&(sc->sc_ic), (u_int32_t)val);
 				break;
 
 		        case ATH_TXCONT_MASK:
@@ -11264,34 +11256,138 @@ ath_get_txcont_adj_ratecode(struct ath_softc *sc)
 	return rt->info[closest_rate_ix].rateCode;
 }
 
-static int disable_cca(struct ieee80211com *ic)
+static int disable_cca(struct ieee80211com *ic, u_int32_t mask)
 {
    struct net_device           *dev = ic->ic_dev;	
    struct ath_softc            *sc = dev->priv;
    struct ath_hal              *ah = sc->sc_ah;
-   
+ 
+
+/* Copied from txcont stuff */
+#define AR5K_AR5212_PHY_NF				0x9864
+#define AR5K_AR5212_DIAG_SW				0x8048
+#define AR5K_AR5212_ADDAC_TEST				0x8054
+#define AR5K_AR5212_DIAG_SW				0x8048
+#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS			0x00100000
+#define AR5K_AR5212_DIAG_SW_IGNORENAV			0x00200000
+#define AR5K_AR5212_RSSI_THR				0x8018
+#define AR5K_AR5212_DCU_GBL_IFS_SIFS			0x1030
+#define AR5K_AR5212_DCU_GBL_IFS_SIFS_M			0x0000ffff
+#define AR5K_AR5212_DCU_GBL_IFS_EIFS			0x10b0
+#define AR5K_AR5212_DCU_GBL_IFS_EIFS_M			0x0000ffff
+#define AR5K_AR5212_DCU_GBL_IFS_SLOT			0x1070
+#define AR5K_AR5212_DCU_GBL_IFS_SLOT_M			0x0000ffff
+#define AR5K_AR5212_DCU_GBL_IFS_MISC			0x10f0
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR		0x000ffc00
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	0x00300000
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	0x000003f0
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE		0x00000007
+#define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS		0x00200000
+#define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE		0x00100000
+#define	AR5K_AR5212_DCU(_n, _a)		                AR5K_AR5212_QCU(_n, _a)
+#define	AR5K_AR5212_QCU(_n, _a)		                (((_n) << 2) + _a)
+#define AR5K_AR5212_DCU_CHAN_TIME(_n)			AR5K_AR5212_DCU(_n, 0x10c0)
+#define AR5K_AR5212_DCU_MISC(_n)			AR5K_AR5212_DCU(_n, 0x1100)
+#define	AR5K_AR5212_DCU_CHAN_TIME_DUR			0x000ffff
+
+  
    if (ar_device(sc->devid) == 5212 || ar_device(sc->devid) == 5213) {
-      /* registers taken from openhal */
-      
-      EWA_PRINTK("pt. 8.2\t(CCA regs)\n");
-      /*  Set RSSI threshold to extreme, hear nothing */
-      OS_REG_WRITE(ah, AR5K_AR5212_RSSI_THR, 0xffffffff);
-      /*  Blast away at noise floor, assuming AGC has
-       *  already set it... we want to trash it. */
-      OS_REG_WRITE(ah, AR5K_AR5212_PHY_NF,   0xffffffff);
-      EWA_PRINTK("pt. 8.25\t(pre-DAC-test)\n");
-      /* Enable continuous transmit mode / DAC test mode */
-      //      OS_REG_WRITE(ah, AR5K_AR5212_ADDAC_TEST,
-      //		   OS_REG_READ(ah, AR5K_AR5212_ADDAC_TEST) | 1);
-      /* Ignore real and virtual carrier sensing, and reception */
-      OS_REG_WRITE(ah, AR5K_AR5212_DIAG_SW,
-		   OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
-		   AR5K_AR5212_DIAG_SW_IGNOREPHYCS |
-		   AR5K_AR5212_DIAG_SW_IGNORENAV);
+      /* registers taken from openhal */      
+      if((mask & 0x01) >0){
+	 EWA_PRINTK("RSSI, NF, carrier sense\n");
+
+	 /*  Set RSSI threshold to extreme, hear nothing */
+	 OS_REG_WRITE(ah, AR5K_AR5212_RSSI_THR, 0xffffffff);
+	 /*  Blast away at noise floor, assuming AGC has
+	  *  already set it... we want to trash it. */
+	 OS_REG_WRITE(ah, AR5K_AR5212_PHY_NF,   0xffffffff);
+	 
+	 /* Enable continuous transmit mode / DAC test mode */
+	 //      OS_REG_WRITE(ah, AR5K_AR5212_ADDAC_TEST,
+	 //		   OS_REG_READ(ah, AR5K_AR5212_ADDAC_TEST) | 1);
+	 /* Ignore real and virtual carrier sensing, and reception */
+	 
+	 OS_REG_WRITE(ah, AR5K_AR5212_DIAG_SW,
+		      OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
+		      AR5K_AR5212_DIAG_SW_IGNOREPHYCS |
+		      AR5K_AR5212_DIAG_SW_IGNORENAV);
+      }	/* mask 0x01 */
+      if((mask & 0x02) >0){
+	 
+	 EWA_PRINTK("SIFS, EIFS, slot time\n");
+	 /*  Set SIFS to rediculously small value...  */
+	 OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SIFS,
+		      (OS_REG_READ(ah, 
+				   AR5K_AR5212_DCU_GBL_IFS_SIFS) &
+		       ~AR5K_AR5212_DCU_GBL_IFS_SIFS_M) | 1);
+	 /*  Set EIFS to rediculously small value...  */
+	 OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_EIFS,
+		      (OS_REG_READ(ah, 
+				   AR5K_AR5212_DCU_GBL_IFS_EIFS) &
+		       ~AR5K_AR5212_DCU_GBL_IFS_EIFS_M) | 1);
+	 /*  Set slot time to rediculously small value...  */
+	 OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SLOT,
+		      (OS_REG_READ(ah, 
+				   AR5K_AR5212_DCU_GBL_IFS_SLOT) &
+		       ~AR5K_AR5212_DCU_GBL_IFS_SLOT_M) | 1);
+	 OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_MISC,
+		      OS_REG_READ(ah, AR5K_AR5212_DCU_GBL_IFS_MISC) &
+		      ~AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC &
+		      ~AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR &
+		      ~AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY &
+		      ~AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE);
+      } /* mask 0x02 */
+      if((mask & 0x04) >0){
+	 int q;
+	 EWA_PRINTK("Queue backoff, queue full?");
+	 /*  Disable queue backoff (default was like 256 or 0x100) */
+	 for (q = 0; q < 4; q++) {
+	    OS_REG_WRITE(ah, AR5K_AR5212_DCU_MISC(q), 
+			 AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS);
+	    /*  Set the channel time (burst time) to the 
+	     *  highest setting the register can take, 
+	     *  forget this compliant 8192 limit... */
+	    OS_REG_WRITE(ah, AR5K_AR5212_DCU_CHAN_TIME(q), 
+			 AR5K_AR5212_DCU_CHAN_TIME_ENABLE | 
+			 AR5K_AR5212_DCU_CHAN_TIME_DUR);
+	 }
+	 /*  Set queue full to continuous */
+#if 0
+	 OS_REG_WRITE(ah, AR5K_AR5212_TXCFG, OS_REG_READ(ah, AR5K_AR5212_TXCFG) | \
+		      AR5K_AR5212_TXCFG_TXCONT_ENABLE);
+#endif
+      }	/* mask 0x04 */
       return 0;
    }  else {
       return -1;
    }
+
+#undef AR5K_AR5212_PHY_NF
+#undef AR5K_AR5212_DIAG_SW
+#undef AR5K_AR5212_ADDAC_TEST
+#undef AR5K_AR5212_DIAG_SW
+#undef AR5K_AR5212_DIAG_SW_IGNOREPHYCS
+#undef AR5K_AR5212_DIAG_SW_IGNORENAV
+#undef AR5K_AR5212_RSSI_THR
+#undef AR5K_AR5212_DCU_GBL_IFS_SIFS
+#undef AR5K_AR5212_DCU_GBL_IFS_SIFS_M
+#undef AR5K_AR5212_DCU_GBL_IFS_EIFS
+#undef AR5K_AR5212_DCU_GBL_IFS_EIFS_M
+#undef AR5K_AR5212_DCU_GBL_IFS_SLOT
+#undef AR5K_AR5212_DCU_GBL_IFS_SLOT_M
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC
+#undef	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR
+#undef	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY
+#undef	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC
+#undef	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE
+#undef	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS
+#undef	AR5K_AR5212_DCU_CHAN_TIME_ENABLE
+#undef	AR5K_AR5212_DCU
+#undef	AR5K_AR5212_QCU
+#undef AR5K_AR5212_DCU_CHAN_TIME
+#undef AR5K_AR5212_DCU_MISC
+#undef	AR5K_AR5212_DCU_CHAN_TIME_DUR
+
    
 }
 
