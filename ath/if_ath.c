@@ -11281,7 +11281,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 
 	HAL_STATUS status;
 	int q;
-	printk(KERN_INFO "enter txcont_configure_radio\n");
+	EWA_PRINTK("enter txcont_configure_radio\n");
 	if (IFF_RUNNING != (ic->ic_dev->flags & IFF_RUNNING)) {
 		EPRINTF(sc, "Cannot enable txcont when interface is"
 			" not in running state.\n");
