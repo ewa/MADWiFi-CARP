@@ -1,0 +1,2 @@
+#!/bin/sh
+make KERNELPATH=/home/andersoe/ltkern/linux-source-2.6.22 DESTDIR=/home/andersoe/ltkern/inst $*
