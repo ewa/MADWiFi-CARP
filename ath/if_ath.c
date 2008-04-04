@@ -11263,7 +11263,7 @@ static void
 txcont_configure_radio(struct ieee80211com *ic)
 {
 #if EWA_CCA
-#define TXCONTMASK(x) ((TXCONT_MASK & (x))>1)
+#define TXCONTMASK(x) ((TXCONT_MASK & (x))>0)
 #ifdef HEISENBUG
 #define EWA_PRINTK(msg, args...) do {  \
     printk(KERN_INFO "[%s] " msg , __func__, ##args);\
@@ -11290,11 +11290,12 @@ txcont_configure_radio(struct ieee80211com *ic)
 	}
 
 	ath_hal_intrset(ah, 0);
-       
-	//if(TXCONTMASK(0x1)){
-	if(1){
+	
+	/* foo */
 	{
-		int ac;
+	   int ac;
+	   
+	   if(TXCONTMASK(0x1)){
 
 		/* Prepare to reconfigure */
 		ic->ic_caps  &= ~IEEE80211_C_SHPREAMBLE;
@@ -11390,7 +11391,6 @@ txcont_configure_radio(struct ieee80211com *ic)
 		EWA_PRINTK("pt. 7\t(rp_flush)\n");
 		ath_rp_flush(sc);
 
-	        } /*ENDIF TXCONT_BIT0 */
 	EWA_PRINTK("pt. 7.1\t(pre- dynamic turbo)\n");
 #ifdef ATH_SUPERG_DYNTURBO
 	EWA_PRINTK("pt. 7.11\t(pre- dynamic turbo, in ifdef)\n");
@@ -11403,6 +11403,8 @@ txcont_configure_radio(struct ieee80211com *ic)
 	   EWA_PRINTK("pt. 7.112\n");
 	   BUG_ON(NULL == ic->ic_bsschan);
 	   EWA_PRINTK("pt. 7.113\n");
+	   EWA_PRINTK("Info:\t &(ic->ic_bsschan):%p\n", &(ic->ic_bsschan));
+	   //EWA_PRINTK("Info:\t ic->ic_bsschan:%d\n", ic->ic_bsschan);
 	   /* XXXEWA: When it crashes, this next line is where! */
 	   accum = !IEEE80211_IS_CHAN_STURBO(ic->ic_bsschan);
 	   EWA_PRINTK("pt. 7.12\n");
@@ -11449,6 +11451,8 @@ txcont_configure_radio(struct ieee80211com *ic)
 		ath_hal_setmcastfilter(ah, 0, 0);
 		ath_set_ack_bitrate(sc, sc->sc_ackrate);
 		netif_wake_queue(dev);		/* restart xmit */
+	   } /*ENDIF TXCONT_BIT0 */
+	   
 		EWA_PRINTK("pt. 8.1225\t(pre-register-block)\n");
 		if (ar_device(sc->devid) == 5212 || ar_device(sc->devid) == 5213) {
 			/* registers taken from openhal */
@@ -11486,6 +11490,8 @@ txcont_configure_radio(struct ieee80211com *ic)
 			 * selectively commenting out register writes below may
 			 * result in simpler code with the same results. */
 
+		   if(TXCONTMASK(0x2)){
+		        EWA_PRINTK("pt. 8.2\t(CCA regs)\n");
 			/*  Set RSSI threshold to extreme, hear nothing */
 			OS_REG_WRITE(ah, AR5K_AR5212_RSSI_THR, 0xffffffff);
 			/*  Blast away at noise floor, assuming AGC has
@@ -11500,6 +11506,9 @@ txcont_configure_radio(struct ieee80211com *ic)
 					OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
 					AR5K_AR5212_DIAG_SW_IGNOREPHYCS |
 					AR5K_AR5212_DIAG_SW_IGNORENAV);
+		   }
+		   if(TXCONTMASK(0x4)){
+
 			EWA_PRINTK("pt. 8.5\t(pre- SIFS)\n");
 			/*  Set SIFS to rediculously small value...  */
 			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SIFS,
@@ -11522,6 +11531,8 @@ txcont_configure_radio(struct ieee80211com *ic)
 			    ~AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR &
 			    ~AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY &
 			    ~AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE);
+		   }
+		   if(TXCONTMASK(0x8)){
 
 			/*  Disable queue backoff (default was like 256 or 0x100) */
 			for (q = 0; q < 4; q++) {
@@ -11538,6 +11549,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 			OS_REG_WRITE(ah, AR5K_AR5212_TXCFG, OS_REG_READ(ah, 
 						AR5K_AR5212_TXCFG) | 
 					AR5K_AR5212_TXCFG_TXCONT_ENABLE);
+		   }
 			EWA_PRINTK("pt. X\t(OS_REG_WRITEs done)\n");
 #undef AR5K_AR5212_TXCFG
 #undef AR5K_AR5212_TXCFG_TXCONT_ENABLE
@@ -11567,7 +11579,7 @@ txcont_configure_radio(struct ieee80211com *ic)
 #undef AR5K_AR5212_DCU_MISC
 #undef AR5K_AR5212_DCU_CHAN_TIME
 		}
-
+		
 		/* Disable beacons and beacon miss interrupts */
 		sc->sc_beacons = 0;
 		sc->sc_imask &= ~(HAL_INT_SWBA | HAL_INT_BMISS);
