@@ -52,7 +52,7 @@ endif
 
 obj-y := ath/ ath_hal/ ath_rate/ net80211/
 
-all: modules tools
+all: modules tools tags
 
 modules: configcheck svnversion.h
 ifdef LINUX24
@@ -200,3 +200,7 @@ endif
 	fi
 	
 	@echo "ok."
+
+tags:
+	find . -name '*.h' -or -name '*.c' -not -wholename '*/.svn/*' -print0 | \
+	xargs -0 etags --members
