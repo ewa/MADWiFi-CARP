@@ -1,19 +1,118 @@
 
-kernelversion.c,38
-char *uts_release uts_release16,454
+tools/athstats.c,396
+#define OPT_AH_H 60,2472
+#undef ARRAY_SIZE66,2574
+#define ARRAY_SIZE(67,2592
+	u_int		phyerr;70,2672
+	const char*	desc;71,2688
+} phyerrdescriptions[phyerrdescriptions72,2707
+printstats(95,3652
+#define	STAT(97,3706
+#define	STATI(99,3793
+#undef STAT175,6951
+#undef STATI176,6963
+getifrate(180,6992
+getifstats(193,7241
+static int signalled;222,7821
+catchalarm(225,7856
+main(231,7903
 
-hal/public/wackelf.c,275
-#define	_LITTLE_ENDIAN	55,2265
-#define	_BIG_ENDIAN	56,2304
-#define	htobe16(58,2373
-#define	htobe32(59,2408
-#define	htole16(60,2443
-#define	htole32(61,2478
-#define	htobe16(63,2555
-#define	htobe32(64,2590
-#define	htole16(65,2625
-#define	htole32(66,2660
-main(73,2780
+tools/80211stats.c,290
+#define	SIOCG80211STATS	64,2449
+#define INT64FMT 69,2579
+#define INT64FMT 71,2608
+printstats(75,2652
+#define	STAT(77,2712
+#undef STAT159,6897
+static struct ifreq ifr;162,6912
+static int s;163,6937
+print_sta_stats(166,6964
+#define	STAT(168,7036
+#undef STAT240,8919
+main(244,8938
+
+tools/athkey.c,274
+static int s 62,2410
+static const char *progname;progname63,2429
+checksocket(66,2471
+#define IOCTL_ERR(72,2583
+set80211priv(74,2655
+digittoint(136,4422
+getdata(142,4529
+getcipher(185,5397
+#define	streq(187,5427
+#undef streq205,5995
+usage(209,6023
+main(217,6143
+
+tools/80211debug.c,2605
+#undef ARRAY_SIZE52,2167
+#define ARRAY_SIZE(53,2185
+static const char *progname;progname55,2243
+	IEEE80211_MSG_NODE_REF	58,2280
+	IEEE80211_MSG_NODE_REF	= 0x80000000,x8000000058,2280
+	IEEE80211_MSG_DEBUG	59,2350
+	IEEE80211_MSG_DEBUG	= 0x40000000,x4000000059,2350
+	IEEE80211_MSG_DUMPPKTS	60,2412
+	IEEE80211_MSG_DUMPPKTS	= 0x20000000,x2000000060,2412
+	IEEE80211_MSG_CRYPTO	61,2491
+	IEEE80211_MSG_CRYPTO	= 0x10000000,x1000000061,2491
+	IEEE80211_MSG_INPUT	62,2548
+	IEEE80211_MSG_INPUT	= 0x08000000,x0800000062,2548
+	IEEE80211_MSG_XRATE	63,2604
+	IEEE80211_MSG_XRATE	= 0x04000000,x0400000063,2604
+	IEEE80211_MSG_ELEMID	64,2663
+	IEEE80211_MSG_ELEMID	= 0x02000000,x0200000064,2663
+	IEEE80211_MSG_NODE	65,2724
+	IEEE80211_MSG_NODE	= 0x01000000,x0100000065,2724
+	IEEE80211_MSG_ASSOC	66,2778
+	IEEE80211_MSG_ASSOC	= 0x00800000,x0080000066,2778
+	IEEE80211_MSG_AUTH	67,2840
+	IEEE80211_MSG_AUTH	= 0x00400000,x0040000067,2840
+	IEEE80211_MSG_SCAN	68,2904
+	IEEE80211_MSG_SCAN	= 0x00200000,x0020000068,2904
+	IEEE80211_MSG_OUTPUT	69,2953
+	IEEE80211_MSG_OUTPUT	= 0x00100000,x0010000069,2953
+	IEEE80211_MSG_STATE	70,3011
+	IEEE80211_MSG_STATE	= 0x00080000,x0008000070,3011
+	IEEE80211_MSG_POWER	71,3066
+	IEEE80211_MSG_POWER	= 0x00040000,x0004000071,3066
+	IEEE80211_MSG_DOT1X	72,3127
+	IEEE80211_MSG_DOT1X	= 0x00020000,x0002000072,3127
+	IEEE80211_MSG_DOT1XSM	73,3189
+	IEEE80211_MSG_DOT1XSM	= 0x00010000,x0001000073,3189
+	IEEE80211_MSG_RADIUS	74,3253
+	IEEE80211_MSG_RADIUS	= 0x00008000,x0000800074,3253
+	IEEE80211_MSG_RADDUMP	75,3316
+	IEEE80211_MSG_RADDUMP	= 0x00004000,x0000400075,3316
+	IEEE80211_MSG_RADKEYS	76,3386
+	IEEE80211_MSG_RADKEYS	= 0x00002000,x0000200076,3386
+	IEEE80211_MSG_WPA	77,3446
+	IEEE80211_MSG_WPA	= 0x00001000,x0000100077,3446
+	IEEE80211_MSG_ACL	78,3502
+	IEEE80211_MSG_ACL	= 0x00000800,x0000080078,3502
+	IEEE80211_MSG_WME	79,3554
+	IEEE80211_MSG_WME	= 0x00000400,x0000040079,3554
+	IEEE80211_MSG_SUPG	80,3606
+	IEEE80211_MSG_SUPG	= 0x00000200,x0000020080,3606
+	IEEE80211_MSG_DOTH	81,3653
+	IEEE80211_MSG_DOTH	= 0x00000100,x0000010081,3653
+	IEEE80211_MSG_INACT	82,3698
+	IEEE80211_MSG_INACT	= 0x00000080,x0000008082,3698
+	IEEE80211_MSG_ROAM	83,3759
+	IEEE80211_MSG_ROAM	= 0x00000040,x0000004083,3759
+	IEEE80211_MSG_ANY	84,3816
+	IEEE80211_MSG_ANY	= 0xffffffff,xffffffff84,3816
+	IEEE80211_MSG_IC	85,3849
+	IEEE80211_MSG_IC	= (IEEE80211_MSG_NODE_REF)85,3849
+	const char	*name;name89,3914
+	u_int		bit;90,3933
+	const char *desc;desc91,3946
+} flags[flags92,3965
+getflag(122,5516
+usage(133,5703
+sysctlbyname(146,6003
+main(188,6846
 
 tools/athdebug.c,2804
 #undef ARRAY_SIZE55,2230
@@ -90,182 +189,6 @@ getflag(131,6172
 usage(142,6359
 sysctlbyname(155,6656
 main(197,7499
-
-tools/athchans.c,195
-static	int s 62,2403
-static const char *progname;progname63,2422
-checksocket(66,2464
-#define IOCTL_ERR(72,2576
-set80211priv(74,2648
-usage(136,4416
-#define	MAXCHAN	142,4511
-main(144,4584
-
-tools/athkey.c,274
-static int s 62,2410
-static const char *progname;progname63,2429
-checksocket(66,2471
-#define IOCTL_ERR(72,2583
-set80211priv(74,2655
-digittoint(136,4422
-getdata(142,4529
-getcipher(185,5397
-#define	streq(187,5427
-#undef streq205,5995
-usage(209,6023
-main(217,6143
-
-tools/80211stats.c,290
-#define	SIOCG80211STATS	64,2449
-#define INT64FMT 69,2579
-#define INT64FMT 71,2608
-printstats(75,2652
-#define	STAT(77,2712
-#undef STAT159,6897
-static struct ifreq ifr;162,6912
-static int s;163,6937
-print_sta_stats(166,6964
-#define	STAT(168,7036
-#undef STAT240,8919
-main(244,8938
-
-tools/athstats.c,396
-#define OPT_AH_H 60,2472
-#undef ARRAY_SIZE66,2574
-#define ARRAY_SIZE(67,2592
-	u_int		phyerr;70,2672
-	const char*	desc;71,2688
-} phyerrdescriptions[phyerrdescriptions72,2707
-printstats(95,3652
-#define	STAT(97,3706
-#define	STATI(99,3793
-#undef STAT175,6951
-#undef STATI176,6963
-getifrate(180,6992
-getifstats(193,7241
-static int signalled;222,7821
-catchalarm(225,7856
-main(231,7903
-
-tools/80211debug.c,2605
-#undef ARRAY_SIZE52,2167
-#define ARRAY_SIZE(53,2185
-static const char *progname;progname55,2243
-	IEEE80211_MSG_NODE_REF	58,2280
-	IEEE80211_MSG_NODE_REF	= 0x80000000,x8000000058,2280
-	IEEE80211_MSG_DEBUG	59,2350
-	IEEE80211_MSG_DEBUG	= 0x40000000,x4000000059,2350
-	IEEE80211_MSG_DUMPPKTS	60,2412
-	IEEE80211_MSG_DUMPPKTS	= 0x20000000,x2000000060,2412
-	IEEE80211_MSG_CRYPTO	61,2491
-	IEEE80211_MSG_CRYPTO	= 0x10000000,x1000000061,2491
-	IEEE80211_MSG_INPUT	62,2548
-	IEEE80211_MSG_INPUT	= 0x08000000,x0800000062,2548
-	IEEE80211_MSG_XRATE	63,2604
-	IEEE80211_MSG_XRATE	= 0x04000000,x0400000063,2604
-	IEEE80211_MSG_ELEMID	64,2663
-	IEEE80211_MSG_ELEMID	= 0x02000000,x0200000064,2663
-	IEEE80211_MSG_NODE	65,2724
-	IEEE80211_MSG_NODE	= 0x01000000,x0100000065,2724
-	IEEE80211_MSG_ASSOC	66,2778
-	IEEE80211_MSG_ASSOC	= 0x00800000,x0080000066,2778
-	IEEE80211_MSG_AUTH	67,2840
-	IEEE80211_MSG_AUTH	= 0x00400000,x0040000067,2840
-	IEEE80211_MSG_SCAN	68,2904
-	IEEE80211_MSG_SCAN	= 0x00200000,x0020000068,2904
-	IEEE80211_MSG_OUTPUT	69,2953
-	IEEE80211_MSG_OUTPUT	= 0x00100000,x0010000069,2953
-	IEEE80211_MSG_STATE	70,3011
-	IEEE80211_MSG_STATE	= 0x00080000,x0008000070,3011
-	IEEE80211_MSG_POWER	71,3066
-	IEEE80211_MSG_POWER	= 0x00040000,x0004000071,3066
-	IEEE80211_MSG_DOT1X	72,3127
-	IEEE80211_MSG_DOT1X	= 0x00020000,x0002000072,3127
-	IEEE80211_MSG_DOT1XSM	73,3189
-	IEEE80211_MSG_DOT1XSM	= 0x00010000,x0001000073,3189
-	IEEE80211_MSG_RADIUS	74,3253
-	IEEE80211_MSG_RADIUS	= 0x00008000,x0000800074,3253
-	IEEE80211_MSG_RADDUMP	75,3316
-	IEEE80211_MSG_RADDUMP	= 0x00004000,x0000400075,3316
-	IEEE80211_MSG_RADKEYS	76,3386
-	IEEE80211_MSG_RADKEYS	= 0x00002000,x0000200076,3386
-	IEEE80211_MSG_WPA	77,3446
-	IEEE80211_MSG_WPA	= 0x00001000,x0000100077,3446
-	IEEE80211_MSG_ACL	78,3502
-	IEEE80211_MSG_ACL	= 0x00000800,x0000080078,3502
-	IEEE80211_MSG_WME	79,3554
-	IEEE80211_MSG_WME	= 0x00000400,x0000040079,3554
-	IEEE80211_MSG_SUPG	80,3606
-	IEEE80211_MSG_SUPG	= 0x00000200,x0000020080,3606
-	IEEE80211_MSG_DOTH	81,3653
-	IEEE80211_MSG_DOTH	= 0x00000100,x0000010081,3653
-	IEEE80211_MSG_INACT	82,3698
-	IEEE80211_MSG_INACT	= 0x00000080,x0000008082,3698
-	IEEE80211_MSG_ROAM	83,3759
-	IEEE80211_MSG_ROAM	= 0x00000040,x0000004083,3759
-	IEEE80211_MSG_ANY	84,3816
-	IEEE80211_MSG_ANY	= 0xffffffff,xffffffff84,3816
-	IEEE80211_MSG_IC	85,3849
-	IEEE80211_MSG_IC	= (IEEE80211_MSG_NODE_REF)85,3849
-	const char	*name;name89,3914
-	u_int		bit;90,3933
-	const char *desc;desc91,3946
-} flags[flags92,3965
-getflag(122,5516
-usage(133,5703
-sysctlbyname(146,6003
-main(188,6846
-
-tools/wlanconfig.c,1231
-#define IEEE80211_NODE_TURBOP	68,2553
-#define IEEE80211_NODE_COMP	69,2616
-#define IEEE80211_NODE_FF	70,2678
-#define IEEE80211_NODE_XR	71,2745
-#define IEEE80211_NODE_AR	72,2804
-#define IEEE80211_NODE_BOOST	73,2855
-#define	streq(75,2892
-#undef ARRAY_SIZE77,2952
-#define ARRAY_SIZE(78,2970
-static int verbose 100,3764
-main(103,3793
-static int if_split_name(217,6657
-vap_create(254,7407
-vap_destroy(268,7618
-usage(284,7924
-getopmode(294,8296
-getflag(315,8820
-ieee80211_mhz2ieee(334,9213
-rssi2dbm(349,9452
-getmaxrate(355,9508
-getcaps(368,9743
-getathcaps(400,10513
-getstamode(422,10949
-printie(431,11069
-copy_essid(457,11670
-#define LE_READ_4(496,12523
-iswpaoui(504,12760
-iswmeoui(510,12893
-isatherosoui(516,13026
-printies(522,13155
-ieee80211_ntoa(549,13776
-list_stations(560,14017
-#define LE_READ_4(645,16442
-list_scan(653,16671
-print_chaninfo(698,17754
-list_channels(729,18664
-list_keys(766,19715
-#define	IEEE80211_C_BITS 776,19913
-printb(785,20201
-list_capabilities(812,20641
-list_wme(824,20906
-#define	GETPARAM(826,20937
-ieee80211_status(882,22220
-getsocket(893,22434
-get80211param(906,22599
-#define IOCTL_ERR(927,23055
-do80211priv(929,23127
-get80211priv(985,24808
-strlcat(1004,25359
 
 tools/athctrl.c,61
 setsysctrl(57,2285
@@ -432,258 +355,966 @@ int main(741,21491
 		int valid;755,21875
 		int value;756,21888
 
-ath_rate/amrr/amrr.c,1441
-#define	AMRR_DEBUG73,2747
-#define	DPRINTF(75,2784
-#define	DPRINTF(80,2910
-static int ath_rateinterval 83,2949
-static int ath_rate_max_success_threshold 84,3016
-static int ath_rate_min_success_threshold 85,3064
-ath_rate_node_init(93,3380
-ath_rate_node_cleanup(100,3540
-ath_rate_findrate(105,3622
-ath_rate_get_mrr(120,3979
-ath_rate_tx_complete(134,4393
-ath_rate_newassoc(162,5104
-node_reset 169,5245
-ath_rate_update(189,5814
-ath_rate_ctl_start(266,8300
-#define	RATE(268,8370
-#undef RATE303,9591
-ath_rate_cb(307,9618
-ath_rate_newstate(316,9817
-ath_rate_ctl(364,11165
-#define is_success(370,11318
-#define is_enough(371,11396
-#define is_failure(372,11448
-#define is_max_rate(373,11524
-#define is_min_rate(374,11596
-ath_ratectl(428,13189
-ath_rate_attach(455,13953
-ath_rate_detach(475,14403
-static int minrateinterval 484,14570
-static int maxint 485,14616
-static int min_threshold 486,14666
-static ctl_table ath_rate_static_sysctls[ath_rate_static_sysctls492,14738
-static ctl_table ath_rate_table[ath_rate_table522,15584
-static ctl_table ath_ath_table[ath_ath_table529,15737
-static ctl_table ath_root_table[ath_root_table536,15878
-static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header543,16019
-static struct ieee80211_rate_ops ath_rate_ops 545,16071
-static char *version version559,16476
-static char *dev_info dev_info560,16528
-init_ath_rate_amrr(572,16803
-exit_ath_rate_amrr(587,17095
+tools/athchans.c,195
+static	int s 62,2403
+static const char *progname;progname63,2422
+checksocket(66,2464
+#define IOCTL_ERR(72,2576
+set80211priv(74,2648
+usage(136,4416
+#define	MAXCHAN	142,4511
+main(144,4584
 
-ath_rate/amrr/ath_rate_amrr.mod.c,87
+tools/wlanconfig.c,1231
+#define IEEE80211_NODE_TURBOP	68,2553
+#define IEEE80211_NODE_COMP	69,2616
+#define IEEE80211_NODE_FF	70,2678
+#define IEEE80211_NODE_XR	71,2745
+#define IEEE80211_NODE_AR	72,2804
+#define IEEE80211_NODE_BOOST	73,2855
+#define	streq(75,2892
+#undef ARRAY_SIZE77,2952
+#define ARRAY_SIZE(78,2970
+static int verbose 100,3764
+main(103,3793
+static int if_split_name(217,6657
+vap_create(254,7407
+vap_destroy(268,7618
+usage(284,7924
+getopmode(294,8296
+getflag(315,8820
+ieee80211_mhz2ieee(334,9213
+rssi2dbm(349,9452
+getmaxrate(355,9508
+getcaps(368,9743
+getathcaps(400,10513
+getstamode(422,10949
+printie(431,11069
+copy_essid(457,11670
+#define LE_READ_4(496,12523
+iswpaoui(504,12760
+iswmeoui(510,12893
+isatherosoui(516,13026
+printies(522,13155
+ieee80211_ntoa(549,13776
+list_stations(560,14017
+#define LE_READ_4(645,16442
+list_scan(653,16671
+print_chaninfo(698,17754
+list_channels(729,18664
+list_keys(766,19715
+#define	IEEE80211_C_BITS 776,19913
+printb(785,20201
+list_capabilities(812,20641
+list_wme(824,20906
+#define	GETPARAM(826,20937
+ieee80211_status(882,22220
+getsocket(893,22434
+get80211param(906,22599
+#define IOCTL_ERR(927,23055
+do80211priv(929,23127
+get80211priv(985,24808
+strlcat(1004,25359
+
+ath/ath_pci.mod.c,88
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__44,1257
+__attribute_used__162,5830
 
-ath_rate/sample/ath_rate_sample.mod.c,87
+ath/if_ath_pci.c,583
+#define	EXPORT_SYMTAB42,2051
+struct ath_pci_softc 76,2764
+	struct ath_softc	aps_sc;77,2787
+	u32	aps_pmstate[aps_pmstate79,2830
+static char *version version87,2907
+static char *dev_info dev_info88,2947
+static struct pci_device_id ath_pci_id_table[] __devinitdata 97,3194
+static u16 ath_devidmap[ath_devidmap120,4266
+ath_pci_probe(125,4334
+ath_pci_remove(272,8083
+ath_pci_suspend(288,8457
+ath_pci_resume(299,8746
+static struct pci_driver ath_pci_driver 335,9590
+ath_ioctl_ethtool(348,9918
+init_ath_pci(377,10825
+exit_ath_pci(391,11133
+bus_read_cachesize(402,11355
+
+ath/if_ath_radar.c,2959
+#define	AR_DEBUG23,1036
+#define	AR_DEBUG59,1877
+#undef MAX75,2188
+#define MAX(76,2199
+#undef MIN78,2245
+#define MIN(79,2256
+#define sizetab(91,2440
+#define nofloat_pct(92,2484
+struct radar_pattern_specification 95,2558
+	const char *name;name97,2663
+	u_int32_t min_rep_int;100,2770
+	u_int32_t max_rep_int;103,2882
+	HAL_BOOL dyn_ints;106,3005
+	u_int32_t fuzz_pct;109,3138
+	u_int32_t min_pulse;111,3214
+	u_int32_t min_evts;114,3322
+	u_int32_t max_evts;117,3429
+	u_int32_t max_consecutive_missing;119,3492
+	u_int32_t max_missing;121,3558
+	HAL_BOOL match_midpoint;123,3636
+static struct radar_pattern_specification radar_patterns[radar_patterns126,3666
+int ath_radar_is_enabled(159,5570
+void ath_radar_get_params(174,6019
+void ath_radar_set_params(198,6867
+#define BUILD_PHY_RADAR_FIELD(200,6934
+#undef BUILD_PHY_RADAR_FIELD220,7767
+int ath_radar_update(225,7943
+int ath_radar_correct_dfs_flags(302,10514
+int ath_radar_is_dfs_required(320,11173
+static struct ath_rp *pulse_head(pulse_head328,11507
+static struct ath_rp *pulse_tail(pulse_tail334,11635
+static struct ath_rp *pulse_prev(pulse_prev340,11763
+#define CR_FALLTHROUGH	346,11888
+#define CR_NULL	347,11914
+#define CR_EXCESS_INTERVALS	348,11934
+#define CR_INTERVALS 349,11964
+#define CR_EXCESS_DURATION	350,11989
+#define CR_DURATION	351,12018
+#define CR_PULSES	352,12041
+#define CR_MISSES	353,12062
+#define CR_MIDPOINT_A	354,12083
+#define CR_MIDPOINT_B	355,12108
+#define CR_MIDPOINT_C	356,12133
+#define CR_NOISE	357,12159
+#define MR_MATCH 359,12181
+#define MR_FAIL_MIN_INTERVALS	360,12202
+#define MR_FAIL_REQD_MATCHES	361,12234
+#define MR_FAIL_MAX_MISSES	362,12265
+#define MR_FAIL_MIN_PERIOD	363,12294
+#define MR_FAIL_MAX_PERIOD	364,12323
+static const char* get_match_result_desc(366,12353
+static int32_t match_radar(385,12738
+static int32_t compare_radar_matches(420,13527
+struct lp_burst 514,16777
+	u_int32_t lpb_num_pulses;515,16795
+	u_int32_t lpb_num_noise;516,16822
+	u_int32_t lpb_tsf_delta;517,16848
+	u_int64_t lpb_tsf_rel;518,16874
+	u_int64_t lpb_min_possible_tsf;519,16898
+	u_int64_t lpb_max_possible_tsf;520,16958
+static const u_int32_t LP_MIN_BC 523,17022
+static const u_int32_t LP_MAX_BC 524,17060
+static const u_int32_t LP_NUM_BC 525,17099
+static const u_int64_t LP_TSF_FUZZ_US 526,17173
+static const u_int32_t LP_MIN_PRI 528,17277
+static const u_int32_t LP_MAX_PRI 529,17319
+static void rp_analyze_long_pulse_bscan(531,17362
+static HAL_BOOL rp_analyze_long_pulse(617,19840
+static HAL_BOOL rp_analyse_short_pulse(771,24432
+static u_int32_t interval_to_frequency(1217,36851
+static const char* get_longpulse_desc(1226,37146
+static HAL_BOOL rp_analyse(1246,37821
+static void ath_rp_clear(1511,45831
+static void ath_rp_tasklet(1519,45983
+void ath_rp_init(1528,46179
+void ath_rp_done(1569,47108
+void ath_rp_record(1577,47238
+void ath_rp_print_mem(1642,49030
+void ath_rp_print(1679,50152
+void ath_rp_flush(1715,51267
+
+ath/if_ath_ahb.c,625
+#define	EXPORT_SYMTAB10,184
+static char *version version44,846
+static char *dev_info dev_info45,886
+struct ath_ahb_softc 47,922
+	struct ath_softc	aps_sc;48,945
+	u32 aps_pmstate[aps_pmstate50,988
+static struct ath_ahb_softc *sclist[sclist54,1021
+static u_int8_t num_activesc 55,1076
+bus_read_cachesize(60,1158
+ahb_enable_wmac(69,1402
+ahb_disable_wmac(133,3221
+exit_ath_wmac(162,3869
+init_ath_wmac(185,4358
+static int ahb_wmac_probe(262,6281
+static int ahb_wmac_remove(275,6552
+static struct platform_driver ahb_wmac_driver 282,6702
+ath_ioctl_ethtool(288,6843
+init_ath_ahb(312,7535
+exit_ath_ahb(323,7736
+
+ath/if_ath.c,18790
+#define	AR_DEBUG45,2109
+#define LE_READ_2(106,3411
+#define LE_READ_4(109,3527
+#define DEF_RATE_CTL 116,3783
+#define DEF_RATE_CTL 118,3838
+	ATH_LED_TX,122,3883
+	ATH_LED_RX,123,3896
+	ATH_LED_POLL,124,3909
+#define ath_return_txbuf(286,11749
+#define ath_return_txbuf_locked(295,12145
+#define ath_return_txbuf_list(304,12569
+#define ath_return_txbuf_list_locked(313,12983
+#define cleanup_ath_buf(322,13425
+#define AR5K_TUNE_RSSI_THRES 334,13912
+#define AR5K_RSSI_THR	335,13956
+#define AR5K_RSSI_THR_M	338,14014
+#define AR5K_RSSI_THR_BMISS_5211	340,14126
+#define	AR5K_RSSI_THR_BMISS_S	341,14217
+#define AR5K_TUNE_BMISS_THRES 342,14250
+#define	AR5K_PHY_BASE	344,14293
+#define	AR5K_PHY(345,14324
+#define AR5K_PHY_SHIFT_2GHZ	346,14377
+#define AR5K_PHY_SHIFT_5GHZ	347,14417
+#define AR5K_AR5212_PHY_NF	350,14489
+#define AR5K_AR5212_DIAG_SW	351,14526
+#define AR5K_AR5212_ADDAC_TEST	352,14564
+#define AR5K_AR5212_DIAG_SW	353,14605
+#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS	354,14643
+#define AR5K_AR5212_DIAG_SW_IGNORENAV	355,14696
+#define AR5K_AR5212_RSSI_THR	356,14747
+#define EWA_PRINTK(360,14805
+#define EWA_PRINTK(364,14942
+#define ath_cac_running_dbgmsg(388,15807
+#define ath_chan_unavail_dbgmsg(390,15887
+static int ath_calinterval 417,17035
+static int ath_countrycode 418,17087
+static int ath_outdoor 419,17149
+static int ath_xchanmode 420,17210
+static int ath_maxvaps 421,17278
+static char *autocreate autocreate422,17357
+static char *ratectl ratectl423,17389
+static int rfkill 424,17426
+static int tpc 425,17449
+static int countrycode 426,17469
+static int maxvaps 427,17498
+static int outdoor 428,17523
+static int xchanmode 429,17548
+static int beacon_cal 430,17575
+static const char *hal_status_desc[hal_status_desc432,17603
+static struct notifier_block ath_event_block 451,18142
+static int	ath_debug 496,19624
+static int	ieee80211_debug 508,20009
+#define ATH_SETUP_XR_VAP(518,20304
+#define ATH_SET_VAP_BSSID_MASK(539,21101
+#define ATH_GET_VAP_ID(541,21204
+#define ATH_SET_VAP_BSSID(542,21270
+u_int32_t TXCONT_MASK;549,21415
+ath_attach(555,21503
+ath_detach(1213,40919
+ath_vap_create(1272,42453
+ath_vap_delete(1526,50173
+ath_suspend(1627,53063
+ath_resume(1636,53216
+ath_chan_unavail(1647,53473
+_ath_cac_running_dbgmsg(1654,53665
+_ath_chan_unavail_dbgmsg(1664,53920
+ath_extend_tsf(1681,54466
+#define TSTAMP_RX_MASK 1683,54516
+ath_uapsd_processtriggers(1700,54838
+#define	PA2DESC(1720,55358
+#undef PA2DESC2191,69897
+ath_intr(2199,70049
+ath_fatal_tasklet(2396,77130
+ath_rxorn_tasklet(2406,77334
+ath_bmiss_tasklet(2416,77544
+ath_chan2flags(2432,78031
+ath_init(2459,78669
+ath_stop_locked(2585,82126
+static void ath_set_beacon_cal(2646,83735
+ath_stop(2667,84264
+ar_device(2699,85034
+ath_set_ack_bitrate(2744,85913
+#define AR5K_AR5212_STA_ID1 2749,86129
+#define AR5K_AR5212_STA_ID1_ACKCTS_6MB 2750,86184
+#define AR5K_AR5212_STA_ID1_BASE_RATE_11B 2751,86243
+#undef AR5K_AR5212_STA_ID12760,86594
+#undef AR5K_AR5212_STA_ID1_BASE_RATE_11B2761,86621
+#undef AR5K_AR5212_STA_ID1_ACKCTS_6MB2762,86662
+ath_reset(2776,87054
+ath_desc_swap(2866,89552
+ath_tx_txqaddbuf(2883,89933
+dot11_to_ratecode(2948,91951
+ath_tx_startraw(2959,92224
+ath_ff_neverflushtestdone(3066,95349
+ath_ff_ageflushtestdone(3072,95443
+ath_ffstageq_flush(3085,95709
+ath_get_buffers_available(3129,96897
+ath_get_buffer_count(3138,97145
+_take_txbuf_locked_debug(3147,97340
+_take_txbuf_debug(3201,99035
+#define ath_take_txbuf_locked(3219,99514
+#define ath_take_txbuf_locked_debug(3221,99605
+#define ath_take_txbuf_mgmt_locked(3224,99711
+#define ath_take_txbuf_mgmt_locked_debug(3226,99807
+#define ath_take_txbuf(3229,99918
+#define ath_take_txbuf_debug(3231,99995
+#define ath_take_txbuf_mgmt(3234,100087
+#define ath_take_txbuf_mgmt_debug(3236,100169
+#define ath_take_txbuf_locked(3241,100309
+#define ath_take_txbuf_locked_debug(3243,100374
+#define ath_take_txbuf_mgmt_locked(3246,100460
+#define ath_take_txbuf_mgmt_locked_debug(3248,100530
+#define ath_take_txbuf(3251,100621
+#define ath_take_txbuf_debug(3253,100672
+#define ath_take_txbuf_mgmt(3256,100744
+#define ath_take_txbuf_mgmt_debug(3258,100800
+ath_hardstart(3272,101131
+ath_mgtstart(3603,110004
+ath_keyprint(3650,111089
+ath_keyset_tkip(3711,112462
+#define	IEEE80211_KEY_XR	3714,112590
+#undef IEEE80211_KEY_XR3763,114304
+ath_keyset(3772,114514
+key_alloc_2pair(3833,116460
+key_alloc_pair(3884,117755
+key_alloc_single(3928,118691
+ath_key_alloc(3962,119675
+ath_key_delete(4026,121704
+ath_key_set(4102,123865
+ath_key_update_begin(4118,124348
+ath_key_update_end(4139,124884
+ath_calcrxfilter(4169,125921
+#define	RX_FILTER_PRESERVE	4171,125962
+#undef RX_FILTER_PRESERVE4194,126906
+ath_merge_mcast(4205,127192
+ath_mode_init(4230,127863
+ath_setslottime(4262,128634
+ath_updateslot(4281,129125
+ath_beacon_dturbo_config(4307,129746
+#define	IS_CAPABLE(4309,129817
+#undef IS_CAPABLE4350,131245
+ath_beacon_dturbo_update(4358,131404
+ath_check_beacon_done(4462,134930
+ath_turbo_switch_mode(4499,135714
+ath_beaconq_setup(4547,137072
+ath_beaconq_config(4575,137692
+#define	ATH_EXPONENT_TO_VALUE(4577,137735
+#undef ATH_EXPONENT_TO_VALUE4614,138856
+ath_beacon_alloc(4618,138899
+ath_beacon_alloc_internal(4634,139244
+ath_beacon_setup(4713,141783
+#define	USE_SHPREAMBLE(4715,141844
+#undef USE_SHPREAMBLE4810,144631
+ath_beacon_generate(4817,144742
+ath_beacon_send(4981,149447
+ath_bstuck_tasklet(5157,155215
+ath_beacon_return(5179,155774
+ath_beacon_free(5189,155983
+ath_beacon_config(5218,157124
+#define	FUDGE	5262,158498
+#undef FUDGE5324,160595
+ath_descdma_setup(5466,164811
+#define	DS2PHYS(5470,164937
+#undef DS2PHYS5518,166181
+ath_descdma_cleanup(5522,166211
+ath_desc_alloc(5538,166628
+ath_desc_free(5569,167374
+ath_node_alloc_debug(5584,167817
+ath_node_cleanup_debug(5619,168863
+ath_node_free_debug(5677,170549
+ath_node_getrssi(5696,170917
+#define	HAL_EP_RND(5698,170969
+#undef HAL_EP_RND5714,171520
+ath_node_move_data(5725,171700
+#define ath_alloc_skb(6089,180351
+ath_alloc_skb_debug(6091,180446
+ath_rxbuf_init(6113,180914
+ath_skb_removepad(6217,184124
+ath_capture(6247,184953
+ath_recv_mgmt(6278,185859
+ath_setdefantenna(6402,189630
+ath_rx_tasklet(6415,189925
+#define	PA2DESC(6417,189959
+#undef PA2DESC6708,198626
+ath_grppoll_period_update(6714,198678
+ath_grppoll_txq_update(6776,200093
+ath_grppoll_txq_setup(6801,200714
+static void ath_grppoll_start(6851,202005
+	struct rate_to_str_map 6872,202667
+		u_int8_t str[str6873,202693
+		int ratekbps;6874,202712
+#define MAX_GRPPOLL_RATE 6888,202952
+#define	USE_SHPREAMBLE(6889,202979
+#undef USE_SHPREAMBLE7073,208712
+static void ath_grppoll_stop(7076,208737
+ath_txq_setup(7121,209723
+ath_tx_setup(7235,213126
+ath_txq_update(7257,213587
+#define	ATH_EXPONENT_TO_VALUE(7259,213655
+#define	ATH_TXOP_TO_US(7260,213699
+#undef ATH_TXOP_TO_US7281,214428
+#undef ATH_EXPONENT_TO_VALUE7282,214450
+ath_wme_update(7289,214560
+ath_uapsd_flush(7306,215061
+ath_tx_cleanupq(7344,216168
+ath_tx_cleanup(7364,216624
+ath_get_icvlen(7376,216862
+ath_get_ivlen(7388,217132
+ath_tx_findindex(7407,217499
+ath_tx_uapsdqueue(7425,217755
+ath_tx_start(7495,219975
+#define	MIN(7498,220102
+#undef MIN8114,238931
+ath_tx_processq(8122,239074
+#define TSTAMP_TX_MASK 8290,243960
+txqactive(8342,245286
+ath_tx_tasklet_q0(8354,245566
+ath_tx_tasklet_q0123(8375,246070
+ath_tx_tasklet(8410,246988
+ath_tx_timeout(8429,247442
+ath_tx_draintxq(8450,247899
+ath_tx_stopdma(8479,248577
+ath_draintxq(8493,248926
+ath_stoprecv(8521,249714
+#define	PA2DESC(8523,249751
+#undef PA2DESC8549,250738
+ath_startrecv(8556,250819
+ath_flushrecv(8598,251962
+ath_chan_change(8609,252183
+ath_chan_set(8643,253130
+ath_mib_enable(8808,258597
+ath_calibrate(8821,258865
+ath_scan_start(8897,261063
+ath_scan_end(8917,261549
+ath_set_channel(8935,262013
+ath_set_coverageclass(8952,262523
+ath_mhz2ieee(8962,262704
+ath_newstate(8974,262926
+ath_dfs_cac_completed(9294,272826
+ath_comp_set(9406,276231
+ath_setup_comp(9414,276405
+#define	IEEE80211_KEY_XR	9416,276461
+#undef IEEE80211_KEY_XR9456,277635
+ath_setup_stationkey(9469,277987
+ath_setup_stationwepkey(9506,279084
+ath_setup_keycacheslot(9598,281974
+ath_newassoc(9629,282905
+ath_getchannels(9661,283796
+ath_led_done(9812,288678
+ath_led_off(9824,288917
+ath_led_blink(9838,289263
+ath_led_event(9850,289603
+set_node_txpower(9873,290154
+ath_set_clamped_maxtxpower(9884,290553
+ath_get_clamped_maxtxpower(9896,291000
+ath_get_real_maxtxpower(9911,291596
+ath_update_txpow(9927,292039
+ath_xr_rate_setup(9962,293351
+ath_setup_subrates(9991,294142
+ath_rate_setup(10034,295417
+ath_setcurmode(10081,296715
+		u_int		rate;10085,296874
+		u_int16_t	timeOn;10086,296914
+		u_int16_t	timeOff;10087,296958
+athff_approx_txtime(10148,298845
+athff_can_aggregate(10183,300038
+#define US_PER_4MS 10192,300370
+#define	MIN(10193,300394
+#undef US_PER_4MS10232,301495
+#undef MIN10233,301513
+ath_printrxbuf(10240,301563
+ath_printtxbuf(10262,302432
+ath_getstats(10291,303547
+ath_set_mac_address(10314,304232
+ath_change_mtu(10343,304940
+ath_ioctl_diag(10375,305806
+ath_ioctl(10430,307186
+	ATH_SLOTTIME	10488,308790
+	ATH_ACKTIMEOUT	10489,308810
+	ATH_CTSTIMEOUT	10490,308832
+	ATH_SOFTLED	10491,308854
+	ATH_LEDPIN	10492,308873
+	ATH_COUNTRYCODE	10493,308891
+	ATH_REGDOMAIN	10494,308914
+	ATH_DEBUG	10495,308935
+	ATH_TXANTENNA	10496,308952
+	ATH_RXANTENNA	10497,308973
+	ATH_DIVERSITY	10498,308995
+	ATH_TXINTRPERIOD	10499,309017
+	ATH_FFTXQMIN	10500,309041
+	ATH_XR_POLL_PERIOD	10501,309062
+	ATH_XR_POLL_COUNT	10502,309088
+	ATH_ACKRATE	10503,309113
+	ATH_RP 10504,309133
+	ATH_RP_PRINT 10505,309157
+	ATH_RP_PRINT_ALL 10506,309181
+	ATH_RP_PRINT_MEM 10507,309206
+	ATH_RP_PRINT_MEM_ALL 10508,309231
+	ATH_RP_FLUSH 10509,309260
+	ATH_PANIC 10510,309284
+	ATH_RP_IGNORED 10511,309315
+	ATH_RADAR_IGNORED 10512,309339
+	ATH_MAXVAPS 10513,309370
+	ATH_NOCCA 10515,309404
+	ATH_TXCONT_MASK 10516,309435
+ATH_SYSCTL_DECL(10521,309488
+static int mincalibrate 10805,315474
+static int maxint 10806,315524
+static const ctl_table ath_sysctl_template[ath_sysctl_template10808,315575
+ath_dynamic_sysctl_register(10987,320083
+ath_dynamic_sysctl_unregister(11052,322203
+ath_announce(11072,322654
+#define	HAL_MODE_DUALBAND	11074,322693
+#undef HAL_MODE_DUALBAND11130,324373
+static ctl_table ath_static_sysctls[ath_static_sysctls11137,324531
+static ctl_table ath_ath_table[ath_ath_table11186,325681
+static ctl_table ath_root_table[ath_root_table11193,325826
+static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header11200,325967
+ath_sysctl_register(11203,326024
+ath_sysctl_unregister(11215,326247
+ath_get_hal_status_desc(11223,326419
+ath_get_txcont_adj_ratecode(11235,326733
+static int disable_cca(11267,327702
+txcont_configure_radio(11303,328930
+#define TXCONTMASK(11306,328992
+#define AR5K_AR5212_TXCFG	11492,335677
+#define AR5K_AR5212_TXCFG_TXCONT_ENABLE	11493,335713
+#define AR5K_AR5212_RSSI_THR	11494,335766
+#define AR5K_AR5212_PHY_NF	11495,335805
+#define AR5K_AR5212_ADDAC_TEST	11496,335842
+#define AR5K_AR5212_DIAG_SW	11497,335883
+#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS	11498,335921
+#define AR5K_AR5212_DIAG_SW_IGNORENAV	11499,335974
+#define AR5K_AR5212_DCU_GBL_IFS_SIFS	11500,336025
+#define AR5K_AR5212_DCU_GBL_IFS_SIFS_M	11501,336071
+#define AR5K_AR5212_DCU_GBL_IFS_EIFS	11502,336123
+#define AR5K_AR5212_DCU_GBL_IFS_EIFS_M	11503,336169
+#define AR5K_AR5212_DCU_GBL_IFS_SLOT	11504,336221
+#define AR5K_AR5212_DCU_GBL_IFS_SLOT_M	11505,336267
+#define AR5K_AR5212_DCU_GBL_IFS_MISC	11506,336319
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE	11507,336365
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE	11508,336425
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	11509,336485
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR	11510,336547
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	11511,336605
+#define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS	11512,336667
+#define	AR5K_AR5212_DCU_CHAN_TIME_DUR	11513,336726
+#define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE	11514,336777
+#define	AR5K_AR5212_QCU(11515,336830
+#define	AR5K_AR5212_DCU(11516,336898
+#define AR5K_AR5212_DCU_MISC(11517,336971
+#define AR5K_AR5212_DCU_CHAN_TIME(11518,337034
+#undef AR5K_AR5212_TXCFG11587,339988
+#undef AR5K_AR5212_TXCFG_TXCONT_ENABLE11588,340013
+#undef AR5K_AR5212_RSSI_THR11589,340052
+#undef AR5K_AR5212_PHY_NF11590,340080
+#undef AR5K_AR5212_ADDAC_TEST11591,340106
+#undef AR5K_AR5212_DIAG_SW11592,340136
+#undef AR5K_AR5212_DIAG_SW_IGNOREPHYCS11593,340163
+#undef AR5K_AR5212_DIAG_SW_IGNORENAV11594,340202
+#undef AR5K_AR5212_DCU_GBL_IFS_SIFS11595,340239
+#undef AR5K_AR5212_DCU_GBL_IFS_SIFS_M11596,340275
+#undef AR5K_AR5212_DCU_GBL_IFS_EIFS11597,340313
+#undef AR5K_AR5212_DCU_GBL_IFS_EIFS_M11598,340349
+#undef AR5K_AR5212_DCU_GBL_IFS_SLOT11599,340387
+#undef AR5K_AR5212_DCU_GBL_IFS_SLOT_M11600,340423
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC11601,340461
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE11602,340497
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE11603,340544
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC11604,340591
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR11605,340641
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY11606,340686
+#undef AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS11607,340736
+#undef AR5K_AR5212_DCU_CHAN_TIME_DUR11608,340782
+#undef AR5K_AR5212_DCU_CHAN_TIME_ENABLE11609,340819
+#undef AR5K_AR5212_QCU11610,340859
+#undef AR5K_AR5212_DCU11611,340882
+#undef AR5K_AR5212_DCU_MISC11612,340905
+#undef AR5K_AR5212_DCU_CHAN_TIME11613,340933
+#undef TXCONTMASK11630,341311
+#undef EWA_PRINTK11631,341329
+txcont_queue_packet(11637,341450
+txcont_on(11770,345749
+txcont_off(11792,346356
+ath_get_dfs_testmode(11806,346655
+ath_set_dfs_testmode(11833,347906
+ath_get_txcont(11843,348210
+ath_set_txcont(11853,348483
+ath_set_txcont_power(11861,348706
+ath_get_txcont_power(11879,349205
+ath_set_txcont_rate(11889,349511
+ath_get_txcont_rate(11906,349989
+ath_set_dfs_cac_time(11916,350306
+ath_get_dfs_cac_time(11926,350633
+ath_set_dfs_excl_period(11946,351523
+ath_get_dfs_excl_period(11955,351772
+ath_test_radar(11967,352127
+ath_dump_hal_map(11982,352656
+ath_interrupt_dfs_cac(11994,353040
+ath_radar_detected(12026,354215
+ath_rcv_dev_event(12089,356122
+ath_print_register_details(12114,356782
+#define AR5K_AR5212_PHY_ERR_FIL	12118,356931
+#define AR5K_AR5212_PHY_ERR_FIL_RADAR	12119,356975
+#define AR5K_AR5212_PHY_ERR_FIL_OFDM	12120,357024
+#define AR5K_AR5212_PHY_ERR_FIL_CCK 12121,357072
+#define AR5K_AR5212_PIMR	12122,357123
+#define AR5K_AR5212_PISR	12123,357160
+#define AR5K_AR5212_PIMR_RXOK	12124,357197
+#define AR5K_AR5212_PIMR_RXDESC	12125,357239
+#define AR5K_AR5212_PIMR_RXERR	12126,357283
+#define AR5K_AR5212_PIMR_RXNOFRM	12127,357326
+#define AR5K_AR5212_PIMR_RXEOL	12128,357370
+#define AR5K_AR5212_PIMR_RXORN	12129,357413
+#define AR5K_AR5212_PIMR_TXOK	12130,357456
+#define AR5K_AR5212_PIMR_TXDESC	12131,357498
+#define AR5K_AR5212_PIMR_TXERR	12132,357542
+#define AR5K_AR5212_PIMR_TXNOFRM	12133,357585
+#define AR5K_AR5212_PIMR_TXEOL	12134,357629
+#define AR5K_AR5212_PIMR_TXURN	12135,357672
+#define AR5K_AR5212_PIMR_MIB	12136,357715
+#define AR5K_AR5212_PIMR_SWI	12137,357756
+#define AR5K_AR5212_PIMR_RXPHY	12138,357797
+#define AR5K_AR5212_PIMR_RXKCM	12139,357840
+#define AR5K_AR5212_PIMR_SWBA	12140,357883
+#define AR5K_AR5212_PIMR_BRSSI	12141,357925
+#define AR5K_AR5212_PIMR_BMISS	12142,357968
+#define AR5K_AR5212_PIMR_HIUERR	12143,358011
+#define AR5K_AR5212_PIMR_BNR	12144,358055
+#define AR5K_AR5212_PIMR_RXCHIRP	12145,358096
+#define AR5K_AR5212_PIMR_TIM	12146,358140
+#define AR5K_AR5212_PIMR_BCNMISC	12147,358181
+#define AR5K_AR5212_PIMR_GPIO	12148,358225
+#define AR5K_AR5212_PIMR_QCBRORN	12149,358267
+#define AR5K_AR5212_PIMR_QCBRURN	12150,358311
+#define AR5K_AR5212_PIMR_QTRIG	12151,358355
+#undef AR5K_AR5212_PHY_ERR_FIL12233,362956
+#undef AR5K_AR5212_PHY_ERR_FIL_RADAR12234,362987
+#undef AR5K_AR5212_PHY_ERR_FIL_OFDM12235,363024
+#undef AR5K_AR5212_PHY_ERR_FIL_CCK12236,363060
+#undef AR5K_AR5212_PIMR12237,363095
+#undef AR5K_AR5212_PISR12238,363119
+#undef AR5K_AR5212_PIMR_RXOK12239,363143
+#undef AR5K_AR5212_PIMR_RXDESC12240,363172
+#undef AR5K_AR5212_PIMR_RXERR12241,363203
+#undef AR5K_AR5212_PIMR_RXNOFRM12242,363233
+#undef AR5K_AR5212_PIMR_RXEOL12243,363265
+#undef AR5K_AR5212_PIMR_RXORN12244,363295
+#undef AR5K_AR5212_PIMR_TXOK12245,363325
+#undef AR5K_AR5212_PIMR_TXDESC12246,363354
+#undef AR5K_AR5212_PIMR_TXERR12247,363385
+#undef AR5K_AR5212_PIMR_TXNOFRM12248,363415
+#undef AR5K_AR5212_PIMR_TXEOL12249,363447
+#undef AR5K_AR5212_PIMR_TXURN12250,363477
+#undef AR5K_AR5212_PIMR_MIB12251,363507
+#undef AR5K_AR5212_PIMR_SWI12252,363535
+#undef AR5K_AR5212_PIMR_RXPHY12253,363563
+#undef AR5K_AR5212_PIMR_RXKCM12254,363593
+#undef AR5K_AR5212_PIMR_SWBA12255,363623
+#undef AR5K_AR5212_PIMR_BRSSI12256,363652
+#undef AR5K_AR5212_PIMR_BMISS12257,363682
+#undef AR5K_AR5212_PIMR_HIUERR12258,363712
+#undef AR5K_AR5212_PIMR_BNR12259,363743
+#undef AR5K_AR5212_PIMR_RXCHIRP12260,363771
+#undef AR5K_AR5212_PIMR_TIM12261,363803
+#undef AR5K_AR5212_PIMR_BCNMISC12262,363831
+#undef AR5K_AR5212_PIMR_GPIO12263,363863
+#undef AR5K_AR5212_PIMR_QCBRORN12264,363892
+#undef AR5K_AR5212_PIMR_QCBRURN12265,363924
+#undef AR5K_AR5212_PIMR_QTRIG12266,363956
+ath_print_register_delta(12277,364399
+#define BIT_UNCHANGED_ON 12280,364524
+#define BIT_UNCHANGED_OFF 12281,364554
+#define BIT_CHANGED_ON 12282,364584
+#define BIT_CHANGED_OFF 12283,364614
+#define NYBBLE_SEPARATOR 12284,364644
+#define BYTE_SEPARATOR 12285,364674
+#define BIT_STATUS(12286,364704
+#undef BIT_UNCHANGED_ON12359,366489
+#undef BIT_UNCHANGED_OFF12360,366513
+#undef BIT_CHANGED_ON12361,366538
+#undef BIT_CHANGED_OFF12362,366560
+#undef NYBBLE_SEPARATOR12363,366583
+#undef BYTE_SEPARATOR12364,366607
+#undef BIT_STATUS12365,366629
+ath_lookup_register_name(12374,366955
+#define keytable_entry_reg_count 12666,384719
+#define keytable_entry_size 12667,384756
+#undef keytable_entry_reg_count12685,385532
+#undef keytable_entry_size12686,385564
+ath_print_register(12714,386257
+ath_regdump_filter(12727,386745
+	#define UNFILTERED 12731,386893
+	#define FILTERED 12732,386922
+	#undef UNFILTERED12755,387901
+	#undef FILTERED12756,387920
+ath_ar5212_registers_dump(12763,388091
+ath_ar5212_registers_dump_delta(12783,388751
+ath_ar5212_registers_mark(12810,389644
+ath_read_register(12825,390080
+ath_write_register(12855,391112
+ath_registers_dump(12883,391886
+ath_registers_mark(12895,392253
+ath_registers_dump_delta(12907,392577
+ath_return_txbuf_locked_debug(12918,392867
+ath_return_txbuf_debug(12964,394142
+ath_return_txbuf_list_debug(12982,394601
+ath_return_txbuf_list_locked_debug(13008,395237
+cleanup_ath_buf_debug(13034,395915
+
+ath_hal/uudecode.c,173
+static void uudecode_usage(35,1185
+static char *get_line_from_file(get_line_from_file40,1275
+#define char_val(68,1732
+static void read_stduu(70,1783
+int main(119,2865
+
+ath_hal/ah_os.c,1738
+#define	EXPORT_SYMTAB41,1991
+#define USE_REAL_TIME_DELAY45,2072
+static	int ath_hal_debug 68,2466
+int	ath_hal_dma_beacon_response_time 71,2504
+int	ath_hal_sw_beacon_response_time 72,2559
+int	ath_hal_additional_swba_backoff 73,2614
+_ath_hal_attach(76,2686
+_ath_hal_detach(96,3087
+ath_hal_vprintf(111,3290
+ath_hal_printf(119,3464
+ath_hal_ether_sprintf(132,3702
+ath_hal_assert_failed(142,3948
+static	struct alq *ath_hal_alq;ath_hal_alq167,4789
+static	int ath_hal_alq_emitdev;168,4821
+static	u_int ath_hal_alq_lost;169,4886
+static	const char *ath_hal_logfile ath_hal_logfile170,4946
+static	u_int ath_hal_alq_qsize 171,5003
+ath_hal_setlogging(174,5056
+#define	AH_SYSCTL_ARGS_DECL 201,5699
+#define	AH_SYSCTL_ARGS	204,5807
+#define	AH_SYSCTL_ARGS_DECL 206,5918
+#define	AH_SYSCTL_ARGS	209,6039
+sysctl_hw_ath_hal_log(213,6119
+ath_hal_alq_get(231,6490
+ath_hal_reg_write(257,7029
+ath_hal_reg_read(282,7571
+OS_MARK(307,8070
+char *ath_hal_func ath_hal_func329,8612
+ath_hal_reg_write(345,9168
+ath_hal_reg_read(358,9535
+HALDEBUG(375,9892
+HALDEBUGn(387,10071
+ath_hal_delay(402,10326
+ath_hal_getuptime(408,10383
+ath_hal_malloc(419,10573
+ath_hal_free(430,10705
+ath_hal_memzero(436,10757
+ath_hal_memcpy(443,10867
+ath_hal_memcmp(450,10998
+static ctl_table ath_hal_sysctls[ath_hal_sysctls456,11114
+static ctl_table ath_hal_table[ath_hal_table510,12505
+static ctl_table ath_ath_table[ath_ath_table517,12648
+static ctl_table ath_root_table[ath_root_table524,12788
+static struct ctl_table_header *ath_hal_sysctl_header;ath_hal_sysctl_header531,12929
+ath_hal_sysctl_register(534,12997
+ath_hal_sysctl_unregister(546,13189
+static char *dev_info dev_info556,13348
+init_ath_hal(578,13981
+exit_ath_hal(596,14316
+
+ath_hal/ath_hal.mod.c,86
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__45,1292
+__attribute_used__36,924
 
-ath_rate/sample/sample.c,1314
-#define	SAMPLE_DEBUG71,2552
-	ATH_DEBUG_RATE	74,2600
-	ATH_DEBUG_RATE		= 0x00000010,x0000001074,2600
-	ATH_DEBUG_ANY	75,2650
-	ATH_DEBUG_ANY		= 0xffffffffxffffffff75,2650
-#define	DPRINTF(77,2682
-#define	DPRINTF(82,2806
-static char *version version113,4074
-static char *dev_info dev_info114,4126
-#define STALE_FAILURE_TIMEOUT_MS 117,4171
-#define MIN_SWITCH_MS 118,4210
-#define ENABLE_MRR 120,4238
-static int ath_smoothing_rate 122,4260
-static int ath_sample_rate 123,4331
-size_to_bin(130,4540
-bin_to_size(141,4731
-rate_to_ndx(146,4812
-calc_usecs_unicast_packet(159,5045
-ath_rate_node_init(262,7510
-ath_rate_node_cleanup(269,7670
-ath_rate_node_copy(275,7758
-static __inline int best_rate_ndx(288,8135
-pick_sample_ndx(321,8949
-ath_rate_findrate(373,10308
-ath_rate_get_mrr(506,14537
-update_stats(532,15210
-ath_rate_tx_complete(653,19044
-ath_rate_newassoc(807,23373
-ath_rate_ctl_reset(819,23684
-ath_rate_cb(937,27268
-ath_rate_newstate(946,27458
-ath_rate_attach(962,27886
-ath_rate_detach(983,28383
-proc_read_nodes(991,28539
-proc_ratesample_open(1059,30382
-static struct file_operations proc_ratesample_ops 1097,31498
-ath_rate_dynamic_proc_register(1105,31648
-static struct ieee80211_rate_ops ath_rate_ops 1113,31977
-init_ath_rate_sample(1137,32676
-exit_ath_rate_sample(1145,32860
+regression/wep/test_wep.c,911
+static const u_int8_t test1_key[test1_key91,3904
+static const u_int8_t test1_plaintext[test1_plaintext94,3995
+static const u_int8_t test1_encrypted[test1_encrypted110,4778
+#define	TEST(129,5601
+static struct ciphertest 136,5869
+	const char	*name;name137,5896
+	int		cipher;138,5915
+	int		keyix;139,5929
+	u_int8_t		iv[iv140,5942
+	const u_int8_t	*key;key141,5960
+	size_t		key_len;142,5982
+	const u_int8_t	*plaintext;plaintext143,6000
+	size_t		plaintext_len;144,6028
+	const u_int8_t	*encrypted;encrypted145,6052
+	size_t		encrypted_len;146,6080
+} weptests[weptests147,6104
+dumpdata(152,6198
+cmpfail(166,6451
+struct wep_ctx_hw 179,6756
+	struct ieee80211vap *wc_vap;wc_vap180,6809
+	struct ieee80211com *wc_ic;wc_ic181,6874
+	u_int32_t	wc_iv;182,6925
+runtest(186,6991
+static int tests 302,9921
+static int debug 303,9944
+init_crypto_wep_test(318,10306
+exit_crypto_wep_test(346,10977
 
-ath_rate/onoe/onoe.c,1331
-#define	ONOE_DEBUG69,2563
-	ATH_DEBUG_RATE	72,2607
-	ATH_DEBUG_RATE	= 0x00000010,x0000001072,2607
-#define	DPRINTF(74,2659
-#define	DPRINTF(79,2791
-static int ath_rateinterval 101,3784
-static int ath_rate_raise 102,3850
-static int ath_rate_raise_threshold 103,3911
-ath_rate_node_init(110,4213
-ath_rate_node_cleanup(117,4373
-ath_rate_findrate(122,4455
-ath_rate_get_mrr(137,4803
-ath_rate_tx_complete(151,5165
-ath_rate_newassoc(171,5683
-ath_rate_update(178,5824
-ath_rate_ctl_start(251,8287
-#define	RATE(253,8357
-#undef RATE289,9605
-ath_rate_cb(293,9632
-ath_rate_newstate(302,9831
-ath_rate_ctl(337,10729
-ath_rate_attach(407,12510
-ath_rate_detach(424,12851
-static int minrateinterval 432,12993
-static int maxpercent 433,13039
-static int minpercent 434,13080
-static int maxint 435,13117
-static ctl_table ath_rate_static_sysctls[ath_rate_static_sysctls440,13208
-static ctl_table ath_rate_table[ath_rate_table468,13931
-static ctl_table ath_ath_table[ath_ath_table475,14084
-static ctl_table ath_root_table[ath_root_table482,14225
-static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header489,14366
-static struct ieee80211_rate_ops ath_rate_ops 491,14418
-static char *version version505,14823
-static char *dev_info dev_info506,14875
-init_ath_rate_onoe(518,15188
-exit_ath_rate_onoe(533,15480
+regression/tkip/test_tkip.c,1333
+static const u_int8_t test1_key[test1_key58,2244
+static const u_int8_t test1_phase1[test1_phase177,2899
+static const u_int8_t test1_phase2[test1_phase280,3003
+static const u_int8_t test1_plaintext[test1_plaintext86,3176
+static const u_int8_t test1_encrypted[test1_encrypted99,3900
+#define	TEST(111,4636
+static struct ciphertest 120,4962
+	const char	*name;name121,4989
+	int		cipher;122,5008
+	int		keyix;123,5022
+	const u_int8_t	*key;key124,5035
+	size_t		key_len;125,5057
+	const u_int8_t	*plaintext;plaintext126,5075
+	size_t		plaintext_len;127,5103
+	const u_int8_t	*encrypted;encrypted128,5127
+	size_t		encrypted_len;129,5155
+	const u_int8_t	*phase1;phase1130,5179
+	size_t		phase1_len;131,5204
+	const u_int8_t	*phase2;phase2132,5225
+	size_t		phase2_len;133,5250
+} tkiptests[tkiptests134,5271
+dumpdata(139,5344
+cmpfail(153,5597
+struct tkip_ctx 166,5902
+	struct ieee80211vap *tc_vap;tc_vap167,5920
+	struct ieee80211com *tc_ic;tc_ic168,5985
+	u16	tx_ttak[tx_ttak170,6015
+	int	tx_phase1_done;171,6032
+	u8	tx_rc4key[tx_rc4key172,6053
+	u16	rx_ttak[rx_ttak174,6114
+	int	rx_phase1_done;175,6131
+	u8	rx_rc4key[rx_rc4key176,6152
+	uint64_t rx_rsc;177,6212
+runtest(181,6276
+static int tests 357,11012
+static int debug 358,11035
+init_crypto_tkip_test(373,11397
+exit_crypto_tkip_test(402,12074
 
-ath_rate/onoe/ath_rate_onoe.mod.c,87
+regression/ccmp/test_ccmp.c,2060
+static const u_int8_t test1_key[test1_key95,3708
+static const u_int8_t test1_plaintext[test1_plaintext99,3857
+static const u_int8_t test1_encrypted[test1_encrypted107,4244
+static const u_int8_t test2_key[test2_key154,5922
+static const u_int8_t test2_plaintext[test2_plaintext158,6071
+static const u_int8_t test2_encrypted[test2_encrypted165,6415
+static const u_int8_t test3_key[test3_key212,8123
+static const u_int8_t test3_plaintext[test3_plaintext216,8272
+static const u_int8_t test3_encrypted[test3_encrypted223,8628
+static const u_int8_t test4_key[test4_key270,10350
+static const u_int8_t test4_plaintext[test4_plaintext274,10499
+static const u_int8_t test4_encrypted[test4_encrypted281,10856
+static const u_int8_t test5_key[test5_key329,12583
+static const u_int8_t test5_plaintext[test5_plaintext333,12732
+static const u_int8_t test5_encrypted[test5_encrypted340,13089
+static const u_int8_t test6_key[test6_key388,14815
+static const u_int8_t test6_plaintext[test6_plaintext392,14964
+static const u_int8_t test6_encrypted[test6_encrypted399,15321
+static const u_int8_t test7_key[test7_key445,16984
+static const u_int8_t test7_plaintext[test7_plaintext449,17133
+static const u_int8_t test7_encrypted[test7_encrypted456,17478
+static const u_int8_t test8_key[test8_key503,19191
+static const u_int8_t test8_plaintext[test8_plaintext507,19340
+static const u_int8_t test8_encrypted[test8_encrypted514,19697
+#define	TEST(524,20154
+static struct ciphertest 531,20396
+	const char	*name;name532,20423
+	int		cipher;533,20442
+	int		keyix;534,20456
+	u_int64_t	pn;535,20469
+	const u_int8_t	*key;key536,20484
+	size_t		key_len;537,20506
+	const u_int8_t	*plaintext;plaintext538,20524
+	size_t		plaintext_len;539,20552
+	const u_int8_t	*encrypted;encrypted540,20576
+	size_t		encrypted_len;541,20604
+} ccmptests[ccmptests542,20628
+dumpdata(554,21132
+cmpfail(568,21385
+runtest(582,21701
+static int tests 698,24674
+static int debug 699,24697
+init_crypto_ccmp_test(714,25059
+exit_crypto_ccmp_test(743,25740
+
+net80211/ieee80211_linux.c,1704
+#define	EXPORT_SYMTAB30,1577
+static ssize_t show_madwifi_name_type(72,2535
+static struct attribute *ieee80211_sysfs_attrs[ieee80211_sysfs_attrs92,3029
+static struct attribute_group ieee80211_attr_grp 101,3233
+#define proc_net 108,3478
+if_printf(115,3592
+ieee80211_getmgtframe_debug(138,4243
+ieee80211_vlan_register(183,5222
+ieee80211_vlan_add_vid(194,5409
+ieee80211_vlan_kill_vid(206,5639
+ieee80211_vlan_vattach(216,5873
+ieee80211_vlan_vdetach(230,6273
+ieee80211_notify_node_join(235,6332
+ieee80211_notify_node_leave(265,7193
+ieee80211_notify_sta_stats(286,7803
+ieee80211_notify_scan_done(306,8456
+ieee80211_notify_replay_failure(320,8812
+ieee80211_notify_michael_failure(346,9695
+ieee80211_load_module(380,11017
+static struct proc_dir_entry *proc_madwifi;proc_madwifi397,11426
+static int proc_madwifi_count 398,11470
+proc_read_nodes(401,11517
+proc_ieee80211_read(430,12346
+proc_ieee80211_open(450,12810
+proc_ieee80211_write(482,13789
+proc_ieee80211_close(506,14323
+static struct file_operations proc_ieee80211_ops 518,14567
+IEEE80211_SYSCTL_DECL(527,14784
+IEEE80211_SYSCTL_DECL(554,15443
+IEEE80211_SYSCTL_DECL(583,16143
+IEEE80211_SYSCTL_DECL(606,16656
+IEEE80211_SYSCTL_DECL(629,17163
+IEEE80211_SYSCTL_DECL(652,17679
+static const ctl_table ieee80211_sysctl_template[ieee80211_sysctl_template674,18184
+ieee80211_virtfs_latevattach(718,19236
+ieee80211_proc_cleanup(827,22695
+ieee80211_proc_vcreate(840,22999
+ieee80211_virtfs_vdetach(906,24561
+ieee80211_rcv_dev_event(957,25949
+static struct notifier_block ieee80211_event_block 975,26329
+static char *version version983,26474
+static char *dev_info dev_info984,26514
+init_wlan(998,26838
+exit_wlan(1007,27019
+
+net80211/wlan.mod.c,88
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__41,1168
-
-ath_rate/minstrel/ath_rate_minstrel.mod.c,87
-struct module __this_module7,124
-__attribute_used__18,399
-__attribute_used__50,1455
-
-ath_rate/minstrel/minstrel.c,1337
-#define	MINSTREL_DEBUG120,5153
-		ATH_DEBUG_RATE	123,5205
-		ATH_DEBUG_RATE		= 0x00000010	x00000010123,5205
-#define	DPRINTF(125,5258
-#define	DPRINTF(130,5387
-#define ONE_SECOND 133,5426
-static char *version version137,5546
-static char *dev_info dev_info138,5598
-#define STALE_FAILURE_TIMEOUT_MS 140,5644
-#define ENABLE_MRR 141,5683
-static int ath_timer_interval 143,5705
-static int ath_lookaround_rate 149,6044
-static int ath_ewma_level 150,6081
-static int ath_segment_size 151,6118
-rate_to_ndx(176,7127
-calc_usecs_unicast_packet(187,7367
-ath_rate_node_init(289,9895
-ath_rate_node_cleanup(297,10058
-ath_rate_node_copy(303,10146
-ath_rate_findrate(313,10446
-ath_rate_get_mrr(390,12779
-ath_rate_tx_complete(440,14323
-ath_rate_newassoc(537,17339
-ath_fill_sample_table(546,17578
-ath_rate_ctl_reset(596,19115
-ath_rate_cb(728,23024
-ath_rate_newstate(735,23211
-ath_timer_function(749,23620
-ath_rate_statistics(793,24766
-ath_rate_attach(879,27688
-ath_rate_detach(908,28365
-ath_proc_read_nodes(919,28603
-ath_proc_ratesample_open(986,30923
-static struct file_operations ath_proc_ratesample_ops 1021,31980
-ath_rate_dynamic_proc_register(1029,32142
-static struct ieee80211_rate_ops ath_rate_ops 1037,32361
-static int __init ath_rate_minstrel_init(1060,33073
-static void __exit ath_rate_minstrel_exit(1074,33619
+__attribute_used__105,3313
 
 net80211/wlan_scan_sta.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__57,1771
-
-net80211/ieee80211_output.c,1782
-#define	EXPORT_SYMTAB35,1787
-doprint(68,2507
-ieee80211_classify(83,2903
-ieee80211_hardstart(202,5515
-void ieee80211_parent_queue_xmit(315,8621
-ieee80211_send_setup(337,9209
-#define	WH4(345,9449
-#undef WH4391,10975
-ieee80211_mgmt_output(402,11350
-ieee80211_send_nulldata(452,12885
-ieee80211_send_qosnulldata(501,14290
-ieee80211_skbhdr_adjust(565,16137
-#define	KEY_UNDEFINED(716,20878
-ieee80211_crypto_getucastkey(723,21166
-ieee80211_crypto_getmcastkey(740,21699
-ieee80211_encap(758,22358
-#define	WH4(760,22439
-#undef WH41214,35730
-#undef KEY_UNDEFINED1217,35775
-ieee80211_add_rates(1223,35863
-ieee80211_add_xrates(1240,36231
-ieee80211_add_ssid(1259,36689
-ieee80211_add_erp(1271,36905
-ieee80211_add_country(1292,37391
-ieee80211_add_pwrcnstr(1305,37684
-ieee80211_add_pwrcap(1320,38034
-ieee80211_add_suppchan(1336,38427
-ieee80211_setup_wpa_ie(1345,38628
-#define	WPA_OUI_BYTES	1347,38693
-#define	ADDSHORT(1348,38733
-#define	ADDSELECTOR(1353,38845
-#undef ADDSHORT1425,41058
-#undef ADDSELECTOR1426,41074
-#undef WPA_OUI_BYTES1427,41093
-ieee80211_setup_rsn_ie(1431,41135
-#define	RSN_OUI_BYTES	1433,41200
-#define	ADDSHORT(1434,41240
-#define	ADDSELECTOR(1439,41352
-#undef ADDSELECTOR1508,43360
-#undef ADDSHORT1509,43379
-#undef RSN_OUI_BYTES1510,43395
-ieee80211_add_wpa(1517,43474
-#define	WME_OUI_BYTES	1528,43774
-ieee80211_add_wme(1533,43877
-ieee80211_add_wme_param(1570,44857
-#define	SM(1573,44950
-#define	ADDSHORT(1574,44993
-#undef ADDSHORT1608,46092
-#undef WME_OUI_BYTES1610,46110
-ieee80211_add_athAdvCap(1616,46208
-ieee80211_add_xr_param(1642,47019
-ieee80211_send_probereq(1684,48490
-ieee80211_send_mgmt(1760,50723
-#define	senderr(1762,50791
-#undef senderr2195,63969
-ieee80211_send_pspoll(2202,64063
-ieee80211_getcfframe(2237,65096
+__attribute_used__52,1587
 
 net80211/wlan_wep.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__41,1144
+__attribute_used__38,1030
+
+net80211/ieee80211_crypto_wep.c,586
+static const struct ieee80211_cipher wep 59,2509
+struct wep_ctx 77,3042
+	struct ieee80211vap *wc_vap;wc_vap78,3059
+	struct ieee80211com *wc_ic;wc_ic79,3124
+	u_int32_t wc_iv;80,3175
+wep_attach(84,3245
+wep_detach(105,3690
+wep_setkey(115,3832
+wep_encap(128,4050
+wep_enmic(201,5780
+wep_decap(212,6022
+wep_demic(247,6899
+static const uint32_t crc32_table[crc32_table252,6997
+wep_encrypt(308,10434
+#define S_SWAP(310,10509
+#undef S_SWAP402,12932
+wep_decrypt(406,12960
+#define S_SWAP(408,13035
+#undef S_SWAP493,15223
+init_crypto_wep(507,15451
+exit_crypto_wep(515,15572
 
 net80211/ieee80211_node.c,2728
 #define	EXPORT_SYMTAB35,1786
@@ -766,232 +1397,195 @@ ieee80211_ref_node_debug(2389,70377
 ieee80211_unref_node_debug(2434,71457
 ieee80211_get_node_count(2493,72896
 
-net80211/ieee80211_beacon.c,128
-#define	EXPORT_SYMTAB35,1787
-ieee80211_beacon_init(55,2137
-ieee80211_beacon_alloc(191,5780
-ieee80211_beacon_update(282,8616
-
-net80211/ieee80211_monitor.c,1203
-#define	EXPORT_SYMTAB31,1557
-ratecode_to_dot11(66,2218
-struct ar5212_openbsd_desc 90,2647
-	u_int32_t frame_len:frame_len94,2702
-	u_int32_t reserved_12_15:reserved_12_1595,2727
-	u_int32_t xmit_power:xmit_power96,2756
-	u_int32_t rts_cts_enable:rts_cts_enable97,2781
-	u_int32_t veol:veol98,2810
-	u_int32_t clear_dest_mask:clear_dest_mask99,2829
-	u_int32_t ant_mode_xmit:ant_mode_xmit100,2859
-	u_int32_t inter_req:inter_req101,2887
-	u_int32_t encrypt_key_valid:encrypt_key_valid102,2911
-	u_int32_t cts_enable:cts_enable103,2943
-	u_int32_t r1;105,2969
-	u_int32_t rts_duration:rts_duration110,3011
-	u_int32_t duration_update_enable:duration_update_enable111,3039
-	u_int32_t xmit_tries0:xmit_tries0112,3076
-	u_int32_t xmit_tries1:xmit_tries1113,3102
-	u_int32_t xmit_tries2:xmit_tries2114,3128
-	u_int32_t xmit_tries3:xmit_tries3115,3154
-	u_int32_t xmit_rate0:xmit_rate0120,3207
-	u_int32_t xmit_rate1:xmit_rate1121,3232
-	u_int32_t xmit_rate2:xmit_rate2122,3257
-	u_int32_t xmit_rate3:xmit_rate3123,3282
-	u_int32_t rts_cts_rate:rts_cts_rate124,3307
-	u_int32_t reserved_25_31:reserved_25_31125,3334
-ieee80211_monitor_encap(129,3372
-ieee80211_input_monitor(301,8013
-
-net80211/wlan_acl.mod.c,87
+net80211/wlan_scan_ap.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__39,1076
+__attribute_used__48,1412
 
-net80211/ieee80211_crypto_ccmp.c,861
-#define AES_BLOCK_LEN 58,2285
-#define	crypto_cipher	61,2359
-struct ccmp_ctx 64,2400
-	struct ieee80211vap *cc_vap;cc_vap65,2418
-	struct ieee80211com *cc_ic;cc_ic66,2483
-	struct crypto_cipher *cc_tfm;cc_tfm67,2512
-static const struct ieee80211_cipher ccmp 78,3008
-ccmp_attach(98,3614
-ccmp_detach(148,4715
-ccmp_setkey(164,5013
-ccmp_encap(185,5483
-ccmp_enmic(225,6476
-READ_6(231,6588
-ccmp_decap(244,6975
-ccmp_demic(314,8787
-xor_block(320,8907
-rijndael_encrypt(328,9017
-ccmp_init_blocks(362,10015
-#define	IS_4ADDRESS(367,10234
-#define	IS_QOS_DATA(369,10330
-#undef	IS_QOS_DATA454,12756
-#undef	IS_4ADDRESS455,12775
-#define	CCMP_ENCRYPT(458,12797
-ccmp_encrypt(470,13152
-#undef CCMP_ENCRYPT569,15673
-#define	CCMP_DECRYPT(571,15694
-ccmp_decrypt(583,16046
-#undef CCMP_DECRYPT676,18547
-init_crypto_ccmp(689,18783
-exit_crypto_ccmp(697,18907
+net80211/wlan_ccmp.mod.c,87
+struct module __this_module7,124
+__attribute_used__18,399
+__attribute_used__41,1153
+
+net80211/ieee80211_input.c,3490
+#define	EXPORT_SYMTAB35,1786
+#define BUF_LEN 64,2448
+doprint(72,2678
+#define	IEEE80211_DISCARD(89,3170
+#define	IEEE80211_DISCARD_IE(93,3350
+#define	IEEE80211_DISCARD_MAC(97,3529
+#define	IEEE80211_DISCARD(112,4200
+#define	IEEE80211_DISCARD_IE(113,4259
+#define	IEEE80211_DISCARD_MAC(114,4321
+iwspy_event(147,5492
+#define iwspy_event(181,6631
+ieee80211_input(197,7251
+#define	HAS_SEQ(200,7379
+#undef HAS_SEQ869,27911
+static int accept_data_frame(878,28109
+#define IS_EAPOL(882,28268
+#define PAIRWISE_SET(883,28343
+#undef IS_EAPOL937,30050
+#undef PAIRWISE_SET938,30066
+ieee80211_input_all(946,30131
+ieee80211_defrag(985,31180
+ieee80211_deliver_data(1116,34942
+ieee80211_decap(1230,38352
+ieee80211_setup_rates(1297,40462
+ieee80211_auth_open(1328,41331
+ieee80211_send_error(1426,44093
+alloc_challenge(1447,44486
+ieee80211_auth_shared(1463,44915
+#define IEEE80211_VERIFY_ELEMENT(1687,51601
+#define	IEEE80211_VERIFY_LENGTH(1706,52232
+ieee80211_ssid_mismatch(1719,52607
+#define	IEEE80211_VERIFY_SSID(1728,52888
+#define	IEEE80211_VERIFY_SSID(1742,53382
+#define LE_READ_2(1753,53727
+#define LE_READ_4(1757,53857
+iswpaoui(1765,54094
+iswmeoui(1771,54221
+iswmeparam(1777,54348
+iswmeinfo(1784,54514
+isatherosoui(1791,54678
+wpa_cipher(1802,54933
+#define	WPA_SEL(1804,54979
+#undef WPA_SEL1824,55500
+wpa_keymgmt(1832,55617
+#define	WPA_SEL(1834,55646
+#undef WPA_SEL1846,55954
+ieee80211_parse_wpa(1855,56130
+rsn_cipher(1974,59250
+#define	RSN_SEL(1976,59296
+#undef RSN_SEL1998,59881
+rsn_keymgmt(2006,59999
+#define	RSN_SEL(2008,60028
+#undef RSN_SEL2020,60340
+ieee80211_parse_rsn(2029,60520
+ieee80211_saveie(2145,63465
+ieee80211_parse_wmeie(2160,63834
+ieee80211_parse_wmeparams(2192,64601
+#define	MS(2195,64724
+#undef MS2227,65832
+ieee80211_parse_athParams(2231,65857
+forward_mgmt_to_app(2271,67121
+ieee80211_saveath(2340,69023
+struct count_nodes_arg 2359,69579
+	const int k;2360,69604
+	const int *subset;subset2361,69618
+	int count;2362,69638
+	struct ieee80211_node *new;new2363,69650
+count_nodes(2368,69762
+struct channel_combination_arg 2387,70152
+	struct ieee80211com *ic;ic2388,70185
+	struct ieee80211_node *new;new2389,70211
+	int *best;best2390,70240
+	int benefit;2391,70252
+ints_sprintf(2397,70365
+channel_combination(2411,70732
+combinations(2465,72539
+find_worse_nodes(2504,73153
+ieee80211_parse_sc_ie(2597,75640
+ieee80211_doth_findchan(2724,80025
+ieee80211_doth_cancel_cs(2740,80443
+ieee80211_doth_switch_channel(2754,80834
+ieee80211_doth_switch_channel_tmr(2782,81577
+ieee80211_parse_csaie(2789,81739
+struct l2_update_frame 2945,86155
+	u8 da[da2946,86180
+	u8 sa[sa2947,86214
+	__be16 len;2948,86247
+	u8 dsap;2949,86268
+	u8 ssap;2950,86302
+	u8 control;2951,86349
+	u8 xid_info[xid_info2952,86362
+ieee80211_deliver_l2_rnr(2957,86421
+ieee80211_deliver_l2_xid(2994,87376
+contbgscan(3033,88689
+startbgscan(3042,88908
+ieee80211_recv_mgmt(3057,89246
+#define	ISPROBE(3061,89391
+#define	ISREASSOC(3062,89456
+#undef ISREASSOC4152,122274
+#undef ISPROBE4153,122291
+#undef IEEE80211_VERIFY_LENGTH4155,122308
+#undef IEEE80211_VERIFY_ELEMENT4156,122339
+ieee80211_recv_pspoll(4162,122428
+athff_decap(4232,124557
+ath_eth_type_trans(4259,125344
+ieee80211_check_mic(4283,125954
+ieee80211_getbssid(4326,127057
+ieee80211_note(4338,127426
+ieee80211_note_frame(4355,127799
+ieee80211_note_mac(4372,128244
+ieee80211_discard_frame(4389,128685
+ieee80211_discard_ie(4408,129214
+ieee80211_discard_mac(4428,129749
+
+net80211/ieee80211_output.c,1782
+#define	EXPORT_SYMTAB35,1787
+doprint(68,2507
+ieee80211_classify(83,2903
+ieee80211_hardstart(202,5515
+void ieee80211_parent_queue_xmit(315,8621
+ieee80211_send_setup(337,9209
+#define	WH4(345,9449
+#undef WH4391,10975
+ieee80211_mgmt_output(402,11350
+ieee80211_send_nulldata(452,12885
+ieee80211_send_qosnulldata(501,14290
+ieee80211_skbhdr_adjust(565,16137
+#define	KEY_UNDEFINED(716,20878
+ieee80211_crypto_getucastkey(723,21166
+ieee80211_crypto_getmcastkey(740,21699
+ieee80211_encap(758,22358
+#define	WH4(760,22439
+#undef WH41214,35730
+#undef KEY_UNDEFINED1217,35775
+ieee80211_add_rates(1223,35863
+ieee80211_add_xrates(1240,36231
+ieee80211_add_ssid(1259,36689
+ieee80211_add_erp(1271,36905
+ieee80211_add_country(1292,37391
+ieee80211_add_pwrcnstr(1305,37684
+ieee80211_add_pwrcap(1320,38034
+ieee80211_add_suppchan(1336,38427
+ieee80211_setup_wpa_ie(1345,38628
+#define	WPA_OUI_BYTES	1347,38693
+#define	ADDSHORT(1348,38733
+#define	ADDSELECTOR(1353,38845
+#undef ADDSHORT1425,41058
+#undef ADDSELECTOR1426,41074
+#undef WPA_OUI_BYTES1427,41093
+ieee80211_setup_rsn_ie(1431,41135
+#define	RSN_OUI_BYTES	1433,41200
+#define	ADDSHORT(1434,41240
+#define	ADDSELECTOR(1439,41352
+#undef ADDSELECTOR1508,43360
+#undef ADDSHORT1509,43379
+#undef RSN_OUI_BYTES1510,43395
+ieee80211_add_wpa(1517,43474
+#define	WME_OUI_BYTES	1528,43774
+ieee80211_add_wme(1533,43877
+ieee80211_add_wme_param(1570,44857
+#define	SM(1573,44950
+#define	ADDSHORT(1574,44993
+#undef ADDSHORT1608,46092
+#undef WME_OUI_BYTES1610,46110
+ieee80211_add_athAdvCap(1616,46208
+ieee80211_add_xr_param(1642,47019
+ieee80211_send_probereq(1684,48490
+ieee80211_send_mgmt(1760,50723
+#define	senderr(1762,50791
+#undef senderr2195,63969
+ieee80211_send_pspoll(2202,64063
+ieee80211_getcfframe(2237,65096
 
 net80211/ieee80211_xauth.c,149
 #define	EXPORT_SYMTAB34,1743
 static const struct ieee80211_authenticator xauth 80,2995
 init_ieee80211_xauth(89,3182
 exit_ieee80211_xauth(98,3407
-
-net80211/ieee80211_scan_ap.c,2913
-#define	EXPORT_SYMTAB34,1753
-#define	AP_PURGE_SCANS	60,2207
-#define RSSI_LPF_LEN	61,2272
-#define	RSSI_EP_MULTIPLIER	62,2296
-#define RSSI_IN(63,2367
-#define LPF_RSSI(64,2414
-#define RSSI_LPF(65,2478
-#define	EP_RND(69,2602
-#define	RSSI_GET(71,2687
-#define	AP_HASHSIZE	72,2737
-#define	AP_HASH(74,2813
-#define	SCAN_AP_LOCK_INIT(76,2905
-#define	SCAN_AP_LOCK_DESTROY(78,2982
-#define	SCAN_AP_LOCK_IRQ(79,3016
-#define	SCAN_AP_UNLOCK_IRQ(82,3145
-#define	SCAN_AP_UNLOCK_IRQ_EARLY(85,3256
-#define	SCAN_AP_GEN_LOCK_INIT(88,3358
-#define	SCAN_AP_GEN_LOCK_DESTROY(90,3442
-#define	SCAN_AP_GEN_LOCK(91,3480
-#define	SCAN_AP_GEN_UNLOCK(92,3543
-struct scan_entry 94,3610
-	struct ieee80211_scan_entry base;95,3630
-	TAILQ_ENTRY(96,3665
-struct ap_state 107,4102
-	unsigned int as_vap_desired_mode;108,4120
-	unsigned int as_required_mode;110,4222
-	int as_maxrssi[as_maxrssi113,4357
-	spinlock_t as_lock;117,4555
-	int as_newscan;118,4598
-	TAILQ_HEAD(120,4679
-static const u_int16_t rcl1[rcl1149,5822
-static const u_int16_t rcl2[rcl2152,5983
-static const u_int16_t rcl3[rcl3154,6081
-static const u_int16_t rcl4[rcl4156,6177
-static const u_int16_t rcl7[rcl7158,6284
-static const u_int16_t rcl8[rcl8162,6515
-static const u_int16_t rcl9[rcl9164,6635
-static const u_int16_t rcl10[rcl10166,6698
-static const u_int16_t rcl11[rcl11168,6851
-static const u_int16_t rcl5[rcl5171,6999
-static const u_int16_t rcl6[rcl6173,7084
-static const u_int16_t rcl6x[rcl6x175,7163
-static const u_int16_t rcl12[rcl12177,7253
-static const u_int16_t rcl13[rcl13179,7326
-struct scanlist 183,7452
-	u_int16_t	mode;184,7470
-	u_int16_t	count;185,7487
-	const u_int16_t	*list;list186,7505
-#define	IEEE80211_MODE_TURBO_STATIC_A	189,7533
-#define	X(190,7590
-static const struct scanlist staScanTable[staScanTable192,7638
-#undef X214,8365
-add_channels(217,8442
-checktable(246,9302
-ap_attach(262,9585
-ap_detach(285,10077
-ap_flush(303,10358
-saveie(322,10867
-find11gchannel(332,11072
-ap_start(357,11698
-ap_restart(468,15148
-ap_cancel(479,15336
-ap_add(490,15550
-struct pc_params 585,18421
-	struct ieee80211vap *vap;vap586,18440
-	struct ieee80211_scan_state *ss;ss587,18467
-	int flags;588,18501
-struct channel 591,18517
-	struct ieee80211_channel *chan;chan592,18534
-	int orig;593,18567
-	struct pc_params *params;params594,18578
-pc_cmp_radar(599,18676
-pc_cmp_keepmode(607,18959
-pc_cmp_sc(625,19485
-pc_cmp_rssi(636,19800
-pc_cmp_samechan(647,20101
-pc_cmp_orig(659,20501
-pc_cmp(666,20650
-#define EVALUATE_CRITERION(674,20931
-#undef EVALUATE_CRITERION687,21401
-pc_swap(693,21511
-pick_channel(712,22083
-ap_end(829,25342
-ap_age(888,26953
-ap_iterate(905,27330
-ap_assoc_success(943,28020
-ap_assoc_fail(950,28160
-ap_default_action(961,28422
-action_tasklet(970,28577
-static const struct ieee80211_scanner ap_default 1007,29541
-init_scanner_ap(1026,30018
-exit_scanner_ap(1034,30167
-
-net80211/ieee80211.c,1757
-#define	EXPORT_SYMTAB35,1781
-const char *ieee80211_phymode_name[ieee80211_phymode_name55,2165
-struct country_code_to_string 79,3061
-	u_int16_t iso_code;80,3093
-	const char *iso_name;iso_name81,3114
-#define CTRY_DEBUG 87,3211
-#define CTRY_DEFAULT 88,3265
-static const  struct country_code_to_string country_strings[country_strings90,3322
-ieee80211_ifattach(247,8903
-ieee80211_ifdetach(366,12773
-ieee80211_vap_setup(391,13305
-#define	IEEE80211_C_OPMODE 394,13418
-#undef IEEE80211_C_OPMODE520,17340
-ieee80211_vap_attach(525,17409
-ieee80211_vap_detach(571,18670
-ieee80211_mhz2ieee(608,19654
-ieee80211_chan2ieee(631,20258
-ieee80211_ieee2mhz(645,20609
-ieee80211_find_channel(674,21363
-ieee80211_media_setup(697,21928
-#define	ADD(701,22074
-#undef ADD792,25042
-ieee80211_dfs_action(804,25408
-ieee80211_expire_excl_restrictions(850,26543
-ieee80211_update_dfs_excl_timer(891,27758
-ieee80211_expire_dfs_excl_timer(929,28654
-ieee80211_mark_dfs(1028,31542
-ieee80211_dfs_test_return(1128,34619
-ieee80211_announce(1142,35104
-ieee80211_announce_channels(1180,36150
-media_status(1217,37021
-ieee80211com_media_status(1263,38098
-media2mode(1277,38461
-ieee80211com_media_change(1315,39238
-findrate(1376,40931
-#define	IEEERATE(1378,41006
-#undef IEEERATE1385,41240
-checkrate(1394,41474
-ieee80211_media_change(1419,42107
-ieee80211_media_status(1457,43131
-ieee80211_setmode(1495,44353
-ieee80211_chan2mode(1515,44924
-ieee80211_rate2media(1549,45942
-		u_int	m;1552,46052
-		u_int	r;1553,46081
-ieee80211_media2rate(1625,48688
-ieee80211_getstats(1663,49756
-ieee80211_change_mtu(1692,50654
-ieee80211_set_multicast_list(1702,50875
-ieee80211_build_countryie(1742,51899
-ieee80211_build_sc_ie(1861,55283
-int ath_debug_global 1910,56435
 
 net80211/ieee80211_crypto_none.c,207
 const struct ieee80211_cipher ieee80211_cipher_none 57,2468
@@ -1002,86 +1596,6 @@ none_encap(93,3131
 none_decap(111,3607
 none_enmic(131,4182
 none_demic(140,4358
-
-net80211/ieee80211_crypto_tkip.c,1309
-static const struct ieee80211_cipher tkip 62,2660
-struct tkip_ctx 78,3110
-	struct ieee80211vap *tc_vap;tc_vap79,3128
-	struct ieee80211com *tc_ic;tc_ic80,3193
-	u16	tx_ttak[tx_ttak82,3223
-	int	tx_phase1_done;83,3240
-	u8	tx_rc4key[tx_rc4key84,3261
-	u16	rx_ttak[rx_ttak86,3322
-	int	rx_phase1_done;87,3339
-	u8	rx_rc4key[rx_rc4key88,3360
-	uint64_t rx_rsc;89,3420
-tkip_attach(101,3793
-tkip_detach(121,4190
-tkip_setkey(131,4334
-tkip_encap(150,4766
-tkip_enmic(207,6228
-READ_6(248,7269
-tkip_decap(261,7656
-tkip_demic(342,9851
-static const __u32 crc32_table[crc32_table407,11639
-RotR1(463,15082
-Lo8(469,15155
-Hi8(475,15212
-Lo16(481,15268
-Hi16(487,15329
-Mk16(493,15387
-Mk16_le(499,15463
-static const u16 Sbox[Sbox504,15518
-_S_(540,17653
-#define PHASE1_LOOP_COUNT 546,17738
-tkip_mixing_phase1(549,17779
-tkip_mixing_phase2(575,18496
-wep_encrypt(621,19935
-#define S_SWAP(623,20008
-#undef S_SWAP678,21292
-wep_decrypt(682,21320
-#define S_SWAP(684,21392
-#undef S_SWAP745,22695
-rotl(750,22733
-rotr(757,22829
-xswap(764,22925
-#define michael_block(770,23009
-get_le32_split(784,23215
-get_le32(790,23333
-put_le32(797,23430
-michael_mic_hdr(809,23588
-michael_mic(843,24669
-tkip_encrypt(952,27162
-tkip_decrypt(996,28234
-init_crypto_tkip(1059,30062
-exit_crypto_tkip(1067,30186
-
-net80211/ieee80211_acl.c,637
-#define	EXPORT_SYMTAB34,1750
-	ACL_POLICY_OPEN	62,2516
-	ACL_POLICY_ALLOW	63,2568
-	ACL_POLICY_DENY	64,2620
-#define	ACL_HASHSIZE	67,2675
-struct acl 69,2700
-	TAILQ_ENTRY(70,2713
-struct aclstate 75,2815
-	acl_lock_t as_lock;76,2833
-	int as_policy;77,2854
-	TAILQ_HEAD(78,2870
-#define	ACL_HASH(83,3023
-acl_detach(111,3624
-_find_acl(126,3882
-_acl_free(140,4147
-acl_check(149,4310
-acl_add(165,4659
-acl_remove(202,5671
-acl_free_all_locked(221,6086
-acl_free_all(232,6258
-acl_setpolicy(246,6497
-acl_getpolicy(270,6986
-static const struct ieee80211_aclator mac 287,7293
-init_ieee80211_acl(300,7602
-exit_ieee80211_acl(308,7730
 
 net80211/ieee80211_wireless.c,7054
 #define	IS_UP(69,2592
@@ -1281,230 +1795,74 @@ ieee80211_create_vap(5788,169162
 ieee80211_ioctl_vattach(5797,169379
 ieee80211_ioctl_vdetach(5809,169650
 
-net80211/ieee80211_crypto.c,1088
-#define	EXPORT_SYMTAB35,1788
-static const struct ieee80211_cipher *ciphers[ciphers59,2239
-null_key_alloc(68,2501
-null_key_delete(73,2618
-null_key_set(79,2745
-static void null_key_update(84,2871
-null_comp_set(90,2965
-cipher_detach(100,3121
-cipher_attach(106,3223
-dev_key_alloc(115,3429
-dev_key_delete(121,3564
-dev_key_set(128,3733
-dev_comp_set(136,3934
-ieee80211_crypto_attach(146,4125
-ieee80211_crypto_detach(157,4363
-ieee80211_crypto_vattach(166,4504
-ieee80211_crypto_vdetach(194,5265
-ieee80211_crypto_register(204,5448
-ieee80211_crypto_unregister(224,6004
-static const char *cipher_modnames[cipher_modnames243,6628
-ieee80211_crypto_available(253,6905
-ieee80211_crypto_newkey(307,8648
-ieee80211_crypto_delkey_locked(442,12777
-ieee80211_crypto_delkey(476,13695
-ieee80211_crypto_delglobalkeys(498,14176
-ieee80211_crypto_setkey(517,14649
-ieee80211_crypto_encap(568,16150
-ieee80211_crypto_decap(620,17754
-#define	IEEE80211_WEP_HDRLEN	622,17839
-#define	IEEE80211_WEP_MINLEN 623,17913
-#undef IEEE80211_WEP_MINLEN658,19064
-#undef IEEE80211_WEP_HDRLEN659,19092
-
-net80211/ieee80211_power.c,390
-#define	EXPORT_SYMTAB35,1786
-ieee80211_power_attach(58,2228
-ieee80211_power_detach(63,2286
-ieee80211_power_vattach(68,2344
-ieee80211_power_latevattach(78,2569
-ieee80211_power_vdetach(97,3125
-ieee80211_node_saveq_drain(110,3408
-ieee80211_node_saveq_age(138,4279
-ieee80211_set_tim(176,5284
-ieee80211_pwrsave(210,6194
-ieee80211_node_pwrsave(266,7819
-ieee80211_sta_pwrsave(348,9956
-
-net80211/wlan_scan_ap.mod.c,87
+net80211/wlan_acl.mod.c,86
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__53,1596
+__attribute_used__34,893
 
-net80211/wlan_tkip.mod.c,87
-struct module __this_module7,124
-__attribute_used__18,399
-__attribute_used__43,1247
-
-net80211/ieee80211_proto.c,3047
-#define	EXPORT_SYMTAB35,1787
-#define	AGGRESSIVE_MODE_SWITCH_HYSTERESIS	55,2128
-#define	HIGH_PRI_SWITCH_THRESH	56,2191
-#define	IEEE80211_RATE2MBS(58,2247
-const char *ieee80211_mgt_subtype_name[ieee80211_mgt_subtype_name60,2311
-const char *ieee80211_ctl_subtype_name[ieee80211_ctl_subtype_name67,2612
-const char *ieee80211_state_name[ieee80211_state_name74,2904
-const char *ieee80211_wme_acnames[ieee80211_wme_acnames82,3161
-ieee80211_proto_attach(99,3559
-ieee80211_proto_detach(115,3894
-ieee80211_proto_vattach(120,3952
-ieee80211_proto_vdetach(141,4535
-#define	IEEE80211_AUTH_MAX	162,4974
-static const char *auth_modnames[auth_modnames164,5051
-static const struct ieee80211_authenticator *authenticators[authenticators172,5374
-static const struct ieee80211_authenticator auth_internal 174,5456
-ieee80211_auth_setup(186,5723
-ieee80211_authenticator_get(194,6012
-ieee80211_authenticator_register(204,6219
-ieee80211_authenticator_unregister(214,6439
-static	const struct ieee80211_authenticator_backend *backend backend226,6707
-ieee80211_authenticator_backend_register(229,6782
-ieee80211_authenticator_backend_unregister(238,7023
-ieee80211_authenticator_backend_get(249,7338
-static const struct ieee80211_aclator *acl acl259,7599
-ieee80211_aclator_register(262,7656
-ieee80211_aclator_unregister(270,7855
-ieee80211_aclator_get(279,8107
-ieee80211_print_essid(289,8335
-ieee80211_dump_pkt(315,8856
-ieee80211_fix_rate(395,11182
-#define	RV(397,11241
-#undef RV497,13781
-ieee80211_reset_erp(504,13834
-#define	IS_11G(506,13910
-#undef IS_11G543,15098
-ieee80211_set_shortslottime(550,15183
-ieee80211_iserp_rateset(566,15538
-static const struct ieee80211_rateset basic11g[basic11g588,15989
-ieee80211_set11gbasicrates(606,16683
-ieee80211_get11gbasicrates(626,17202
-ieee80211_wme_initparams(643,17650
-ieee80211_wme_initparams_locked(653,17842
-	struct phyParamType 657,17989
-		u_int8_t aifsn;658,18012
-		u_int8_t logcwmin;659,18030
-		u_int8_t logcwmax;660,18051
-		u_int16_t txopLimit;661,18072
-		u_int8_t acm;662,18095
-ieee80211_wme_updateparams_locked(813,23858
-	static const struct { u_int8_t aifsn;815,23920
-	static const struct { u_int8_t aifsn; u_int8_t logcwmin;815,23920
-	static const struct { u_int8_t aifsn; u_int8_t logcwmin; u_int8_t logcwmax;815,23920
-	static const struct { u_int8_t aifsn; u_int8_t logcwmin; u_int8_t logcwmax; u_int16_t txopLimit;815,23920
-ieee80211_wme_updateparams(931,28407
-ieee80211_init(947,28758
-#define	IS_RUNNING(949,28814
-#undef IS_RUNNING1056,31948
-ieee80211_open(1060,31973
-ieee80211_start_running(1069,32101
-ieee80211_stop(1092,32716
-ieee80211_stop_running(1127,33568
-ieee80211_dturbo_switch(1149,34123
-ieee80211_beacon_miss(1180,35086
-ieee80211_sta_swbmiss(1236,36702
-ieee80211_tx_timeout(1247,36969
-sta_disassoc(1268,37565
-sta_deauth(1280,37839
-ieee80211_new_state(1293,38094
-__ieee80211_newstate(1305,38357
-static int get_dominant_state(1662,48678
-dump_vap_states(1698,49670
-ieee80211_newstate(1741,51051
-ieee80211_start_xrvap(1956,56980
-
-net80211/wlan.mod.c,88
-struct module __this_module7,124
-__attribute_used__18,399
-__attribute_used__109,3469
-
-net80211/if_media.c,1873
-#define	EXPORT_SYMTAB49,2240
-#define	ifr_media	62,2501
-int ifmedia_debug 79,2830
-ifmedia_init(87,2974
-ifmedia_removeall(99,3303
-ifmedia_add(115,3632
-ifmedia_list_add(146,4308
-ifmedia_set(162,4701
-ifmedia_ioctl(189,5278
-ifmedia_match(345,8803
-struct ifmedia_description ifm_type_descriptions[ifm_type_descriptions367,9250
-struct ifmedia_description ifm_subtype_ethernet_descriptions[ifm_subtype_ethernet_descriptions370,9328
-struct ifmedia_description ifm_subtype_ethernet_option_descriptions[ifm_subtype_ethernet_option_descriptions373,9430
-struct ifmedia_description ifm_subtype_tokenring_descriptions[ifm_subtype_tokenring_descriptions376,9546
-struct ifmedia_description ifm_subtype_tokenring_option_descriptions[ifm_subtype_tokenring_option_descriptions379,9650
-struct ifmedia_description ifm_subtype_fddi_descriptions[ifm_subtype_fddi_descriptions382,9768
-struct ifmedia_description ifm_subtype_fddi_option_descriptions[ifm_subtype_fddi_option_descriptions385,9862
-struct ifmedia_description ifm_subtype_ieee80211_descriptions[ifm_subtype_ieee80211_descriptions388,9970
-struct ifmedia_description ifm_subtype_ieee80211_option_descriptions[ifm_subtype_ieee80211_option_descriptions391,10074
-struct ifmedia_description ifm_subtype_ieee80211_mode_descriptions[ifm_subtype_ieee80211_mode_descriptions394,10192
-struct ifmedia_description ifm_subtype_shared_descriptions[ifm_subtype_shared_descriptions397,10306
-struct ifmedia_description ifm_shared_option_descriptions[ifm_shared_option_descriptions400,10404
-struct ifmedia_type_to_subtype 403,10500
-	struct ifmedia_description *subtypes;subtypes404,10574
-	struct ifmedia_description *options;options405,10613
-	struct ifmedia_description *modes;modes406,10651
-struct ifmedia_type_to_subtype ifmedia_types_to_subtypes[ifmedia_types_to_subtypes410,10748
-ifmedia_printword(429,11303
-
-net80211/ieee80211_scan.c,1868
-#define	EXPORT_SYMTAB34,1750
-struct scan_state 57,2193
-	struct ieee80211_scan_state base;58,2213
-	u_int ss_iflags;60,2268
-#define	ISCAN_MINDWELL 61,2316
-#define	ISCAN_DISCARD	62,2378
-#define	ISCAN_CANCEL	63,2435
-#define	ISCAN_START	64,2491
-	unsigned long ss_chanmindwell;65,2553
-	unsigned long ss_scanend;66,2613
-	u_int ss_duration;67,2667
-	struct tasklet_struct ss_pwrsav;68,2718
-	struct timer_list ss_scan_timer;69,2777
-#define	SCAN_PRIVATE(71,2831
-#define	IEEE80211_SCAN_OFFCHANNEL	82,3164
-#define	SCAN_VALID_DEFAULT	89,3380
-#define	ROAM_RSSI_11A_DEFAULT	90,3445
-#define	ROAM_RSSI_11B_DEFAULT	91,3512
-#define	ROAM_RSSI_11BONLY_DEFAULT	92,3579
-#define	ROAM_RATE_11A_DEFAULT	93,3654
-#define	ROAM_RATE_11B_DEFAULT	94,3726
-#define	ROAM_RATE_11BONLY_DEFAULT	95,3797
-ieee80211_scan_attach(101,3969
-ieee80211_scan_detach(121,4465
-ieee80211_scan_vattach(139,4871
-ieee80211_scan_vdetach(153,5406
-#define	IEEE80211_SCANNER_MAX	175,5894
-static const char *scan_modnames[scan_modnames177,5949
-static const struct ieee80211_scanner *scanners[scanners183,6170
-ieee80211_scanner_get(191,6488
-ieee80211_scanner_register(208,6935
-ieee80211_scanner_unregister(218,7152
-ieee80211_scanner_unregister_all(229,7403
-change_channel(240,7644
-channel_type(248,7783
-ieee80211_scan_dump_channels(266,8122
-scan_restart_pwrsav(287,8609
-scan_restart(318,9557
-copy_ssid(350,10434
-ieee80211_start_scan(368,10885
-ieee80211_check_scan(447,13227
-ieee80211_bg_scan(526,15872
-ieee80211_cancel_scan(605,18275
-scan_next(630,18993
-#define	ISCAN_REP	632,19024
-#undef ISCAN_REP792,24414
-dump_probe_beacon(797,24469
-ieee80211_add_scan(832,25345
-ieee80211_scan_timeout(890,27219
-ieee80211_scan_assoc_success(902,27443
-ieee80211_scan_assoc_fail(917,27795
-ieee80211_scan_iterate(933,28169
-ieee80211_scan_flush(949,28472
-ieee80211_scan_dfs_action(966,28859
+net80211/ieee80211_skb.c,2261
+#define	EXPORT_SYMTAB31,1568
+#undef alloc_skb68,2346
+#undef dev_alloc_skb69,2363
+#undef dev_kfree_skb70,2384
+#undef dev_kfree_skb_any71,2405
+#undef dev_kfree_skb_irq72,2430
+#undef dev_queue_xmit73,2455
+#undef kfree_skb74,2477
+#undef kfree_skb_fast75,2494
+#undef netif_rx76,2516
+#undef pskb_copy77,2532
+#undef skb_clone78,2549
+#undef skb_copy79,2566
+#undef skb_copy_expand80,2582
+#undef skb_get81,2605
+#undef skb_realloc_headroom82,2620
+#undef skb_share_check83,2648
+#undef skb_unshare84,2671
+#undef vlan_hwaccel_receive_skb85,2690
+atomic_t skb_total_counter 87,2723
+atomic_t skb_refs_counter 91,2833
+static void skb_print_message(99,3099
+#define UNREF_USE_KFREE_SKB 178,5198
+#define UNREF_USE_DEV_KFREE_SKB_ANY 179,5233
+#define UNREF_USE_DEV_KFREE_SKB 180,5274
+#define UNREF_USE_DEV_KFREE_SKB_IRQ 181,5309
+static void skb_destructor(199,5902
+static void get_skb_description(216,6517
+static void print_skb_refchange_message(249,7450
+static void print_skb_trackchange_message(264,7898
+clean_clone_or_copy(281,8404
+track_skb(288,8533
+untrack_skb(328,9748
+#define UNREF_USE_KFREE_SKB 367,10952
+#define UNREF_USE_DEV_KFREE_SKB_ANY 368,10987
+#define UNREF_USE_DEV_KFREE_SKB 369,11028
+#define UNREF_USE_DEV_KFREE_SKB_IRQ 370,11063
+unref_skb(375,11225
+ref_skb(455,13499
+void ieee80211_dev_kfree_skb_debug(489,14571
+ieee80211_dev_kfree_skb_list_debug(530,15592
+ieee80211_dev_alloc_skb_debug(558,16140
+ieee80211_skb_track_debug(587,16713
+ieee80211_skb_track(593,16883
+ieee80211_skb_untrack_debug(601,17087
+ieee80211_skb_untrack(607,17261
+ieee80211_skb_counter(615,17467
+ieee80211_skb_references(620,17545
+int  vlan_hwaccel_receive_skb_debug(633,18026
+int netif_rx_debug(641,18294
+struct sk_buff * alloc_skb_debug(645,18438
+struct sk_buff * dev_alloc_skb_debug(651,18653
+struct sk_buff * skb_clone_debug(660,18856
+struct sk_buff * skb_copy_debug(668,19092
+struct sk_buff * skb_get_debug(676,19323
+struct sk_buff * skb_realloc_headroom_debug(683,19489
+struct sk_buff * pskb_copy_debug(694,19904
+int dev_queue_xmit_debug(703,20132
+struct sk_buff * skb_share_check_debug(709,20295
+void  kfree_skb_fast_debug(727,20760
+struct sk_buff *  skb_unshare_debug(734,20949
+struct sk_buff * skb_copy_expand_debug(751,21402
 
 net80211/ieee80211_rate.c,332
 #define	EXPORT_SYMTAB31,1641
@@ -1515,10 +1873,43 @@ void ieee80211_rate_unregister(72,2576
 struct ath_ratectrl *ieee80211_rate_attach(ieee80211_rate_attach81,2808
 void ieee80211_rate_detach(118,3587
 
-net80211/wlan_xauth.mod.c,86
-struct module __this_module7,124
-__attribute_used__18,399
-__attribute_used__26,644
+net80211/ieee80211_beacon.c,128
+#define	EXPORT_SYMTAB35,1787
+ieee80211_beacon_init(55,2137
+ieee80211_beacon_alloc(191,5780
+ieee80211_beacon_update(282,8616
+
+net80211/ieee80211_crypto_ccmp.c,861
+#define AES_BLOCK_LEN 58,2285
+#define	crypto_cipher	61,2359
+struct ccmp_ctx 64,2400
+	struct ieee80211vap *cc_vap;cc_vap65,2418
+	struct ieee80211com *cc_ic;cc_ic66,2483
+	struct crypto_cipher *cc_tfm;cc_tfm67,2512
+static const struct ieee80211_cipher ccmp 78,3008
+ccmp_attach(98,3614
+ccmp_detach(148,4715
+ccmp_setkey(164,5013
+ccmp_encap(185,5483
+ccmp_enmic(225,6476
+READ_6(231,6588
+ccmp_decap(244,6975
+ccmp_demic(314,8787
+xor_block(320,8907
+rijndael_encrypt(328,9017
+ccmp_init_blocks(362,10015
+#define	IS_4ADDRESS(367,10234
+#define	IS_QOS_DATA(369,10330
+#undef	IS_QOS_DATA454,12756
+#undef	IS_4ADDRESS455,12775
+#define	CCMP_ENCRYPT(458,12797
+ccmp_encrypt(470,13152
+#undef CCMP_ENCRYPT569,15673
+#define	CCMP_DECRYPT(571,15694
+ccmp_decrypt(583,16046
+#undef CCMP_DECRYPT676,18547
+init_crypto_ccmp(689,18783
+exit_crypto_ccmp(697,18907
 
 net80211/ieee80211_scan_sta.c,2934
 #define	EXPORT_SYMTAB34,1755
@@ -1615,1063 +2006,680 @@ action_tasklet(1422,40306
 init_scanner_sta(1490,42000
 exit_scanner_sta(1500,42277
 
-net80211/ieee80211_crypto_wep.c,586
-static const struct ieee80211_cipher wep 59,2509
-struct wep_ctx 77,3042
-	struct ieee80211vap *wc_vap;wc_vap78,3059
-	struct ieee80211com *wc_ic;wc_ic79,3124
-	u_int32_t wc_iv;80,3175
-wep_attach(84,3245
-wep_detach(105,3690
-wep_setkey(115,3832
-wep_encap(128,4050
-wep_enmic(201,5780
-wep_decap(212,6022
-wep_demic(247,6899
-static const uint32_t crc32_table[crc32_table252,6997
-wep_encrypt(308,10434
-#define S_SWAP(310,10509
-#undef S_SWAP402,12932
-wep_decrypt(406,12960
-#define S_SWAP(408,13035
-#undef S_SWAP493,15223
-init_crypto_wep(507,15451
-exit_crypto_wep(515,15572
-
-net80211/ieee80211_linux.c,1704
-#define	EXPORT_SYMTAB30,1577
-static ssize_t show_madwifi_name_type(72,2535
-static struct attribute *ieee80211_sysfs_attrs[ieee80211_sysfs_attrs92,3029
-static struct attribute_group ieee80211_attr_grp 101,3233
-#define proc_net 108,3478
-if_printf(115,3592
-ieee80211_getmgtframe_debug(138,4243
-ieee80211_vlan_register(183,5222
-ieee80211_vlan_add_vid(194,5409
-ieee80211_vlan_kill_vid(206,5639
-ieee80211_vlan_vattach(216,5873
-ieee80211_vlan_vdetach(230,6273
-ieee80211_notify_node_join(235,6332
-ieee80211_notify_node_leave(265,7193
-ieee80211_notify_sta_stats(286,7803
-ieee80211_notify_scan_done(306,8456
-ieee80211_notify_replay_failure(320,8812
-ieee80211_notify_michael_failure(346,9695
-ieee80211_load_module(380,11017
-static struct proc_dir_entry *proc_madwifi;proc_madwifi397,11426
-static int proc_madwifi_count 398,11470
-proc_read_nodes(401,11517
-proc_ieee80211_read(430,12346
-proc_ieee80211_open(450,12810
-proc_ieee80211_write(482,13789
-proc_ieee80211_close(506,14323
-static struct file_operations proc_ieee80211_ops 518,14567
-IEEE80211_SYSCTL_DECL(527,14784
-IEEE80211_SYSCTL_DECL(554,15443
-IEEE80211_SYSCTL_DECL(583,16143
-IEEE80211_SYSCTL_DECL(606,16656
-IEEE80211_SYSCTL_DECL(629,17163
-IEEE80211_SYSCTL_DECL(652,17679
-static const ctl_table ieee80211_sysctl_template[ieee80211_sysctl_template674,18184
-ieee80211_virtfs_latevattach(718,19236
-ieee80211_proc_cleanup(827,22695
-ieee80211_proc_vcreate(840,22999
-ieee80211_virtfs_vdetach(906,24561
-ieee80211_rcv_dev_event(957,25949
-static struct notifier_block ieee80211_event_block 975,26329
-static char *version version983,26474
-static char *dev_info dev_info984,26514
-init_wlan(998,26838
-exit_wlan(1007,27019
-
-net80211/wlan_ccmp.mod.c,87
-struct module __this_module7,124
-__attribute_used__18,399
-__attribute_used__44,1268
-
-net80211/ieee80211_skb.c,2261
-#define	EXPORT_SYMTAB31,1568
-#undef alloc_skb68,2346
-#undef dev_alloc_skb69,2363
-#undef dev_kfree_skb70,2384
-#undef dev_kfree_skb_any71,2405
-#undef dev_kfree_skb_irq72,2430
-#undef dev_queue_xmit73,2455
-#undef kfree_skb74,2477
-#undef kfree_skb_fast75,2494
-#undef netif_rx76,2516
-#undef pskb_copy77,2532
-#undef skb_clone78,2549
-#undef skb_copy79,2566
-#undef skb_copy_expand80,2582
-#undef skb_get81,2605
-#undef skb_realloc_headroom82,2620
-#undef skb_share_check83,2648
-#undef skb_unshare84,2671
-#undef vlan_hwaccel_receive_skb85,2690
-atomic_t skb_total_counter 87,2723
-atomic_t skb_refs_counter 91,2833
-static void skb_print_message(99,3099
-#define UNREF_USE_KFREE_SKB 178,5198
-#define UNREF_USE_DEV_KFREE_SKB_ANY 179,5233
-#define UNREF_USE_DEV_KFREE_SKB 180,5274
-#define UNREF_USE_DEV_KFREE_SKB_IRQ 181,5309
-static void skb_destructor(199,5902
-static void get_skb_description(216,6517
-static void print_skb_refchange_message(249,7450
-static void print_skb_trackchange_message(264,7898
-clean_clone_or_copy(281,8404
-track_skb(288,8533
-untrack_skb(328,9748
-#define UNREF_USE_KFREE_SKB 367,10952
-#define UNREF_USE_DEV_KFREE_SKB_ANY 368,10987
-#define UNREF_USE_DEV_KFREE_SKB 369,11028
-#define UNREF_USE_DEV_KFREE_SKB_IRQ 370,11063
-unref_skb(375,11225
-ref_skb(455,13499
-void ieee80211_dev_kfree_skb_debug(489,14571
-ieee80211_dev_kfree_skb_list_debug(530,15592
-ieee80211_dev_alloc_skb_debug(558,16140
-ieee80211_skb_track_debug(587,16713
-ieee80211_skb_track(593,16883
-ieee80211_skb_untrack_debug(601,17087
-ieee80211_skb_untrack(607,17261
-ieee80211_skb_counter(615,17467
-ieee80211_skb_references(620,17545
-int  vlan_hwaccel_receive_skb_debug(633,18026
-int netif_rx_debug(641,18294
-struct sk_buff * alloc_skb_debug(645,18438
-struct sk_buff * dev_alloc_skb_debug(651,18653
-struct sk_buff * skb_clone_debug(660,18856
-struct sk_buff * skb_copy_debug(668,19092
-struct sk_buff * skb_get_debug(676,19323
-struct sk_buff * skb_realloc_headroom_debug(683,19489
-struct sk_buff * pskb_copy_debug(694,19904
-int dev_queue_xmit_debug(703,20132
-struct sk_buff * skb_share_check_debug(709,20295
-void  kfree_skb_fast_debug(727,20760
-struct sk_buff *  skb_unshare_debug(734,20949
-struct sk_buff * skb_copy_expand_debug(751,21402
-
-net80211/ieee80211_input.c,3490
+net80211/ieee80211_power.c,390
 #define	EXPORT_SYMTAB35,1786
-#define BUF_LEN 64,2448
-doprint(72,2678
-#define	IEEE80211_DISCARD(89,3170
-#define	IEEE80211_DISCARD_IE(93,3350
-#define	IEEE80211_DISCARD_MAC(97,3529
-#define	IEEE80211_DISCARD(112,4200
-#define	IEEE80211_DISCARD_IE(113,4259
-#define	IEEE80211_DISCARD_MAC(114,4321
-iwspy_event(147,5492
-#define iwspy_event(181,6631
-ieee80211_input(197,7251
-#define	HAS_SEQ(200,7379
-#undef HAS_SEQ869,27911
-static int accept_data_frame(878,28109
-#define IS_EAPOL(882,28268
-#define PAIRWISE_SET(883,28343
-#undef IS_EAPOL937,30050
-#undef PAIRWISE_SET938,30066
-ieee80211_input_all(946,30131
-ieee80211_defrag(985,31180
-ieee80211_deliver_data(1116,34942
-ieee80211_decap(1230,38352
-ieee80211_setup_rates(1297,40462
-ieee80211_auth_open(1328,41331
-ieee80211_send_error(1426,44093
-alloc_challenge(1447,44486
-ieee80211_auth_shared(1463,44915
-#define IEEE80211_VERIFY_ELEMENT(1687,51601
-#define	IEEE80211_VERIFY_LENGTH(1706,52232
-ieee80211_ssid_mismatch(1719,52607
-#define	IEEE80211_VERIFY_SSID(1728,52888
-#define	IEEE80211_VERIFY_SSID(1742,53382
-#define LE_READ_2(1753,53727
-#define LE_READ_4(1757,53857
-iswpaoui(1765,54094
-iswmeoui(1771,54221
-iswmeparam(1777,54348
-iswmeinfo(1784,54514
-isatherosoui(1791,54678
-wpa_cipher(1802,54933
-#define	WPA_SEL(1804,54979
-#undef WPA_SEL1824,55500
-wpa_keymgmt(1832,55617
-#define	WPA_SEL(1834,55646
-#undef WPA_SEL1846,55954
-ieee80211_parse_wpa(1855,56130
-rsn_cipher(1974,59250
-#define	RSN_SEL(1976,59296
-#undef RSN_SEL1998,59881
-rsn_keymgmt(2006,59999
-#define	RSN_SEL(2008,60028
-#undef RSN_SEL2020,60340
-ieee80211_parse_rsn(2029,60520
-ieee80211_saveie(2145,63465
-ieee80211_parse_wmeie(2160,63834
-ieee80211_parse_wmeparams(2192,64601
-#define	MS(2195,64724
-#undef MS2227,65832
-ieee80211_parse_athParams(2231,65857
-forward_mgmt_to_app(2271,67121
-ieee80211_saveath(2340,69023
-struct count_nodes_arg 2359,69579
-	const int k;2360,69604
-	const int *subset;subset2361,69618
-	int count;2362,69638
-	struct ieee80211_node *new;new2363,69650
-count_nodes(2368,69762
-struct channel_combination_arg 2387,70152
-	struct ieee80211com *ic;ic2388,70185
-	struct ieee80211_node *new;new2389,70211
-	int *best;best2390,70240
-	int benefit;2391,70252
-ints_sprintf(2397,70365
-channel_combination(2411,70732
-combinations(2465,72539
-find_worse_nodes(2504,73153
-ieee80211_parse_sc_ie(2597,75640
-ieee80211_doth_findchan(2724,80025
-ieee80211_doth_cancel_cs(2740,80443
-ieee80211_doth_switch_channel(2754,80834
-ieee80211_doth_switch_channel_tmr(2782,81577
-ieee80211_parse_csaie(2789,81739
-struct l2_update_frame 2945,86155
-	u8 da[da2946,86180
-	u8 sa[sa2947,86214
-	__be16 len;2948,86247
-	u8 dsap;2949,86268
-	u8 ssap;2950,86302
-	u8 control;2951,86349
-	u8 xid_info[xid_info2952,86362
-ieee80211_deliver_l2_rnr(2957,86421
-ieee80211_deliver_l2_xid(2994,87376
-contbgscan(3033,88689
-startbgscan(3042,88908
-ieee80211_recv_mgmt(3057,89246
-#define	ISPROBE(3061,89391
-#define	ISREASSOC(3062,89456
-#undef ISREASSOC4152,122274
-#undef ISPROBE4153,122291
-#undef IEEE80211_VERIFY_LENGTH4155,122308
-#undef IEEE80211_VERIFY_ELEMENT4156,122339
-ieee80211_recv_pspoll(4162,122428
-athff_decap(4232,124557
-ath_eth_type_trans(4259,125344
-ieee80211_check_mic(4283,125954
-ieee80211_getbssid(4326,127057
-ieee80211_note(4338,127426
-ieee80211_note_frame(4355,127799
-ieee80211_note_mac(4372,128244
-ieee80211_discard_frame(4389,128685
-ieee80211_discard_ie(4408,129214
-ieee80211_discard_mac(4428,129749
+ieee80211_power_attach(58,2228
+ieee80211_power_detach(63,2286
+ieee80211_power_vattach(68,2344
+ieee80211_power_latevattach(78,2569
+ieee80211_power_vdetach(97,3125
+ieee80211_node_saveq_drain(110,3408
+ieee80211_node_saveq_age(138,4279
+ieee80211_set_tim(176,5284
+ieee80211_pwrsave(210,6194
+ieee80211_node_pwrsave(266,7819
+ieee80211_sta_pwrsave(348,9956
 
-ath/ath_pci.mod.c,88
+net80211/ieee80211_acl.c,637
+#define	EXPORT_SYMTAB34,1750
+	ACL_POLICY_OPEN	62,2516
+	ACL_POLICY_ALLOW	63,2568
+	ACL_POLICY_DENY	64,2620
+#define	ACL_HASHSIZE	67,2675
+struct acl 69,2700
+	TAILQ_ENTRY(70,2713
+struct aclstate 75,2815
+	acl_lock_t as_lock;76,2833
+	int as_policy;77,2854
+	TAILQ_HEAD(78,2870
+#define	ACL_HASH(83,3023
+acl_detach(111,3624
+_find_acl(126,3882
+_acl_free(140,4147
+acl_check(149,4310
+acl_add(165,4659
+acl_remove(202,5671
+acl_free_all_locked(221,6086
+acl_free_all(232,6258
+acl_setpolicy(246,6497
+acl_getpolicy(270,6986
+static const struct ieee80211_aclator mac 287,7293
+init_ieee80211_acl(300,7602
+exit_ieee80211_acl(308,7730
+
+net80211/wlan_xauth.mod.c,86
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__165,5924
+__attribute_used__26,644
 
-ath/if_ath_pci.c,583
-#define	EXPORT_SYMTAB42,2051
-struct ath_pci_softc 76,2764
-	struct ath_softc	aps_sc;77,2787
-	u32	aps_pmstate[aps_pmstate79,2830
-static char *version version87,2907
-static char *dev_info dev_info88,2947
-static struct pci_device_id ath_pci_id_table[] __devinitdata 97,3194
-static u16 ath_devidmap[ath_devidmap120,4266
-ath_pci_probe(125,4334
-ath_pci_remove(272,8083
-ath_pci_suspend(288,8457
-ath_pci_resume(299,8746
-static struct pci_driver ath_pci_driver 335,9590
-ath_ioctl_ethtool(348,9918
-init_ath_pci(377,10825
-exit_ath_pci(391,11133
-bus_read_cachesize(402,11355
+net80211/ieee80211_crypto_tkip.c,1309
+static const struct ieee80211_cipher tkip 62,2660
+struct tkip_ctx 78,3110
+	struct ieee80211vap *tc_vap;tc_vap79,3128
+	struct ieee80211com *tc_ic;tc_ic80,3193
+	u16	tx_ttak[tx_ttak82,3223
+	int	tx_phase1_done;83,3240
+	u8	tx_rc4key[tx_rc4key84,3261
+	u16	rx_ttak[rx_ttak86,3322
+	int	rx_phase1_done;87,3339
+	u8	rx_rc4key[rx_rc4key88,3360
+	uint64_t rx_rsc;89,3420
+tkip_attach(101,3793
+tkip_detach(121,4190
+tkip_setkey(131,4334
+tkip_encap(150,4766
+tkip_enmic(207,6228
+READ_6(248,7269
+tkip_decap(261,7656
+tkip_demic(342,9851
+static const __u32 crc32_table[crc32_table407,11639
+RotR1(463,15082
+Lo8(469,15155
+Hi8(475,15212
+Lo16(481,15268
+Hi16(487,15329
+Mk16(493,15387
+Mk16_le(499,15463
+static const u16 Sbox[Sbox504,15518
+_S_(540,17653
+#define PHASE1_LOOP_COUNT 546,17738
+tkip_mixing_phase1(549,17779
+tkip_mixing_phase2(575,18496
+wep_encrypt(621,19935
+#define S_SWAP(623,20008
+#undef S_SWAP678,21292
+wep_decrypt(682,21320
+#define S_SWAP(684,21392
+#undef S_SWAP745,22695
+rotl(750,22733
+rotr(757,22829
+xswap(764,22925
+#define michael_block(770,23009
+get_le32_split(784,23215
+get_le32(790,23333
+put_le32(797,23430
+michael_mic_hdr(809,23588
+michael_mic(843,24669
+tkip_encrypt(952,27162
+tkip_decrypt(996,28234
+init_crypto_tkip(1059,30062
+exit_crypto_tkip(1067,30186
 
-ath/if_ath_radar.c,2959
-#define	AR_DEBUG23,1036
-#define	AR_DEBUG59,1877
-#undef MAX75,2188
-#define MAX(76,2199
-#undef MIN78,2245
-#define MIN(79,2256
-#define sizetab(91,2440
-#define nofloat_pct(92,2484
-struct radar_pattern_specification 95,2558
-	const char *name;name97,2663
-	u_int32_t min_rep_int;100,2770
-	u_int32_t max_rep_int;103,2882
-	HAL_BOOL dyn_ints;106,3005
-	u_int32_t fuzz_pct;109,3138
-	u_int32_t min_pulse;111,3214
-	u_int32_t min_evts;114,3322
-	u_int32_t max_evts;117,3429
-	u_int32_t max_consecutive_missing;119,3492
-	u_int32_t max_missing;121,3558
-	HAL_BOOL match_midpoint;123,3636
-static struct radar_pattern_specification radar_patterns[radar_patterns126,3666
-int ath_radar_is_enabled(159,5570
-void ath_radar_get_params(174,6019
-void ath_radar_set_params(198,6867
-#define BUILD_PHY_RADAR_FIELD(200,6934
-#undef BUILD_PHY_RADAR_FIELD220,7767
-int ath_radar_update(225,7943
-int ath_radar_correct_dfs_flags(302,10514
-int ath_radar_is_dfs_required(320,11173
-static struct ath_rp *pulse_head(pulse_head328,11507
-static struct ath_rp *pulse_tail(pulse_tail334,11635
-static struct ath_rp *pulse_prev(pulse_prev340,11763
-#define CR_FALLTHROUGH	346,11888
-#define CR_NULL	347,11914
-#define CR_EXCESS_INTERVALS	348,11934
-#define CR_INTERVALS 349,11964
-#define CR_EXCESS_DURATION	350,11989
-#define CR_DURATION	351,12018
-#define CR_PULSES	352,12041
-#define CR_MISSES	353,12062
-#define CR_MIDPOINT_A	354,12083
-#define CR_MIDPOINT_B	355,12108
-#define CR_MIDPOINT_C	356,12133
-#define CR_NOISE	357,12159
-#define MR_MATCH 359,12181
-#define MR_FAIL_MIN_INTERVALS	360,12202
-#define MR_FAIL_REQD_MATCHES	361,12234
-#define MR_FAIL_MAX_MISSES	362,12265
-#define MR_FAIL_MIN_PERIOD	363,12294
-#define MR_FAIL_MAX_PERIOD	364,12323
-static const char* get_match_result_desc(366,12353
-static int32_t match_radar(385,12738
-static int32_t compare_radar_matches(420,13527
-struct lp_burst 514,16777
-	u_int32_t lpb_num_pulses;515,16795
-	u_int32_t lpb_num_noise;516,16822
-	u_int32_t lpb_tsf_delta;517,16848
-	u_int64_t lpb_tsf_rel;518,16874
-	u_int64_t lpb_min_possible_tsf;519,16898
-	u_int64_t lpb_max_possible_tsf;520,16958
-static const u_int32_t LP_MIN_BC 523,17022
-static const u_int32_t LP_MAX_BC 524,17060
-static const u_int32_t LP_NUM_BC 525,17099
-static const u_int64_t LP_TSF_FUZZ_US 526,17173
-static const u_int32_t LP_MIN_PRI 528,17277
-static const u_int32_t LP_MAX_PRI 529,17319
-static void rp_analyze_long_pulse_bscan(531,17362
-static HAL_BOOL rp_analyze_long_pulse(617,19840
-static HAL_BOOL rp_analyse_short_pulse(771,24432
-static u_int32_t interval_to_frequency(1217,36851
-static const char* get_longpulse_desc(1226,37146
-static HAL_BOOL rp_analyse(1246,37821
-static void ath_rp_clear(1511,45831
-static void ath_rp_tasklet(1519,45983
-void ath_rp_init(1528,46179
-void ath_rp_done(1569,47108
-void ath_rp_record(1577,47238
-void ath_rp_print_mem(1642,49030
-void ath_rp_print(1679,50152
-void ath_rp_flush(1715,51267
+net80211/ieee80211_scan_ap.c,2913
+#define	EXPORT_SYMTAB34,1753
+#define	AP_PURGE_SCANS	60,2207
+#define RSSI_LPF_LEN	61,2272
+#define	RSSI_EP_MULTIPLIER	62,2296
+#define RSSI_IN(63,2367
+#define LPF_RSSI(64,2414
+#define RSSI_LPF(65,2478
+#define	EP_RND(69,2602
+#define	RSSI_GET(71,2687
+#define	AP_HASHSIZE	72,2737
+#define	AP_HASH(74,2813
+#define	SCAN_AP_LOCK_INIT(76,2905
+#define	SCAN_AP_LOCK_DESTROY(78,2982
+#define	SCAN_AP_LOCK_IRQ(79,3016
+#define	SCAN_AP_UNLOCK_IRQ(82,3145
+#define	SCAN_AP_UNLOCK_IRQ_EARLY(85,3256
+#define	SCAN_AP_GEN_LOCK_INIT(88,3358
+#define	SCAN_AP_GEN_LOCK_DESTROY(90,3442
+#define	SCAN_AP_GEN_LOCK(91,3480
+#define	SCAN_AP_GEN_UNLOCK(92,3543
+struct scan_entry 94,3610
+	struct ieee80211_scan_entry base;95,3630
+	TAILQ_ENTRY(96,3665
+struct ap_state 107,4102
+	unsigned int as_vap_desired_mode;108,4120
+	unsigned int as_required_mode;110,4222
+	int as_maxrssi[as_maxrssi113,4357
+	spinlock_t as_lock;117,4555
+	int as_newscan;118,4598
+	TAILQ_HEAD(120,4679
+static const u_int16_t rcl1[rcl1149,5822
+static const u_int16_t rcl2[rcl2152,5983
+static const u_int16_t rcl3[rcl3154,6081
+static const u_int16_t rcl4[rcl4156,6177
+static const u_int16_t rcl7[rcl7158,6284
+static const u_int16_t rcl8[rcl8162,6515
+static const u_int16_t rcl9[rcl9164,6635
+static const u_int16_t rcl10[rcl10166,6698
+static const u_int16_t rcl11[rcl11168,6851
+static const u_int16_t rcl5[rcl5171,6999
+static const u_int16_t rcl6[rcl6173,7084
+static const u_int16_t rcl6x[rcl6x175,7163
+static const u_int16_t rcl12[rcl12177,7253
+static const u_int16_t rcl13[rcl13179,7326
+struct scanlist 183,7452
+	u_int16_t	mode;184,7470
+	u_int16_t	count;185,7487
+	const u_int16_t	*list;list186,7505
+#define	IEEE80211_MODE_TURBO_STATIC_A	189,7533
+#define	X(190,7590
+static const struct scanlist staScanTable[staScanTable192,7638
+#undef X214,8365
+add_channels(217,8442
+checktable(246,9302
+ap_attach(262,9585
+ap_detach(285,10077
+ap_flush(303,10358
+saveie(322,10867
+find11gchannel(332,11072
+ap_start(357,11698
+ap_restart(468,15148
+ap_cancel(479,15336
+ap_add(490,15550
+struct pc_params 585,18421
+	struct ieee80211vap *vap;vap586,18440
+	struct ieee80211_scan_state *ss;ss587,18467
+	int flags;588,18501
+struct channel 591,18517
+	struct ieee80211_channel *chan;chan592,18534
+	int orig;593,18567
+	struct pc_params *params;params594,18578
+pc_cmp_radar(599,18676
+pc_cmp_keepmode(607,18959
+pc_cmp_sc(625,19485
+pc_cmp_rssi(636,19800
+pc_cmp_samechan(647,20101
+pc_cmp_orig(659,20501
+pc_cmp(666,20650
+#define EVALUATE_CRITERION(674,20931
+#undef EVALUATE_CRITERION687,21401
+pc_swap(693,21511
+pick_channel(712,22083
+ap_end(829,25342
+ap_age(888,26953
+ap_iterate(905,27330
+ap_assoc_success(943,28020
+ap_assoc_fail(950,28160
+ap_default_action(961,28422
+action_tasklet(970,28577
+static const struct ieee80211_scanner ap_default 1007,29541
+init_scanner_ap(1026,30018
+exit_scanner_ap(1034,30167
 
-ath/if_ath.c,18460
-#define	AR_DEBUG45,2109
-#define LE_READ_2(106,3411
-#define LE_READ_4(109,3527
-#define DEF_RATE_CTL 116,3783
-#define DEF_RATE_CTL 118,3838
-	ATH_LED_TX,122,3883
-	ATH_LED_RX,123,3896
-	ATH_LED_POLL,124,3909
-#define ath_return_txbuf(286,11749
-#define ath_return_txbuf_locked(295,12145
-#define ath_return_txbuf_list(304,12569
-#define ath_return_txbuf_list_locked(313,12983
-#define cleanup_ath_buf(322,13425
-#define AR5K_TUNE_RSSI_THRES 332,13862
-#define AR5K_RSSI_THR	333,13906
-#define AR5K_RSSI_THR_M	336,13964
-#define AR5K_RSSI_THR_BMISS_5211	338,14076
-#define	AR5K_RSSI_THR_BMISS_S	339,14167
-#define AR5K_TUNE_BMISS_THRES 340,14200
-#define	AR5K_PHY_BASE	342,14243
-#define	AR5K_PHY(343,14274
-#define AR5K_PHY_SHIFT_2GHZ	344,14327
-#define AR5K_PHY_SHIFT_5GHZ	345,14367
-#define ath_cac_running_dbgmsg(368,15180
-#define ath_chan_unavail_dbgmsg(370,15260
-static int ath_calinterval 397,16408
-static int ath_countrycode 398,16460
-static int ath_outdoor 399,16522
-static int ath_xchanmode 400,16583
-static int ath_maxvaps 401,16651
-static char *autocreate autocreate402,16730
-static char *ratectl ratectl403,16762
-static int rfkill 404,16799
-static int tpc 405,16822
-static int countrycode 406,16842
-static int maxvaps 407,16871
-static int outdoor 408,16896
-static int xchanmode 409,16921
-static int beacon_cal 410,16948
-static const char *hal_status_desc[hal_status_desc412,16976
-static struct notifier_block ath_event_block 431,17515
-static int	ath_debug 476,18997
-static int	ieee80211_debug 488,19382
-#define ATH_SETUP_XR_VAP(498,19677
-#define ATH_SET_VAP_BSSID_MASK(519,20474
-#define ATH_GET_VAP_ID(521,20577
-#define ATH_SET_VAP_BSSID(522,20643
-u_int32_t TXCONT_MASK;529,20788
-ath_attach(535,20876
-ath_detach(1193,40292
-ath_vap_create(1252,41826
-ath_vap_delete(1506,49546
-ath_suspend(1607,52436
-ath_resume(1616,52589
-ath_chan_unavail(1627,52846
-_ath_cac_running_dbgmsg(1634,53038
-_ath_chan_unavail_dbgmsg(1644,53293
-ath_extend_tsf(1661,53839
-#define TSTAMP_RX_MASK 1663,53889
-ath_uapsd_processtriggers(1680,54211
-#define	PA2DESC(1700,54731
-#undef PA2DESC2171,69270
-ath_intr(2179,69422
-ath_fatal_tasklet(2376,76503
-ath_rxorn_tasklet(2386,76707
-ath_bmiss_tasklet(2396,76917
-ath_chan2flags(2412,77404
-ath_init(2439,78042
-ath_stop_locked(2565,81499
-static void ath_set_beacon_cal(2626,83108
-ath_stop(2647,83637
-ar_device(2679,84407
-ath_set_ack_bitrate(2724,85286
-#define AR5K_AR5212_STA_ID1 2729,85502
-#define AR5K_AR5212_STA_ID1_ACKCTS_6MB 2730,85557
-#define AR5K_AR5212_STA_ID1_BASE_RATE_11B 2731,85616
-#undef AR5K_AR5212_STA_ID12740,85967
-#undef AR5K_AR5212_STA_ID1_BASE_RATE_11B2741,85994
-#undef AR5K_AR5212_STA_ID1_ACKCTS_6MB2742,86035
-ath_reset(2756,86427
-ath_desc_swap(2846,88925
-ath_tx_txqaddbuf(2863,89306
-dot11_to_ratecode(2928,91324
-ath_tx_startraw(2939,91597
-ath_ff_neverflushtestdone(3046,94722
-ath_ff_ageflushtestdone(3052,94816
-ath_ffstageq_flush(3065,95082
-ath_get_buffers_available(3109,96270
-ath_get_buffer_count(3118,96518
-_take_txbuf_locked_debug(3127,96713
-_take_txbuf_debug(3181,98408
-#define ath_take_txbuf_locked(3199,98887
-#define ath_take_txbuf_locked_debug(3201,98978
-#define ath_take_txbuf_mgmt_locked(3204,99084
-#define ath_take_txbuf_mgmt_locked_debug(3206,99180
-#define ath_take_txbuf(3209,99291
-#define ath_take_txbuf_debug(3211,99368
-#define ath_take_txbuf_mgmt(3214,99460
-#define ath_take_txbuf_mgmt_debug(3216,99542
-#define ath_take_txbuf_locked(3221,99682
-#define ath_take_txbuf_locked_debug(3223,99747
-#define ath_take_txbuf_mgmt_locked(3226,99833
-#define ath_take_txbuf_mgmt_locked_debug(3228,99903
-#define ath_take_txbuf(3231,99994
-#define ath_take_txbuf_debug(3233,100045
-#define ath_take_txbuf_mgmt(3236,100117
-#define ath_take_txbuf_mgmt_debug(3238,100173
-ath_hardstart(3252,100504
-ath_mgtstart(3583,109377
-ath_keyprint(3630,110462
-ath_keyset_tkip(3691,111835
-#define	IEEE80211_KEY_XR	3694,111963
-#undef IEEE80211_KEY_XR3743,113677
-ath_keyset(3752,113887
-key_alloc_2pair(3813,115833
-key_alloc_pair(3864,117128
-key_alloc_single(3908,118064
-ath_key_alloc(3942,119048
-ath_key_delete(4006,121077
-ath_key_set(4082,123238
-ath_key_update_begin(4098,123721
-ath_key_update_end(4119,124257
-ath_calcrxfilter(4149,125294
-#define	RX_FILTER_PRESERVE	4151,125335
-#undef RX_FILTER_PRESERVE4174,126279
-ath_merge_mcast(4185,126565
-ath_mode_init(4210,127236
-ath_setslottime(4242,128007
-ath_updateslot(4261,128498
-ath_beacon_dturbo_config(4287,129119
-#define	IS_CAPABLE(4289,129190
-#undef IS_CAPABLE4330,130618
-ath_beacon_dturbo_update(4338,130777
-ath_check_beacon_done(4442,134303
-ath_turbo_switch_mode(4479,135087
-ath_beaconq_setup(4527,136445
-ath_beaconq_config(4555,137065
-#define	ATH_EXPONENT_TO_VALUE(4557,137108
-#undef ATH_EXPONENT_TO_VALUE4594,138229
-ath_beacon_alloc(4598,138272
-ath_beacon_alloc_internal(4614,138617
-ath_beacon_setup(4693,141156
-#define	USE_SHPREAMBLE(4695,141217
-#undef USE_SHPREAMBLE4790,144004
-ath_beacon_generate(4797,144115
-ath_beacon_send(4961,148820
-ath_bstuck_tasklet(5137,154588
-ath_beacon_return(5159,155147
-ath_beacon_free(5169,155356
-ath_beacon_config(5198,156497
-#define	FUDGE	5242,157871
-#undef FUDGE5304,159968
-ath_descdma_setup(5446,164184
-#define	DS2PHYS(5450,164310
-#undef DS2PHYS5498,165554
-ath_descdma_cleanup(5502,165584
-ath_desc_alloc(5518,166001
-ath_desc_free(5549,166747
-ath_node_alloc_debug(5564,167190
-ath_node_cleanup_debug(5599,168236
-ath_node_free_debug(5657,169922
-ath_node_getrssi(5676,170290
-#define	HAL_EP_RND(5678,170342
-#undef HAL_EP_RND5694,170893
-ath_node_move_data(5705,171073
-#define ath_alloc_skb(6069,179724
-ath_alloc_skb_debug(6071,179819
-ath_rxbuf_init(6093,180287
-ath_skb_removepad(6197,183497
-ath_capture(6227,184326
-ath_recv_mgmt(6258,185232
-ath_setdefantenna(6382,189003
-ath_rx_tasklet(6395,189298
-#define	PA2DESC(6397,189332
-#undef PA2DESC6688,197999
-ath_grppoll_period_update(6694,198051
-ath_grppoll_txq_update(6756,199466
-ath_grppoll_txq_setup(6781,200087
-static void ath_grppoll_start(6831,201378
-	struct rate_to_str_map 6852,202040
-		u_int8_t str[str6853,202066
-		int ratekbps;6854,202085
-#define MAX_GRPPOLL_RATE 6868,202325
-#define	USE_SHPREAMBLE(6869,202352
-#undef USE_SHPREAMBLE7053,208085
-static void ath_grppoll_stop(7056,208110
-ath_txq_setup(7101,209096
-ath_tx_setup(7215,212499
-ath_txq_update(7237,212960
-#define	ATH_EXPONENT_TO_VALUE(7239,213028
-#define	ATH_TXOP_TO_US(7240,213072
-#undef ATH_TXOP_TO_US7261,213801
-#undef ATH_EXPONENT_TO_VALUE7262,213823
-ath_wme_update(7269,213933
-ath_uapsd_flush(7286,214434
-ath_tx_cleanupq(7324,215541
-ath_tx_cleanup(7344,215997
-ath_get_icvlen(7356,216235
-ath_get_ivlen(7368,216505
-ath_tx_findindex(7387,216872
-ath_tx_uapsdqueue(7405,217128
-ath_tx_start(7475,219348
-#define	MIN(7478,219475
-#undef MIN8094,238304
-ath_tx_processq(8102,238447
-#define TSTAMP_TX_MASK 8270,243333
-txqactive(8322,244659
-ath_tx_tasklet_q0(8334,244939
-ath_tx_tasklet_q0123(8355,245443
-ath_tx_tasklet(8390,246361
-ath_tx_timeout(8409,246815
-ath_tx_draintxq(8430,247272
-ath_tx_stopdma(8459,247950
-ath_draintxq(8473,248299
-ath_stoprecv(8501,249087
-#define	PA2DESC(8503,249124
-#undef PA2DESC8529,250111
-ath_startrecv(8536,250192
-ath_flushrecv(8578,251335
-ath_chan_change(8589,251556
-ath_chan_set(8623,252503
-ath_mib_enable(8788,257970
-ath_calibrate(8801,258238
-ath_scan_start(8877,260436
-ath_scan_end(8897,260922
-ath_set_channel(8915,261386
-ath_set_coverageclass(8932,261896
-ath_mhz2ieee(8942,262077
-ath_newstate(8954,262299
-ath_dfs_cac_completed(9274,272199
-ath_comp_set(9386,275604
-ath_setup_comp(9394,275778
-#define	IEEE80211_KEY_XR	9396,275834
-#undef IEEE80211_KEY_XR9436,277008
-ath_setup_stationkey(9449,277360
-ath_setup_stationwepkey(9486,278457
-ath_setup_keycacheslot(9578,281347
-ath_newassoc(9609,282278
-ath_getchannels(9641,283169
-ath_led_done(9792,288051
-ath_led_off(9804,288290
-ath_led_blink(9818,288636
-ath_led_event(9830,288976
-set_node_txpower(9853,289527
-ath_set_clamped_maxtxpower(9864,289926
-ath_get_clamped_maxtxpower(9876,290373
-ath_get_real_maxtxpower(9891,290969
-ath_update_txpow(9907,291412
-ath_xr_rate_setup(9942,292724
-ath_setup_subrates(9971,293515
-ath_rate_setup(10014,294790
-ath_setcurmode(10061,296088
-		u_int		rate;10065,296247
-		u_int16_t	timeOn;10066,296287
-		u_int16_t	timeOff;10067,296331
-athff_approx_txtime(10128,298218
-athff_can_aggregate(10163,299411
-#define US_PER_4MS 10172,299743
-#define	MIN(10173,299767
-#undef US_PER_4MS10212,300868
-#undef MIN10213,300886
-ath_printrxbuf(10220,300936
-ath_printtxbuf(10242,301805
-ath_getstats(10271,302920
-ath_set_mac_address(10294,303605
-ath_change_mtu(10323,304313
-ath_ioctl_diag(10355,305179
-ath_ioctl(10410,306559
-	ATH_SLOTTIME	10468,308163
-	ATH_ACKTIMEOUT	10469,308183
-	ATH_CTSTIMEOUT	10470,308205
-	ATH_SOFTLED	10471,308227
-	ATH_LEDPIN	10472,308246
-	ATH_COUNTRYCODE	10473,308264
-	ATH_REGDOMAIN	10474,308287
-	ATH_DEBUG	10475,308308
-	ATH_TXANTENNA	10476,308325
-	ATH_RXANTENNA	10477,308346
-	ATH_DIVERSITY	10478,308368
-	ATH_TXINTRPERIOD	10479,308390
-	ATH_FFTXQMIN	10480,308414
-	ATH_XR_POLL_PERIOD	10481,308435
-	ATH_XR_POLL_COUNT	10482,308461
-	ATH_ACKRATE	10483,308486
-	ATH_RP 10484,308506
-	ATH_RP_PRINT 10485,308530
-	ATH_RP_PRINT_ALL 10486,308554
-	ATH_RP_PRINT_MEM 10487,308579
-	ATH_RP_PRINT_MEM_ALL 10488,308604
-	ATH_RP_FLUSH 10489,308633
-	ATH_PANIC 10490,308657
-	ATH_RP_IGNORED 10491,308688
-	ATH_RADAR_IGNORED 10492,308712
-	ATH_MAXVAPS 10493,308743
-	ATH_RSSI_THRESH 10495,308777
-	ATH_TXCONT_MASK 10496,308808
-ATH_SYSCTL_DECL(10501,308861
-static int mincalibrate 10796,315502
-static int maxint 10797,315552
-static const ctl_table ath_sysctl_template[ath_sysctl_template10799,315603
-ath_dynamic_sysctl_register(10978,320141
-ath_dynamic_sysctl_unregister(11043,322261
-ath_announce(11063,322712
-#define	HAL_MODE_DUALBAND	11065,322751
-#undef HAL_MODE_DUALBAND11121,324431
-static ctl_table ath_static_sysctls[ath_static_sysctls11128,324589
-static ctl_table ath_ath_table[ath_ath_table11177,325739
-static ctl_table ath_root_table[ath_root_table11184,325884
-static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header11191,326025
-ath_sysctl_register(11194,326082
-ath_sysctl_unregister(11206,326305
-ath_get_hal_status_desc(11214,326477
-ath_get_txcont_adj_ratecode(11226,326791
-txcont_configure_radio(11263,327835
-#define TXCONTMASK(11266,327897
-#define EWA_PRINTK(11268,327960
-#define EWA_PRINTK(11272,328097
-#define AR5K_AR5212_TXCFG	11460,334825
-#define AR5K_AR5212_TXCFG_TXCONT_ENABLE	11461,334861
-#define AR5K_AR5212_RSSI_THR	11462,334914
-#define AR5K_AR5212_PHY_NF	11463,334953
-#define AR5K_AR5212_ADDAC_TEST	11464,334990
-#define AR5K_AR5212_DIAG_SW	11465,335031
-#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS	11466,335069
-#define AR5K_AR5212_DIAG_SW_IGNORENAV	11467,335122
-#define AR5K_AR5212_DCU_GBL_IFS_SIFS	11468,335173
-#define AR5K_AR5212_DCU_GBL_IFS_SIFS_M	11469,335219
-#define AR5K_AR5212_DCU_GBL_IFS_EIFS	11470,335271
-#define AR5K_AR5212_DCU_GBL_IFS_EIFS_M	11471,335317
-#define AR5K_AR5212_DCU_GBL_IFS_SLOT	11472,335369
-#define AR5K_AR5212_DCU_GBL_IFS_SLOT_M	11473,335415
-#define AR5K_AR5212_DCU_GBL_IFS_MISC	11474,335467
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE	11475,335513
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE	11476,335573
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	11477,335633
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR	11478,335695
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	11479,335753
-#define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS	11480,335815
-#define	AR5K_AR5212_DCU_CHAN_TIME_DUR	11481,335874
-#define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE	11482,335925
-#define	AR5K_AR5212_QCU(11483,335978
-#define	AR5K_AR5212_DCU(11484,336046
-#define AR5K_AR5212_DCU_MISC(11485,336119
-#define AR5K_AR5212_DCU_CHAN_TIME(11486,336182
-#undef AR5K_AR5212_TXCFG11555,339136
-#undef AR5K_AR5212_TXCFG_TXCONT_ENABLE11556,339161
-#undef AR5K_AR5212_RSSI_THR11557,339200
-#undef AR5K_AR5212_PHY_NF11558,339228
-#undef AR5K_AR5212_ADDAC_TEST11559,339254
-#undef AR5K_AR5212_DIAG_SW11560,339284
-#undef AR5K_AR5212_DIAG_SW_IGNOREPHYCS11561,339311
-#undef AR5K_AR5212_DIAG_SW_IGNORENAV11562,339350
-#undef AR5K_AR5212_DCU_GBL_IFS_SIFS11563,339387
-#undef AR5K_AR5212_DCU_GBL_IFS_SIFS_M11564,339423
-#undef AR5K_AR5212_DCU_GBL_IFS_EIFS11565,339461
-#undef AR5K_AR5212_DCU_GBL_IFS_EIFS_M11566,339497
-#undef AR5K_AR5212_DCU_GBL_IFS_SLOT11567,339535
-#undef AR5K_AR5212_DCU_GBL_IFS_SLOT_M11568,339571
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC11569,339609
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE11570,339645
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE11571,339692
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC11572,339739
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR11573,339789
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY11574,339834
-#undef AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS11575,339884
-#undef AR5K_AR5212_DCU_CHAN_TIME_DUR11576,339930
-#undef AR5K_AR5212_DCU_CHAN_TIME_ENABLE11577,339967
-#undef AR5K_AR5212_QCU11578,340007
-#undef AR5K_AR5212_DCU11579,340030
-#undef AR5K_AR5212_DCU_MISC11580,340053
-#undef AR5K_AR5212_DCU_CHAN_TIME11581,340081
-#undef TXCONTMASK11598,340459
-#undef EWA_PRINTK11599,340477
-txcont_queue_packet(11605,340598
-txcont_on(11738,344897
-txcont_off(11760,345504
-ath_get_dfs_testmode(11774,345803
-ath_set_dfs_testmode(11801,347054
-ath_get_txcont(11811,347358
-ath_set_txcont(11821,347631
-ath_set_txcont_power(11829,347854
-ath_get_txcont_power(11847,348353
-ath_set_txcont_rate(11857,348659
-ath_get_txcont_rate(11874,349137
-ath_set_dfs_cac_time(11884,349454
-ath_get_dfs_cac_time(11894,349781
-ath_set_dfs_excl_period(11914,350671
-ath_get_dfs_excl_period(11923,350920
-ath_test_radar(11935,351275
-ath_dump_hal_map(11950,351804
-ath_interrupt_dfs_cac(11962,352188
-ath_radar_detected(11994,353363
-ath_rcv_dev_event(12057,355270
-ath_print_register_details(12082,355930
-#define AR5K_AR5212_PHY_ERR_FIL	12086,356079
-#define AR5K_AR5212_PHY_ERR_FIL_RADAR	12087,356123
-#define AR5K_AR5212_PHY_ERR_FIL_OFDM	12088,356172
-#define AR5K_AR5212_PHY_ERR_FIL_CCK 12089,356220
-#define AR5K_AR5212_PIMR	12090,356271
-#define AR5K_AR5212_PISR	12091,356308
-#define AR5K_AR5212_PIMR_RXOK	12092,356345
-#define AR5K_AR5212_PIMR_RXDESC	12093,356387
-#define AR5K_AR5212_PIMR_RXERR	12094,356431
-#define AR5K_AR5212_PIMR_RXNOFRM	12095,356474
-#define AR5K_AR5212_PIMR_RXEOL	12096,356518
-#define AR5K_AR5212_PIMR_RXORN	12097,356561
-#define AR5K_AR5212_PIMR_TXOK	12098,356604
-#define AR5K_AR5212_PIMR_TXDESC	12099,356646
-#define AR5K_AR5212_PIMR_TXERR	12100,356690
-#define AR5K_AR5212_PIMR_TXNOFRM	12101,356733
-#define AR5K_AR5212_PIMR_TXEOL	12102,356777
-#define AR5K_AR5212_PIMR_TXURN	12103,356820
-#define AR5K_AR5212_PIMR_MIB	12104,356863
-#define AR5K_AR5212_PIMR_SWI	12105,356904
-#define AR5K_AR5212_PIMR_RXPHY	12106,356945
-#define AR5K_AR5212_PIMR_RXKCM	12107,356988
-#define AR5K_AR5212_PIMR_SWBA	12108,357031
-#define AR5K_AR5212_PIMR_BRSSI	12109,357073
-#define AR5K_AR5212_PIMR_BMISS	12110,357116
-#define AR5K_AR5212_PIMR_HIUERR	12111,357159
-#define AR5K_AR5212_PIMR_BNR	12112,357203
-#define AR5K_AR5212_PIMR_RXCHIRP	12113,357244
-#define AR5K_AR5212_PIMR_TIM	12114,357288
-#define AR5K_AR5212_PIMR_BCNMISC	12115,357329
-#define AR5K_AR5212_PIMR_GPIO	12116,357373
-#define AR5K_AR5212_PIMR_QCBRORN	12117,357415
-#define AR5K_AR5212_PIMR_QCBRURN	12118,357459
-#define AR5K_AR5212_PIMR_QTRIG	12119,357503
-#undef AR5K_AR5212_PHY_ERR_FIL12201,362104
-#undef AR5K_AR5212_PHY_ERR_FIL_RADAR12202,362135
-#undef AR5K_AR5212_PHY_ERR_FIL_OFDM12203,362172
-#undef AR5K_AR5212_PHY_ERR_FIL_CCK12204,362208
-#undef AR5K_AR5212_PIMR12205,362243
-#undef AR5K_AR5212_PISR12206,362267
-#undef AR5K_AR5212_PIMR_RXOK12207,362291
-#undef AR5K_AR5212_PIMR_RXDESC12208,362320
-#undef AR5K_AR5212_PIMR_RXERR12209,362351
-#undef AR5K_AR5212_PIMR_RXNOFRM12210,362381
-#undef AR5K_AR5212_PIMR_RXEOL12211,362413
-#undef AR5K_AR5212_PIMR_RXORN12212,362443
-#undef AR5K_AR5212_PIMR_TXOK12213,362473
-#undef AR5K_AR5212_PIMR_TXDESC12214,362502
-#undef AR5K_AR5212_PIMR_TXERR12215,362533
-#undef AR5K_AR5212_PIMR_TXNOFRM12216,362563
-#undef AR5K_AR5212_PIMR_TXEOL12217,362595
-#undef AR5K_AR5212_PIMR_TXURN12218,362625
-#undef AR5K_AR5212_PIMR_MIB12219,362655
-#undef AR5K_AR5212_PIMR_SWI12220,362683
-#undef AR5K_AR5212_PIMR_RXPHY12221,362711
-#undef AR5K_AR5212_PIMR_RXKCM12222,362741
-#undef AR5K_AR5212_PIMR_SWBA12223,362771
-#undef AR5K_AR5212_PIMR_BRSSI12224,362800
-#undef AR5K_AR5212_PIMR_BMISS12225,362830
-#undef AR5K_AR5212_PIMR_HIUERR12226,362860
-#undef AR5K_AR5212_PIMR_BNR12227,362891
-#undef AR5K_AR5212_PIMR_RXCHIRP12228,362919
-#undef AR5K_AR5212_PIMR_TIM12229,362951
-#undef AR5K_AR5212_PIMR_BCNMISC12230,362979
-#undef AR5K_AR5212_PIMR_GPIO12231,363011
-#undef AR5K_AR5212_PIMR_QCBRORN12232,363040
-#undef AR5K_AR5212_PIMR_QCBRURN12233,363072
-#undef AR5K_AR5212_PIMR_QTRIG12234,363104
-ath_print_register_delta(12245,363547
-#define BIT_UNCHANGED_ON 12248,363672
-#define BIT_UNCHANGED_OFF 12249,363702
-#define BIT_CHANGED_ON 12250,363732
-#define BIT_CHANGED_OFF 12251,363762
-#define NYBBLE_SEPARATOR 12252,363792
-#define BYTE_SEPARATOR 12253,363822
-#define BIT_STATUS(12254,363852
-#undef BIT_UNCHANGED_ON12327,365637
-#undef BIT_UNCHANGED_OFF12328,365661
-#undef BIT_CHANGED_ON12329,365686
-#undef BIT_CHANGED_OFF12330,365708
-#undef NYBBLE_SEPARATOR12331,365731
-#undef BYTE_SEPARATOR12332,365755
-#undef BIT_STATUS12333,365777
-ath_lookup_register_name(12342,366103
-#define keytable_entry_reg_count 12634,383867
-#define keytable_entry_size 12635,383904
-#undef keytable_entry_reg_count12653,384680
-#undef keytable_entry_size12654,384712
-ath_print_register(12682,385405
-ath_regdump_filter(12695,385893
-	#define UNFILTERED 12699,386041
-	#define FILTERED 12700,386070
-	#undef UNFILTERED12723,387049
-	#undef FILTERED12724,387068
-ath_ar5212_registers_dump(12731,387239
-ath_ar5212_registers_dump_delta(12751,387899
-ath_ar5212_registers_mark(12778,388792
-ath_read_register(12793,389228
-ath_write_register(12823,390260
-ath_registers_dump(12851,391034
-ath_registers_mark(12863,391401
-ath_registers_dump_delta(12875,391725
-ath_return_txbuf_locked_debug(12886,392015
-ath_return_txbuf_debug(12932,393290
-ath_return_txbuf_list_debug(12950,393749
-ath_return_txbuf_list_locked_debug(12976,394385
-cleanup_ath_buf_debug(13002,395063
+net80211/if_media.c,1873
+#define	EXPORT_SYMTAB49,2240
+#define	ifr_media	62,2501
+int ifmedia_debug 79,2830
+ifmedia_init(87,2974
+ifmedia_removeall(99,3303
+ifmedia_add(115,3632
+ifmedia_list_add(146,4308
+ifmedia_set(162,4701
+ifmedia_ioctl(189,5278
+ifmedia_match(345,8803
+struct ifmedia_description ifm_type_descriptions[ifm_type_descriptions367,9250
+struct ifmedia_description ifm_subtype_ethernet_descriptions[ifm_subtype_ethernet_descriptions370,9328
+struct ifmedia_description ifm_subtype_ethernet_option_descriptions[ifm_subtype_ethernet_option_descriptions373,9430
+struct ifmedia_description ifm_subtype_tokenring_descriptions[ifm_subtype_tokenring_descriptions376,9546
+struct ifmedia_description ifm_subtype_tokenring_option_descriptions[ifm_subtype_tokenring_option_descriptions379,9650
+struct ifmedia_description ifm_subtype_fddi_descriptions[ifm_subtype_fddi_descriptions382,9768
+struct ifmedia_description ifm_subtype_fddi_option_descriptions[ifm_subtype_fddi_option_descriptions385,9862
+struct ifmedia_description ifm_subtype_ieee80211_descriptions[ifm_subtype_ieee80211_descriptions388,9970
+struct ifmedia_description ifm_subtype_ieee80211_option_descriptions[ifm_subtype_ieee80211_option_descriptions391,10074
+struct ifmedia_description ifm_subtype_ieee80211_mode_descriptions[ifm_subtype_ieee80211_mode_descriptions394,10192
+struct ifmedia_description ifm_subtype_shared_descriptions[ifm_subtype_shared_descriptions397,10306
+struct ifmedia_description ifm_shared_option_descriptions[ifm_shared_option_descriptions400,10404
+struct ifmedia_type_to_subtype 403,10500
+	struct ifmedia_description *subtypes;subtypes404,10574
+	struct ifmedia_description *options;options405,10613
+	struct ifmedia_description *modes;modes406,10651
+struct ifmedia_type_to_subtype ifmedia_types_to_subtypes[ifmedia_types_to_subtypes410,10748
+ifmedia_printword(429,11303
 
-ath/if_ath_ahb.c,625
-#define	EXPORT_SYMTAB10,184
-static char *version version44,846
-static char *dev_info dev_info45,886
-struct ath_ahb_softc 47,922
-	struct ath_softc	aps_sc;48,945
-	u32 aps_pmstate[aps_pmstate50,988
-static struct ath_ahb_softc *sclist[sclist54,1021
-static u_int8_t num_activesc 55,1076
-bus_read_cachesize(60,1158
-ahb_enable_wmac(69,1402
-ahb_disable_wmac(133,3221
-exit_ath_wmac(162,3869
-init_ath_wmac(185,4358
-static int ahb_wmac_probe(262,6281
-static int ahb_wmac_remove(275,6552
-static struct platform_driver ahb_wmac_driver 282,6702
-ath_ioctl_ethtool(288,6843
-init_ath_ahb(312,7535
-exit_ath_ahb(323,7736
+net80211/ieee80211_proto.c,3047
+#define	EXPORT_SYMTAB35,1787
+#define	AGGRESSIVE_MODE_SWITCH_HYSTERESIS	55,2128
+#define	HIGH_PRI_SWITCH_THRESH	56,2191
+#define	IEEE80211_RATE2MBS(58,2247
+const char *ieee80211_mgt_subtype_name[ieee80211_mgt_subtype_name60,2311
+const char *ieee80211_ctl_subtype_name[ieee80211_ctl_subtype_name67,2612
+const char *ieee80211_state_name[ieee80211_state_name74,2904
+const char *ieee80211_wme_acnames[ieee80211_wme_acnames82,3161
+ieee80211_proto_attach(99,3559
+ieee80211_proto_detach(115,3894
+ieee80211_proto_vattach(120,3952
+ieee80211_proto_vdetach(141,4535
+#define	IEEE80211_AUTH_MAX	162,4974
+static const char *auth_modnames[auth_modnames164,5051
+static const struct ieee80211_authenticator *authenticators[authenticators172,5374
+static const struct ieee80211_authenticator auth_internal 174,5456
+ieee80211_auth_setup(186,5723
+ieee80211_authenticator_get(194,6012
+ieee80211_authenticator_register(204,6219
+ieee80211_authenticator_unregister(214,6439
+static	const struct ieee80211_authenticator_backend *backend backend226,6707
+ieee80211_authenticator_backend_register(229,6782
+ieee80211_authenticator_backend_unregister(238,7023
+ieee80211_authenticator_backend_get(249,7338
+static const struct ieee80211_aclator *acl acl259,7599
+ieee80211_aclator_register(262,7656
+ieee80211_aclator_unregister(270,7855
+ieee80211_aclator_get(279,8107
+ieee80211_print_essid(289,8335
+ieee80211_dump_pkt(315,8856
+ieee80211_fix_rate(395,11182
+#define	RV(397,11241
+#undef RV497,13781
+ieee80211_reset_erp(504,13834
+#define	IS_11G(506,13910
+#undef IS_11G543,15098
+ieee80211_set_shortslottime(550,15183
+ieee80211_iserp_rateset(566,15538
+static const struct ieee80211_rateset basic11g[basic11g588,15989
+ieee80211_set11gbasicrates(606,16683
+ieee80211_get11gbasicrates(626,17202
+ieee80211_wme_initparams(643,17650
+ieee80211_wme_initparams_locked(653,17842
+	struct phyParamType 657,17989
+		u_int8_t aifsn;658,18012
+		u_int8_t logcwmin;659,18030
+		u_int8_t logcwmax;660,18051
+		u_int16_t txopLimit;661,18072
+		u_int8_t acm;662,18095
+ieee80211_wme_updateparams_locked(813,23858
+	static const struct { u_int8_t aifsn;815,23920
+	static const struct { u_int8_t aifsn; u_int8_t logcwmin;815,23920
+	static const struct { u_int8_t aifsn; u_int8_t logcwmin; u_int8_t logcwmax;815,23920
+	static const struct { u_int8_t aifsn; u_int8_t logcwmin; u_int8_t logcwmax; u_int16_t txopLimit;815,23920
+ieee80211_wme_updateparams(931,28407
+ieee80211_init(947,28758
+#define	IS_RUNNING(949,28814
+#undef IS_RUNNING1056,31948
+ieee80211_open(1060,31973
+ieee80211_start_running(1069,32101
+ieee80211_stop(1092,32716
+ieee80211_stop_running(1127,33568
+ieee80211_dturbo_switch(1149,34123
+ieee80211_beacon_miss(1180,35086
+ieee80211_sta_swbmiss(1236,36702
+ieee80211_tx_timeout(1247,36969
+sta_disassoc(1268,37565
+sta_deauth(1280,37839
+ieee80211_new_state(1293,38094
+__ieee80211_newstate(1305,38357
+static int get_dominant_state(1662,48678
+dump_vap_states(1698,49670
+ieee80211_newstate(1741,51051
+ieee80211_start_xrvap(1956,56980
 
-regression/wep/test_wep.c,911
-static const u_int8_t test1_key[test1_key91,3904
-static const u_int8_t test1_plaintext[test1_plaintext94,3995
-static const u_int8_t test1_encrypted[test1_encrypted110,4778
-#define	TEST(129,5601
-static struct ciphertest 136,5869
-	const char	*name;name137,5896
-	int		cipher;138,5915
-	int		keyix;139,5929
-	u_int8_t		iv[iv140,5942
-	const u_int8_t	*key;key141,5960
-	size_t		key_len;142,5982
-	const u_int8_t	*plaintext;plaintext143,6000
-	size_t		plaintext_len;144,6028
-	const u_int8_t	*encrypted;encrypted145,6052
-	size_t		encrypted_len;146,6080
-} weptests[weptests147,6104
-dumpdata(152,6198
-cmpfail(166,6451
-struct wep_ctx_hw 179,6756
-	struct ieee80211vap *wc_vap;wc_vap180,6809
-	struct ieee80211com *wc_ic;wc_ic181,6874
-	u_int32_t	wc_iv;182,6925
-runtest(186,6991
-static int tests 302,9921
-static int debug 303,9944
-init_crypto_wep_test(318,10306
-exit_crypto_wep_test(346,10977
+net80211/ieee80211_scan.c,1868
+#define	EXPORT_SYMTAB34,1750
+struct scan_state 57,2193
+	struct ieee80211_scan_state base;58,2213
+	u_int ss_iflags;60,2268
+#define	ISCAN_MINDWELL 61,2316
+#define	ISCAN_DISCARD	62,2378
+#define	ISCAN_CANCEL	63,2435
+#define	ISCAN_START	64,2491
+	unsigned long ss_chanmindwell;65,2553
+	unsigned long ss_scanend;66,2613
+	u_int ss_duration;67,2667
+	struct tasklet_struct ss_pwrsav;68,2718
+	struct timer_list ss_scan_timer;69,2777
+#define	SCAN_PRIVATE(71,2831
+#define	IEEE80211_SCAN_OFFCHANNEL	82,3164
+#define	SCAN_VALID_DEFAULT	89,3380
+#define	ROAM_RSSI_11A_DEFAULT	90,3445
+#define	ROAM_RSSI_11B_DEFAULT	91,3512
+#define	ROAM_RSSI_11BONLY_DEFAULT	92,3579
+#define	ROAM_RATE_11A_DEFAULT	93,3654
+#define	ROAM_RATE_11B_DEFAULT	94,3726
+#define	ROAM_RATE_11BONLY_DEFAULT	95,3797
+ieee80211_scan_attach(101,3969
+ieee80211_scan_detach(121,4465
+ieee80211_scan_vattach(139,4871
+ieee80211_scan_vdetach(153,5406
+#define	IEEE80211_SCANNER_MAX	175,5894
+static const char *scan_modnames[scan_modnames177,5949
+static const struct ieee80211_scanner *scanners[scanners183,6170
+ieee80211_scanner_get(191,6488
+ieee80211_scanner_register(208,6935
+ieee80211_scanner_unregister(218,7152
+ieee80211_scanner_unregister_all(229,7403
+change_channel(240,7644
+channel_type(248,7783
+ieee80211_scan_dump_channels(266,8122
+scan_restart_pwrsav(287,8609
+scan_restart(318,9557
+copy_ssid(350,10434
+ieee80211_start_scan(368,10885
+ieee80211_check_scan(447,13227
+ieee80211_bg_scan(526,15872
+ieee80211_cancel_scan(605,18275
+scan_next(630,18993
+#define	ISCAN_REP	632,19024
+#undef ISCAN_REP792,24414
+dump_probe_beacon(797,24469
+ieee80211_add_scan(832,25345
+ieee80211_scan_timeout(890,27219
+ieee80211_scan_assoc_success(902,27443
+ieee80211_scan_assoc_fail(917,27795
+ieee80211_scan_iterate(933,28169
+ieee80211_scan_flush(949,28472
+ieee80211_scan_dfs_action(966,28859
 
-regression/ccmp/test_ccmp.c,2060
-static const u_int8_t test1_key[test1_key95,3708
-static const u_int8_t test1_plaintext[test1_plaintext99,3857
-static const u_int8_t test1_encrypted[test1_encrypted107,4244
-static const u_int8_t test2_key[test2_key154,5922
-static const u_int8_t test2_plaintext[test2_plaintext158,6071
-static const u_int8_t test2_encrypted[test2_encrypted165,6415
-static const u_int8_t test3_key[test3_key212,8123
-static const u_int8_t test3_plaintext[test3_plaintext216,8272
-static const u_int8_t test3_encrypted[test3_encrypted223,8628
-static const u_int8_t test4_key[test4_key270,10350
-static const u_int8_t test4_plaintext[test4_plaintext274,10499
-static const u_int8_t test4_encrypted[test4_encrypted281,10856
-static const u_int8_t test5_key[test5_key329,12583
-static const u_int8_t test5_plaintext[test5_plaintext333,12732
-static const u_int8_t test5_encrypted[test5_encrypted340,13089
-static const u_int8_t test6_key[test6_key388,14815
-static const u_int8_t test6_plaintext[test6_plaintext392,14964
-static const u_int8_t test6_encrypted[test6_encrypted399,15321
-static const u_int8_t test7_key[test7_key445,16984
-static const u_int8_t test7_plaintext[test7_plaintext449,17133
-static const u_int8_t test7_encrypted[test7_encrypted456,17478
-static const u_int8_t test8_key[test8_key503,19191
-static const u_int8_t test8_plaintext[test8_plaintext507,19340
-static const u_int8_t test8_encrypted[test8_encrypted514,19697
-#define	TEST(524,20154
-static struct ciphertest 531,20396
-	const char	*name;name532,20423
-	int		cipher;533,20442
-	int		keyix;534,20456
-	u_int64_t	pn;535,20469
-	const u_int8_t	*key;key536,20484
-	size_t		key_len;537,20506
-	const u_int8_t	*plaintext;plaintext538,20524
-	size_t		plaintext_len;539,20552
-	const u_int8_t	*encrypted;encrypted540,20576
-	size_t		encrypted_len;541,20604
-} ccmptests[ccmptests542,20628
-dumpdata(554,21132
-cmpfail(568,21385
-runtest(582,21701
-static int tests 698,24674
-static int debug 699,24697
-init_crypto_ccmp_test(714,25059
-exit_crypto_ccmp_test(743,25740
+net80211/ieee80211_monitor.c,1203
+#define	EXPORT_SYMTAB31,1557
+ratecode_to_dot11(66,2218
+struct ar5212_openbsd_desc 90,2647
+	u_int32_t frame_len:frame_len94,2702
+	u_int32_t reserved_12_15:reserved_12_1595,2727
+	u_int32_t xmit_power:xmit_power96,2756
+	u_int32_t rts_cts_enable:rts_cts_enable97,2781
+	u_int32_t veol:veol98,2810
+	u_int32_t clear_dest_mask:clear_dest_mask99,2829
+	u_int32_t ant_mode_xmit:ant_mode_xmit100,2859
+	u_int32_t inter_req:inter_req101,2887
+	u_int32_t encrypt_key_valid:encrypt_key_valid102,2911
+	u_int32_t cts_enable:cts_enable103,2943
+	u_int32_t r1;105,2969
+	u_int32_t rts_duration:rts_duration110,3011
+	u_int32_t duration_update_enable:duration_update_enable111,3039
+	u_int32_t xmit_tries0:xmit_tries0112,3076
+	u_int32_t xmit_tries1:xmit_tries1113,3102
+	u_int32_t xmit_tries2:xmit_tries2114,3128
+	u_int32_t xmit_tries3:xmit_tries3115,3154
+	u_int32_t xmit_rate0:xmit_rate0120,3207
+	u_int32_t xmit_rate1:xmit_rate1121,3232
+	u_int32_t xmit_rate2:xmit_rate2122,3257
+	u_int32_t xmit_rate3:xmit_rate3123,3282
+	u_int32_t rts_cts_rate:rts_cts_rate124,3307
+	u_int32_t reserved_25_31:reserved_25_31125,3334
+ieee80211_monitor_encap(129,3372
+ieee80211_input_monitor(301,8013
 
-regression/tkip/test_tkip.c,1333
-static const u_int8_t test1_key[test1_key58,2244
-static const u_int8_t test1_phase1[test1_phase177,2899
-static const u_int8_t test1_phase2[test1_phase280,3003
-static const u_int8_t test1_plaintext[test1_plaintext86,3176
-static const u_int8_t test1_encrypted[test1_encrypted99,3900
-#define	TEST(111,4636
-static struct ciphertest 120,4962
-	const char	*name;name121,4989
-	int		cipher;122,5008
-	int		keyix;123,5022
-	const u_int8_t	*key;key124,5035
-	size_t		key_len;125,5057
-	const u_int8_t	*plaintext;plaintext126,5075
-	size_t		plaintext_len;127,5103
-	const u_int8_t	*encrypted;encrypted128,5127
-	size_t		encrypted_len;129,5155
-	const u_int8_t	*phase1;phase1130,5179
-	size_t		phase1_len;131,5204
-	const u_int8_t	*phase2;phase2132,5225
-	size_t		phase2_len;133,5250
-} tkiptests[tkiptests134,5271
-dumpdata(139,5344
-cmpfail(153,5597
-struct tkip_ctx 166,5902
-	struct ieee80211vap *tc_vap;tc_vap167,5920
-	struct ieee80211com *tc_ic;tc_ic168,5985
-	u16	tx_ttak[tx_ttak170,6015
-	int	tx_phase1_done;171,6032
-	u8	tx_rc4key[tx_rc4key172,6053
-	u16	rx_ttak[rx_ttak174,6114
-	int	rx_phase1_done;175,6131
-	u8	rx_rc4key[rx_rc4key176,6152
-	uint64_t rx_rsc;177,6212
-runtest(181,6276
-static int tests 357,11012
-static int debug 358,11035
-init_crypto_tkip_test(373,11397
-exit_crypto_tkip_test(402,12074
+net80211/ieee80211.c,1757
+#define	EXPORT_SYMTAB35,1781
+const char *ieee80211_phymode_name[ieee80211_phymode_name55,2165
+struct country_code_to_string 79,3061
+	u_int16_t iso_code;80,3093
+	const char *iso_name;iso_name81,3114
+#define CTRY_DEBUG 87,3211
+#define CTRY_DEFAULT 88,3265
+static const  struct country_code_to_string country_strings[country_strings90,3322
+ieee80211_ifattach(247,8903
+ieee80211_ifdetach(366,12773
+ieee80211_vap_setup(391,13305
+#define	IEEE80211_C_OPMODE 394,13418
+#undef IEEE80211_C_OPMODE520,17340
+ieee80211_vap_attach(525,17409
+ieee80211_vap_detach(571,18670
+ieee80211_mhz2ieee(608,19654
+ieee80211_chan2ieee(631,20258
+ieee80211_ieee2mhz(645,20609
+ieee80211_find_channel(674,21363
+ieee80211_media_setup(697,21928
+#define	ADD(701,22074
+#undef ADD792,25042
+ieee80211_dfs_action(804,25408
+ieee80211_expire_excl_restrictions(850,26543
+ieee80211_update_dfs_excl_timer(891,27758
+ieee80211_expire_dfs_excl_timer(929,28654
+ieee80211_mark_dfs(1028,31542
+ieee80211_dfs_test_return(1128,34619
+ieee80211_announce(1142,35104
+ieee80211_announce_channels(1180,36150
+media_status(1217,37021
+ieee80211com_media_status(1263,38098
+media2mode(1277,38461
+ieee80211com_media_change(1315,39238
+findrate(1376,40931
+#define	IEEERATE(1378,41006
+#undef IEEERATE1385,41240
+checkrate(1394,41474
+ieee80211_media_change(1419,42107
+ieee80211_media_status(1457,43131
+ieee80211_setmode(1495,44353
+ieee80211_chan2mode(1515,44924
+ieee80211_rate2media(1549,45942
+		u_int	m;1552,46052
+		u_int	r;1553,46081
+ieee80211_media2rate(1625,48688
+ieee80211_getstats(1663,49756
+ieee80211_change_mtu(1692,50654
+ieee80211_set_multicast_list(1702,50875
+ieee80211_build_countryie(1742,51899
+ieee80211_build_sc_ie(1861,55283
+int ath_debug_global 1910,56435
 
-ath_hal/ath_hal.mod.c,87
+net80211/ieee80211_crypto.c,1088
+#define	EXPORT_SYMTAB35,1788
+static const struct ieee80211_cipher *ciphers[ciphers59,2239
+null_key_alloc(68,2501
+null_key_delete(73,2618
+null_key_set(79,2745
+static void null_key_update(84,2871
+null_comp_set(90,2965
+cipher_detach(100,3121
+cipher_attach(106,3223
+dev_key_alloc(115,3429
+dev_key_delete(121,3564
+dev_key_set(128,3733
+dev_comp_set(136,3934
+ieee80211_crypto_attach(146,4125
+ieee80211_crypto_detach(157,4363
+ieee80211_crypto_vattach(166,4504
+ieee80211_crypto_vdetach(194,5265
+ieee80211_crypto_register(204,5448
+ieee80211_crypto_unregister(224,6004
+static const char *cipher_modnames[cipher_modnames243,6628
+ieee80211_crypto_available(253,6905
+ieee80211_crypto_newkey(307,8648
+ieee80211_crypto_delkey_locked(442,12777
+ieee80211_crypto_delkey(476,13695
+ieee80211_crypto_delglobalkeys(498,14176
+ieee80211_crypto_setkey(517,14649
+ieee80211_crypto_encap(568,16150
+ieee80211_crypto_decap(620,17754
+#define	IEEE80211_WEP_HDRLEN	622,17839
+#define	IEEE80211_WEP_MINLEN 623,17913
+#undef IEEE80211_WEP_MINLEN658,19064
+#undef IEEE80211_WEP_HDRLEN659,19092
+
+net80211/wlan_tkip.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__39,1040
+__attribute_used__40,1132
 
-ath_hal/ah_os.c,1738
-#define	EXPORT_SYMTAB41,1991
-#define USE_REAL_TIME_DELAY45,2072
-static	int ath_hal_debug 68,2466
-int	ath_hal_dma_beacon_response_time 71,2504
-int	ath_hal_sw_beacon_response_time 72,2559
-int	ath_hal_additional_swba_backoff 73,2614
-_ath_hal_attach(76,2686
-_ath_hal_detach(96,3087
-ath_hal_vprintf(111,3290
-ath_hal_printf(119,3464
-ath_hal_ether_sprintf(132,3702
-ath_hal_assert_failed(142,3948
-static	struct alq *ath_hal_alq;ath_hal_alq167,4789
-static	int ath_hal_alq_emitdev;168,4821
-static	u_int ath_hal_alq_lost;169,4886
-static	const char *ath_hal_logfile ath_hal_logfile170,4946
-static	u_int ath_hal_alq_qsize 171,5003
-ath_hal_setlogging(174,5056
-#define	AH_SYSCTL_ARGS_DECL 201,5699
-#define	AH_SYSCTL_ARGS	204,5807
-#define	AH_SYSCTL_ARGS_DECL 206,5918
-#define	AH_SYSCTL_ARGS	209,6039
-sysctl_hw_ath_hal_log(213,6119
-ath_hal_alq_get(231,6490
-ath_hal_reg_write(257,7029
-ath_hal_reg_read(282,7571
-OS_MARK(307,8070
-char *ath_hal_func ath_hal_func329,8612
-ath_hal_reg_write(345,9168
-ath_hal_reg_read(358,9535
-HALDEBUG(375,9892
-HALDEBUGn(387,10071
-ath_hal_delay(402,10326
-ath_hal_getuptime(408,10383
-ath_hal_malloc(419,10573
-ath_hal_free(430,10705
-ath_hal_memzero(436,10757
-ath_hal_memcpy(443,10867
-ath_hal_memcmp(450,10998
-static ctl_table ath_hal_sysctls[ath_hal_sysctls456,11114
-static ctl_table ath_hal_table[ath_hal_table510,12505
-static ctl_table ath_ath_table[ath_ath_table517,12648
-static ctl_table ath_root_table[ath_root_table524,12788
-static struct ctl_table_header *ath_hal_sysctl_header;ath_hal_sysctl_header531,12929
-ath_hal_sysctl_register(534,12997
-ath_hal_sysctl_unregister(546,13189
-static char *dev_info dev_info556,13348
-init_ath_hal(578,13981
-exit_ath_hal(596,14316
+kernelversion.c,38
+char *uts_release uts_release16,454
 
-ath_hal/uudecode.c,173
-static void uudecode_usage(35,1185
-static char *get_line_from_file(get_line_from_file40,1275
-#define char_val(68,1732
-static void read_stduu(70,1783
-int main(119,2865
+hal/public/wackelf.c,275
+#define	_LITTLE_ENDIAN	55,2265
+#define	_BIG_ENDIAN	56,2304
+#define	htobe16(58,2373
+#define	htobe32(59,2408
+#define	htole16(60,2443
+#define	htole32(61,2478
+#define	htobe16(63,2555
+#define	htobe32(64,2590
+#define	htole16(65,2625
+#define	htole32(66,2660
+main(73,2780
+
+ath_rate/sample/ath_rate_sample.mod.c,87
+struct module __this_module7,124
+__attribute_used__18,399
+__attribute_used__42,1178
+
+ath_rate/sample/sample.c,1314
+#define	SAMPLE_DEBUG71,2552
+	ATH_DEBUG_RATE	74,2600
+	ATH_DEBUG_RATE		= 0x00000010,x0000001074,2600
+	ATH_DEBUG_ANY	75,2650
+	ATH_DEBUG_ANY		= 0xffffffffxffffffff75,2650
+#define	DPRINTF(77,2682
+#define	DPRINTF(82,2806
+static char *version version113,4074
+static char *dev_info dev_info114,4126
+#define STALE_FAILURE_TIMEOUT_MS 117,4171
+#define MIN_SWITCH_MS 118,4210
+#define ENABLE_MRR 120,4238
+static int ath_smoothing_rate 122,4260
+static int ath_sample_rate 123,4331
+size_to_bin(130,4540
+bin_to_size(141,4731
+rate_to_ndx(146,4812
+calc_usecs_unicast_packet(159,5045
+ath_rate_node_init(262,7510
+ath_rate_node_cleanup(269,7670
+ath_rate_node_copy(275,7758
+static __inline int best_rate_ndx(288,8135
+pick_sample_ndx(321,8949
+ath_rate_findrate(373,10308
+ath_rate_get_mrr(506,14537
+update_stats(532,15210
+ath_rate_tx_complete(653,19044
+ath_rate_newassoc(807,23373
+ath_rate_ctl_reset(819,23684
+ath_rate_cb(937,27268
+ath_rate_newstate(946,27458
+ath_rate_attach(962,27886
+ath_rate_detach(983,28383
+proc_read_nodes(991,28539
+proc_ratesample_open(1059,30382
+static struct file_operations proc_ratesample_ops 1097,31498
+ath_rate_dynamic_proc_register(1105,31648
+static struct ieee80211_rate_ops ath_rate_ops 1113,31977
+init_ath_rate_sample(1137,32676
+exit_ath_rate_sample(1145,32860
+
+ath_rate/minstrel/minstrel.c,1337
+#define	MINSTREL_DEBUG120,5153
+		ATH_DEBUG_RATE	123,5205
+		ATH_DEBUG_RATE		= 0x00000010	x00000010123,5205
+#define	DPRINTF(125,5258
+#define	DPRINTF(130,5387
+#define ONE_SECOND 133,5426
+static char *version version137,5546
+static char *dev_info dev_info138,5598
+#define STALE_FAILURE_TIMEOUT_MS 140,5644
+#define ENABLE_MRR 141,5683
+static int ath_timer_interval 143,5705
+static int ath_lookaround_rate 149,6044
+static int ath_ewma_level 150,6081
+static int ath_segment_size 151,6118
+rate_to_ndx(176,7127
+calc_usecs_unicast_packet(187,7367
+ath_rate_node_init(289,9895
+ath_rate_node_cleanup(297,10058
+ath_rate_node_copy(303,10146
+ath_rate_findrate(313,10446
+ath_rate_get_mrr(390,12779
+ath_rate_tx_complete(440,14323
+ath_rate_newassoc(537,17339
+ath_fill_sample_table(546,17578
+ath_rate_ctl_reset(596,19115
+ath_rate_cb(728,23024
+ath_rate_newstate(735,23211
+ath_timer_function(749,23620
+ath_rate_statistics(793,24766
+ath_rate_attach(879,27688
+ath_rate_detach(908,28365
+ath_proc_read_nodes(919,28603
+ath_proc_ratesample_open(986,30923
+static struct file_operations ath_proc_ratesample_ops 1021,31980
+ath_rate_dynamic_proc_register(1029,32142
+static struct ieee80211_rate_ops ath_rate_ops 1037,32361
+static int __init ath_rate_minstrel_init(1060,33073
+static void __exit ath_rate_minstrel_exit(1074,33619
+
+ath_rate/minstrel/ath_rate_minstrel.mod.c,87
+struct module __this_module7,124
+__attribute_used__18,399
+__attribute_used__47,1341
+
+ath_rate/amrr/ath_rate_amrr.mod.c,87
+struct module __this_module7,124
+__attribute_used__18,399
+__attribute_used__41,1142
+
+ath_rate/amrr/amrr.c,1441
+#define	AMRR_DEBUG73,2747
+#define	DPRINTF(75,2784
+#define	DPRINTF(80,2910
+static int ath_rateinterval 83,2949
+static int ath_rate_max_success_threshold 84,3016
+static int ath_rate_min_success_threshold 85,3064
+ath_rate_node_init(93,3380
+ath_rate_node_cleanup(100,3540
+ath_rate_findrate(105,3622
+ath_rate_get_mrr(120,3979
+ath_rate_tx_complete(134,4393
+ath_rate_newassoc(162,5104
+node_reset 169,5245
+ath_rate_update(189,5814
+ath_rate_ctl_start(266,8300
+#define	RATE(268,8370
+#undef RATE303,9591
+ath_rate_cb(307,9618
+ath_rate_newstate(316,9817
+ath_rate_ctl(364,11165
+#define is_success(370,11318
+#define is_enough(371,11396
+#define is_failure(372,11448
+#define is_max_rate(373,11524
+#define is_min_rate(374,11596
+ath_ratectl(428,13189
+ath_rate_attach(455,13953
+ath_rate_detach(475,14403
+static int minrateinterval 484,14570
+static int maxint 485,14616
+static int min_threshold 486,14666
+static ctl_table ath_rate_static_sysctls[ath_rate_static_sysctls492,14738
+static ctl_table ath_rate_table[ath_rate_table522,15584
+static ctl_table ath_ath_table[ath_ath_table529,15737
+static ctl_table ath_root_table[ath_root_table536,15878
+static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header543,16019
+static struct ieee80211_rate_ops ath_rate_ops 545,16071
+static char *version version559,16476
+static char *dev_info dev_info560,16528
+init_ath_rate_amrr(572,16803
+exit_ath_rate_amrr(587,17095
+
+ath_rate/onoe/ath_rate_onoe.mod.c,87
+struct module __this_module7,124
+__attribute_used__18,399
+__attribute_used__38,1054
+
+ath_rate/onoe/onoe.c,1331
+#define	ONOE_DEBUG69,2563
+	ATH_DEBUG_RATE	72,2607
+	ATH_DEBUG_RATE	= 0x00000010,x0000001072,2607
+#define	DPRINTF(74,2659
+#define	DPRINTF(79,2791
+static int ath_rateinterval 101,3784
+static int ath_rate_raise 102,3850
+static int ath_rate_raise_threshold 103,3911
+ath_rate_node_init(110,4213
+ath_rate_node_cleanup(117,4373
+ath_rate_findrate(122,4455
+ath_rate_get_mrr(137,4803
+ath_rate_tx_complete(151,5165
+ath_rate_newassoc(171,5683
+ath_rate_update(178,5824
+ath_rate_ctl_start(251,8287
+#define	RATE(253,8357
+#undef RATE289,9605
+ath_rate_cb(293,9632
+ath_rate_newstate(302,9831
+ath_rate_ctl(337,10729
+ath_rate_attach(407,12510
+ath_rate_detach(424,12851
+static int minrateinterval 432,12993
+static int maxpercent 433,13039
+static int minpercent 434,13080
+static int maxint 435,13117
+static ctl_table ath_rate_static_sysctls[ath_rate_static_sysctls440,13208
+static ctl_table ath_rate_table[ath_rate_table468,13931
+static ctl_table ath_ath_table[ath_ath_table475,14084
+static ctl_table ath_root_table[ath_root_table482,14225
+static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header489,14366
+static struct ieee80211_rate_ops ath_rate_ops 491,14418
+static char *version version505,14823
+static char *dev_info dev_info506,14875
+init_ath_rate_onoe(518,15188
+exit_ath_rate_onoe(533,15480

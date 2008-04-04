@@ -11281,8 +11281,8 @@ static int disable_cca(struct ieee80211com *ic)
       OS_REG_WRITE(ah, AR5K_AR5212_PHY_NF,   0xffffffff);
       EWA_PRINTK("pt. 8.25\t(pre-DAC-test)\n");
       /* Enable continuous transmit mode / DAC test mode */
-      OS_REG_WRITE(ah, AR5K_AR5212_ADDAC_TEST,
-		   OS_REG_READ(ah, AR5K_AR5212_ADDAC_TEST) | 1);
+      //      OS_REG_WRITE(ah, AR5K_AR5212_ADDAC_TEST,
+      //		   OS_REG_READ(ah, AR5K_AR5212_ADDAC_TEST) | 1);
       /* Ignore real and virtual carrier sensing, and reception */
       OS_REG_WRITE(ah, AR5K_AR5212_DIAG_SW,
 		   OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
