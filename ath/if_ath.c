@@ -11398,6 +11398,12 @@ txcont_configure_radio(struct ieee80211com *ic)
 		 *  our own implementation -- and before we configures */
 	{
 	   int accum;
+	   EWA_PRINTK("pt. 7.111\n");
+	   BUG_ON(NULL == ic);
+	   EWA_PRINTK("pt. 7.112\n");
+	   BUG_ON(NULL == ic->ic_bsschan);
+	   EWA_PRINTK("pt. 7.113\n");
+	   /* XXXEWA: When it crashes, this next line is where! */
 	   accum = !IEEE80211_IS_CHAN_STURBO(ic->ic_bsschan);
 	   EWA_PRINTK("pt. 7.12\n");
 	   accum &= (IEEE80211_ATHC_TURBOP & TAILQ_FIRST(&ic->ic_vaps)->iv_ath_cap);
