@@ -101,7 +101,7 @@ include $(TOP)/ath_hal/ah_target.inc
 export TARGET
 COPTS += -DTARGET='"$(TARGET)"'
 
-COPTS += -DEWA_CCA
+COPTS += -DEWA_CCA -DHEISENBUG
 
 # KMODPATH nominates the directory where the modules will be
 # installed to
