@@ -201,6 +201,7 @@ endif
 	
 	@echo "ok."
 
-tags:
+.PHONY: tags
+tags: 
 	find . -name '*.h' -or -name '*.c' -not -wholename '*/.svn/*' -print0 | \
 	xargs -0 etags --members
