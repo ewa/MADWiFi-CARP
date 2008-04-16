@@ -11264,12 +11264,16 @@ static int disable_cca(struct ath_softc *sc)
 #define AR5K_AR5212_DIAG_SW_IGNOREPHYCS			0x00100000
 #define AR5K_AR5212_DIAG_SW_IGNORENAV			0x00200000
 #define AR5K_AR5212_RSSI_THR				0x8018
+
 #define AR5K_AR5212_DCU_GBL_IFS_SIFS			0x1030
 #define AR5K_AR5212_DCU_GBL_IFS_SIFS_M			0x0000ffff
+
 #define AR5K_AR5212_DCU_GBL_IFS_EIFS			0x10b0
 #define AR5K_AR5212_DCU_GBL_IFS_EIFS_M			0x0000ffff
+
 #define AR5K_AR5212_DCU_GBL_IFS_SLOT			0x1070
 #define AR5K_AR5212_DCU_GBL_IFS_SLOT_M			0x0000ffff
+
 #define AR5K_AR5212_DCU_GBL_IFS_MISC			0x10f0
 #define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR		0x000ffc00
 #define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	0x00300000
@@ -11277,6 +11281,7 @@ static int disable_cca(struct ath_softc *sc)
 #define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE		0x00000007
 #define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS		0x00200000
 #define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE		0x00100000
+
 #define	AR5K_AR5212_DCU(_n, _a)		                AR5K_AR5212_QCU(_n, _a)
 #define	AR5K_AR5212_QCU(_n, _a)		                (((_n) << 2) + _a)
 #define AR5K_AR5212_DCU_CHAN_TIME(_n)			AR5K_AR5212_DCU(_n, 0x10c0)
@@ -11294,10 +11299,6 @@ static int disable_cca(struct ath_softc *sc)
 			/*  Blast away at noise floor, assuming AGC has
 			 *  already set it... we want to trash it. */
 			OS_REG_WRITE(ah, AR5K_AR5212_PHY_NF,   0xffffffff);
-			
-			/* Enable continuous transmit mode / DAC test mode */
-			//      OS_REG_WRITE(ah, AR5K_AR5212_ADDAC_TEST,
-			//		   OS_REG_READ(ah, AR5K_AR5212_ADDAC_TEST) | 1);
 			/* Ignore real and virtual carrier sensing, and reception */
 			
 			OS_REG_WRITE(ah, AR5K_AR5212_DIAG_SW,
@@ -11323,6 +11324,7 @@ static int disable_cca(struct ath_softc *sc)
 				     (OS_REG_READ(ah, 
 						  AR5K_AR5212_DCU_GBL_IFS_SLOT) &
 				      ~AR5K_AR5212_DCU_GBL_IFS_SLOT_M) | 1);
+			/* Do we even know what we're negating here? */
 			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_MISC,
 				     OS_REG_READ(ah, AR5K_AR5212_DCU_GBL_IFS_MISC) &
 				     ~AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC &
@@ -11344,11 +11346,6 @@ static int disable_cca(struct ath_softc *sc)
 					     AR5K_AR5212_DCU_CHAN_TIME_ENABLE | 
 					     AR5K_AR5212_DCU_CHAN_TIME_DUR);
 			}
-			/*  Set queue full to continuous */
-#if 0
-			OS_REG_WRITE(ah, AR5K_AR5212_TXCFG, OS_REG_READ(ah, AR5K_AR5212_TXCFG) | \
-				     AR5K_AR5212_TXCFG_TXCONT_ENABLE);
-#endif
 		}	/* mask 0x04 */
 		return 0;
 	}  else {
