@@ -1511,7 +1511,14 @@ ath_vap_create(struct ieee80211com *ic, const char *name,
 			ath_beacon_config(sc, NULL);	/* restart beacons */
 		ath_hal_intrset(ah, sc->sc_imask);
 	}
+#ifdef EWA_CCA
+	if (sc->sc_disable_cca){
+		printk(KERN_INFO "VAP-create -- re-disabling CCA.\n");
+		disable_cca(sc);
+	}
+#endif
 
+	
 	return vap;
 }
 
@@ -2559,6 +2566,14 @@ ath_init(struct net_device *dev)
 	ath_chan_change(sc, ic->ic_curchan);
 	ath_set_ack_bitrate(sc, sc->sc_ackrate);
 	dev->flags |= IFF_RUNNING;		/* we are ready to go */
+	
+#ifdef EWA_CCA
+	if(sc->sc_disable_cca){
+		printk(KERN_INFO "ath_init -- disabling cca\n");
+		disable_cca(sc);
+	}
+#endif
+
 	ieee80211_start_running(ic);		/* start all VAPs */
 #ifdef ATH_TX99_DIAG
 	if (sc->sc_tx99 != NULL)
@@ -2797,13 +2812,15 @@ ath_reset(struct net_device *dev)
 	ath_update_txpow(sc);		/* update tx power state */
 	ath_radar_update(sc);
 	ath_setdefantenna(sc, sc->sc_defant);
-#if (EWA_CCA)
+#ifdef EWA_CCA 
 	/*
 	 * EWA:  This looks like a good place to put in CCA control	
 	 */
-	printk(KERN_INFO "Resetting hardware -> re-disabling CCA if disable_cca is set.\n");
-	if (sc->sc_disable_cca)
+
+	if (sc->sc_disable_cca){
+		printk(KERN_INFO "Resetting hardware -- re-disabling CCA.\n");
 		disable_cca(sc);
+	}
 #endif //EWA_CCA
 
 
