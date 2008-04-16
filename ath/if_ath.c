@@ -329,7 +329,8 @@ static struct ath_buf* cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *buf
 #endif /* #ifdef IEEE80211_DEBUG_REFCNT */
 
 #if EWA_CCA
-static int disable_cca(struct ieee80211com *ic, u_int32_t mask);
+//static int disable_cca(struct ieee80211com *ic, u_int32_t mask);
+static int disable_cca(struct ath_softc *sc);
 
 #define AR5K_TUNE_RSSI_THRES            255
 #define AR5K_RSSI_THR			0x8018		/* Register Address */
@@ -2771,9 +2772,6 @@ ath_reset(struct net_device *dev)
 	struct ieee80211com *ic = &sc->sc_ic;
 	struct ath_hal *ah = sc->sc_ah;
 	struct ieee80211_channel *c;
-#if (0 && EWA_CCA)
-	u_int32_t data;
-#endif
 	HAL_STATUS status;
 
 	/*
@@ -2799,21 +2797,13 @@ ath_reset(struct net_device *dev)
 	ath_update_txpow(sc);		/* update tx power state */
 	ath_radar_update(sc);
 	ath_setdefantenna(sc, sc->sc_defant);
-#if (0 && EWA_CCA)
+#if (EWA_CCA)
 	/*
 	 * EWA:  This looks like a good place to put in CCA control	
 	 */
-	printk(KERN_INFO "Attempting to set CCA register\n");
-	
-	/* Translated from ath5k: hw.c */
-	/* May explode on 5210 XXX */
-	data = AR5K_TUNE_RSSI_THRES |
-	   AR5K_TUNE_BMISS_THRES << AR5K_RSSI_THR_BMISS_S;
-	OS_REG_WRITE(sc->sc_ah, AR5K_PHY_SHIFT_5GHZ, AR5K_PHY(0)); /* enable PHY access */
-	OS_REG_WRITE(sc->sc_ah, data, AR5K_RSSI_THR);
-
-	
-
+	printk(KERN_INFO "Resetting hardware -> re-disabling CCA if disable_cca is set.\n");
+	if (sc->sc_disable_cca)
+		disable_cca(sc);
 #endif //EWA_CCA
 
 
@@ -10505,7 +10495,6 @@ enum {
 	ATH_MAXVAPS  		= 26,
 #if EWA_CCA
 	ATH_NOCCA               = 27,
-	ATH_TXCONT_MASK         = 28,
 #endif
 };
 
@@ -10517,9 +10506,6 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 	u_int val;
 	u_int tab_3_val[3];
 	int ret = 0;
-#if (0 && EWA_CCA)
-	u_int32_t data;
-#endif
 
 	
 
@@ -10695,12 +10681,10 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 				break;
 #if EWA_CCA
 			case ATH_NOCCA:				
-			   disable_cca(&(sc->sc_ic), (u_int32_t)val);
+				sc->sc_disable_cca = (val>0 ? 1:0);
+				sc->sc_cca_extrabits = val & ATH_CCA_BITMASK;
+				disable_cca(sc);
 				break;
-
-		        case ATH_TXCONT_MASK:
-			       TXCONT_MASK = val;
-			       break;
 #endif //ewa_cca
 			default:
 				ret = -EINVAL;
@@ -10769,13 +10753,9 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 		        val = sc->sc_radar_ignored;
 		        break;
 #if EWA_CCA
-		case ATH_NOCCA:
-			printk(KERN_ALERT "Reading NOCCA sysctl not implemented.\n");
-			ret = -EINVAL;
-			break;
-
-		case ATH_TXCONT_MASK:
-		        val=TXCONT_MASK;
+		case ATH_NOCCA:			
+			val = sc->sc_disable_cca;
+			printk(KERN_INFO "sc->sc_cca_extrabits = 0x%x\n", sc->sc_cca_extrabits);
 			break;
 #endif //ewa_cca
 
@@ -10960,16 +10940,10 @@ static const ctl_table ath_sysctl_template[] = {
 	},
 #if EWA_CCA
 	{ .ctl_name	= CTL_AUTO,
-	  .procname     = "cca_off",
+	  .procname     = "disable_cca",
 	  .mode         = 0644,
 	  .proc_handler = ath_sysctl_halparam,
 	  .extra2	= (void *)ATH_NOCCA,
-	},
-	{ .ctl_name     = CTL_AUTO,
-	  .procname     = "txcont_mask",
-	  .mode         = 0644,
-	  .proc_handler = ath_sysctl_halparam,
-	  .extra2       = (void *)ATH_TXCONT_MASK
 	},
 #endif
 	{ 0 }
@@ -11256,13 +11230,20 @@ ath_get_txcont_adj_ratecode(struct ath_softc *sc)
 	return rt->info[closest_rate_ix].rateCode;
 }
 
-static int disable_cca(struct ieee80211com *ic, u_int32_t mask)
+//static int disable_cca(struct ieee80211com *ic, u_int32_t mask)
+static int disable_cca(struct ath_softc *sc)
 {
-   struct net_device           *dev = ic->ic_dev;	
-   struct ath_softc            *sc = dev->priv;
-   struct ath_hal              *ah = sc->sc_ah;
- 
-
+	//struct net_device           *dev = ic->ic_dev;	
+	//  struct ath_softc            *sc = dev->priv;
+	
+	struct ath_hal              *ah = sc->sc_ah;
+	
+	unsigned int disable_p = sc->sc_disable_cca;
+	unsigned int mask = sc->sc_cca_extrabits;
+	
+	if (disable_p ==0)
+		return 0;
+	
 /* Copied from txcont stuff */
 #define AR5K_AR5212_PHY_NF				0x9864
 #define AR5K_AR5212_DIAG_SW				0x8048
@@ -13167,7 +13148,7 @@ cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *bf, int direction)
 					direction);
 				bf->bf_skbaddrff[i] = 0;
 			}
-
+			
 			ffskb = next_ffskb;
 			i++;
 		}
@@ -13183,16 +13164,21 @@ cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *bf, int direction)
 		ieee80211_unref_node(&bf->bf_node);
 #endif /* #ifdef IEEE80211_DEBUG_REFCNT */
 	}
-
+	
 	bf->bf_flags = 0;
 	if (bf->bf_desc) {
 		bf->bf_desc->ds_link = 0;
 		bf->bf_desc->ds_data = 0;
 	}
-
+	
 	if (bf->bf_skb != NULL)
 		ieee80211_dev_kfree_skb_list(&bf->bf_skb);
-
+	
 	return bf;
 }
 
+// Local Variables:  
+// mode: c
+// c-file-style: "linux"
+// compile-command: "make -C .. -k"
+// End: 

@@ -821,7 +821,14 @@ struct ath_softc {
 	u_int32_t sc_nexttbtt;
 	u_int64_t sc_last_tsf;
 #ifdef EWA_CCA
-  //        u_int32_t sc_txcont_mask;               /* Which operations to perform in txcont configuration */
+#define ATH_CCA_BITMASK 0x7F
+  //        u_int32_t sc_txcont_mask;           /* Which operations to perform in txcont configuration */
+	unsigned int sc_disable_cca:1;		/* if set, disable CCA
+						 * (including "virtual carrier
+						 * sense"/NAV, etc. */
+
+	unsigned int sc_cca_extrabits:7;	/* debugging flags, essentially */
+      
 #endif //EWA_CCA
 };
 
@@ -934,3 +941,9 @@ extern u_int32_t TXCONT_MASK;
 #endif
 
 #endif /* _DEV_ATH_ATHVAR_H */
+
+// Local Variables:  
+// mode: c
+// c-file-style: linux
+// compile-command: "make -C .. -k"
+// End: 
