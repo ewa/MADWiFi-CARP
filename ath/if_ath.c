@@ -10700,7 +10700,8 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 			case ATH_NOCCA:				
 				sc->sc_disable_cca = (val>0 ? 1:0);
 				sc->sc_cca_extrabits = val & ATH_CCA_BITMASK;
-				disable_cca(sc);
+				//disable_cca(sc);
+				ath_reset(sc->sc_dev);
 				break;
 #endif //ewa_cca
 			default:
