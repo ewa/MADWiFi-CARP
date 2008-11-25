@@ -8750,6 +8750,14 @@ ath_chan_set(struct ath_softc *sc, struct ieee80211_channel *chan)
 		/* Change channels and update the h/w rate map
 		 * if we're switching; e.g. 11a to 11b/g. */
 		ath_chan_change(sc, chan);
+
+#ifdef COLORADO_CCA
+		if(sc->sc_disable_cca){
+			EWA_PRINTK("ath_init -- disabling cca\n");
+			disable_cca(sc);
+		}
+#endif
+
 		 /* Re-enable rx framework. */
 		if (ath_startrecv(sc) != 0) {
 			EPRINTF(sc, "Unable to restart receive logic!\n");
