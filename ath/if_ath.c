@@ -359,7 +359,7 @@ static struct ath_buf* cleanup_ath_buf(struct ath_softc *sc, struct ath_buf *buf
 
 #if COLORADO_CCA
 //static int disable_cca(struct ieee80211com *ic, u_int32_t mask);
-static int disable_cca(struct ath_softc *sc);
+static int set_cca_mode(struct ath_softc *sc);
 
 #define AR5K_TUNE_RSSI_THRES            255
 #define AR5K_RSSI_THR			0x8018		/* Register Address */
@@ -1515,9 +1515,10 @@ ath_vap_create(struct ieee80211com *ic, const char *name,
 		ath_hal_intrset(ah, sc->sc_imask);
 	}
 #ifdef COLORADO_CCA
-	if (sc->sc_disable_cca){
+	{					/* GVY removed test */
+	//if (sc->sc_disable_cca){
 		EWA_PRINTK("VAP-create -- re-disabling CCA.\n");
-		disable_cca(sc);
+		set_cca_mode(sc);
 	}
 #endif
 
@@ -2570,10 +2571,12 @@ ath_init(struct net_device *dev)
 	dev->flags |= IFF_RUNNING;		/* we are ready to go */
 	
 #ifdef COLORADO_CCA
-	if(sc->sc_disable_cca){
-		EWA_PRINTK("ath_init -- disabling cca\n");
-		disable_cca(sc);
-	}
+	//if(sc->sc_disable_cca){
+	sc->sc_disable_cca_mask = 0;
+	sc->sc_prev_disable_cca_mask = 0;
+	//EWA_PRINTK("ath_init -- disabling cca\n");
+	//disable_cca(sc);
+	//}
 #endif
 
 	ieee80211_start_running(ic);		/* start all VAPs */
@@ -2814,10 +2817,12 @@ ath_reset(struct net_device *dev)
 	ath_update_txpow(sc);		/* update tx power state */
 	ath_radar_update(sc);
 	ath_setdefantenna(sc, sc->sc_defant);
+
+//This is moved down a few lines in GVY version, but the surrounding code is different.  Don't know what's best.
 #ifdef COLORADO_CCA 
-	if (sc->sc_disable_cca){
-		printk(KERN_INFO "Resetting hardware -- re-disabling CCA.\n");
-		disable_cca(sc);
+	{
+		printk(KERN_INFO "Resetting hardware.\n");
+		set_cca_mode(sc);
 	}
 #endif //COLORADO_CCA
 
@@ -5396,10 +5401,25 @@ ath_beacon_config(struct ath_softc *sc, struct ieee80211vap *vap)
 			 * In AP/IBSS mode we enable the beacon timers and
 			 * SWBA interrupts to prepare beacon frames.
 			 */
+
+#ifdef COLORADO_CCA
+			/* 
+			 * From GVY version.  Why do we only do this beacon
+			 * stuff if that bit is 0?
+			 */
+
+			if((sc->sc_disable_cca_mask & 0x08)==0){
+				intval |= HAL_BEACON_ENA;
+				sc->sc_imask |= HAL_INT_SWBA;
+				ath_set_beacon_cal(sc, 1);
+				ath_beaconq_config(sc);					
+			}
+#else //COLORADO_CCA
 			intval |= HAL_BEACON_ENA;
 			sc->sc_imask |= HAL_INT_SWBA;
 			ath_set_beacon_cal(sc, 1);
-			ath_beaconq_config(sc);
+			ath_beaconq_config(sc);			
+#endif //COLORADO_CCA
 		} else
 			ath_set_beacon_cal(sc, 0);
 
@@ -8752,12 +8772,11 @@ ath_chan_set(struct ath_softc *sc, struct ieee80211_channel *chan)
 		ath_chan_change(sc, chan);
 
 #ifdef COLORADO_CCA
-		if(sc->sc_disable_cca){
-			EWA_PRINTK("ath_init -- disabling cca\n");
-			disable_cca(sc);
+		{
+			EWA_PRINTK("ath_chan_set -- re-applying CCA setting\n");
+			set_cca_mode(sc);
 		}
 #endif
-
 		 /* Re-enable rx framework. */
 		if (ath_startrecv(sc) != 0) {
 			EPRINTF(sc, "Unable to restart receive logic!\n");
@@ -10702,8 +10721,9 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 				break;
 #if COLORADO_CCA
 			case ATH_NOCCA:				
-				sc->sc_disable_cca = (val>0 ? 1:0);
-				sc->sc_cca_extrabits = val & ATH_CCA_BITMASK;
+				//sc->sc_disable_cca = (val>0 ? 1:0);
+				//sc->sc_cca_extrabits = val & ATH_CCA_BITMASK;
+				sc->sc_disable_cca_mask = val & ATH_CCA_BITMASK;
 				//disable_cca(sc);
 				ath_reset(sc->sc_dev);
 				break;
@@ -10776,8 +10796,8 @@ ATH_SYSCTL_DECL(ath_sysctl_halparam, ctl, write, filp, buffer, lenp, ppos)
 		        break;
 #if COLORADO_CCA
 		case ATH_NOCCA:			
-			val = sc->sc_disable_cca;
-			printk(KERN_INFO "sc->sc_cca_extrabits = 0x%x\n", sc->sc_cca_extrabits);
+			val = sc->sc_disable_cca_mask;
+			printk(KERN_INFO "sc->sc_disable_cca_mask = 0x%x\n", sc->sc_disable_cca_mask);
 			break;
 #endif //COLORADO_CCA
 
@@ -10958,7 +10978,7 @@ static const ctl_table ath_sysctl_template[] = {
 	  .proc_handler = ath_sysctl_halparam,
 	  .extra2	= (void *)ATH_RADAR_IGNORED,
 	},
-#if COLORADO_CCA
+#ifdef COLORADO_CCA
 	{ .ctl_name	= CTL_AUTO,
 	  .procname     = "disable_cca",
 	  .mode         = 0644,
@@ -11249,24 +11269,23 @@ ath_get_txcont_adj_ratecode(struct ath_softc *sc)
 	}
 	return rt->info[closest_rate_ix].rateCode;
 }
-
-
 /*
- * disable cca, NAV, etc as indicated.
+ * disable / enable cca, NAV, etc as indicated.
  */
-
-static int disable_cca(struct ath_softc *sc)
+static int set_cca_mode(struct ath_softc *sc)
 {
 	struct ath_hal *ah = sc->sc_ah;
-	unsigned int disable_p = sc->sc_disable_cca;
-	unsigned int mask = sc->sc_cca_extrabits;
-	
-	if (disable_p ==0)
-		return 0;
-	
+	unsigned int mask = sc->sc_disable_cca_mask;
+
+	/* only perform operations that are new */
+	unsigned int changed = sc->sc_disable_cca_mask ^ sc->sc_prev_disable_cca_mask;
+	int ret;
+
 	/* Register defns and code from ar5k driver & txcont */
+#define AR5K_AR5212_TXCFG				0x0030
+#define AR5K_AR5212_TXCFG_TXCONT_ENABLE			0x00000080
+
 #define AR5K_AR5212_PHY_NF				0x9864
-#define AR5K_AR5212_DIAG_SW				0x8048
 #define AR5K_AR5212_ADDAC_TEST				0x8054
 #define AR5K_AR5212_DIAG_SW				0x8048
 #define AR5K_AR5212_DIAG_SW_IGNOREPHYCS			0x00100000
@@ -11298,38 +11317,56 @@ static int disable_cca(struct ath_softc *sc)
 
   
 	if (ar_device(sc->devid) == 5212 || ar_device(sc->devid) == 5213) {
-		/* registers taken from openhal */      
-		if((mask & 0x01) >0){
+		/* registers taken from openhal */
+		if ((mask & 0x01) > 0) {
+			if ((changed & 0x01) > 0) {
+				/* store original values */
+				sc->orig_rssi_thresh = OS_REG_READ(ah, AR5K_AR5212_RSSI_THR);
+				sc->orig_phy_nf = OS_REG_READ(ah, AR5K_AR5212_PHY_NF);
+				sc->orig_diag_sw = OS_REG_READ(ah, AR5K_AR5212_DIAG_SW);
+			}
 			EWA_PRINTK("RSSI, NF, carrier sense\n");
-			
 			/*  Set RSSI threshold to extreme, hear nothing */
 			OS_REG_WRITE(ah, AR5K_AR5212_RSSI_THR, 0xffffffff);
 			/*  Blast away at noise floor, assuming AGC has
 			 *  already set it... we want to trash it. */
 			OS_REG_WRITE(ah, AR5K_AR5212_PHY_NF,   0xffffffff);
+
 			/* Ignore real and virtual carrier sensing, and reception */
-			
 			OS_REG_WRITE(ah, AR5K_AR5212_DIAG_SW,
 				     OS_REG_READ(ah, AR5K_AR5212_DIAG_SW) |
 				     AR5K_AR5212_DIAG_SW_IGNOREPHYCS |
 				     AR5K_AR5212_DIAG_SW_IGNORENAV);
-		}	/* mask 0x01 */
-		if((mask & 0x02) >0){
-			
+		} else if ((mask & 0x01) == 0 && (changed & 0x01) > 0) {
+			/* restore original values */
+			OS_REG_WRITE(ah, AR5K_AR5212_RSSI_THR, sc->orig_rssi_thresh);
+			OS_REG_WRITE(ah, AR5K_AR5212_PHY_NF, sc->orig_phy_nf);
+			OS_REG_WRITE(ah, AR5K_AR5212_DIAG_SW, sc->orig_diag_sw);
+		} /* mask 0x01 */
+
+		if ((mask & 0x02) > 0) {
+			if ((changed & 0x02) > 0) {
+				/* store original values */
+				sc->orig_dcu_gbl_ifs_sifs = OS_REG_READ(ah, AR5K_AR5212_DCU_GBL_IFS_SIFS);
+				sc->orig_dcu_gbl_ifs_eifs = OS_REG_READ(ah, AR5K_AR5212_DCU_GBL_IFS_EIFS);
+				sc->orig_dcu_gbl_ifs_slot = OS_REG_READ(ah, AR5K_AR5212_DCU_GBL_IFS_SLOT);
+				sc->orig_dcu_gbl_ifs_misc = OS_REG_READ(ah, AR5K_AR5212_DCU_GBL_IFS_MISC);
+			}
 			EWA_PRINTK("SIFS, EIFS, slot time\n");
+			
 			/*  Set SIFS to rediculously small value...  */
 			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SIFS,
-				     (OS_REG_READ(ah, 
+				     (OS_REG_READ(ah,
 						  AR5K_AR5212_DCU_GBL_IFS_SIFS) &
 				      ~AR5K_AR5212_DCU_GBL_IFS_SIFS_M) | 1);
 			/*  Set EIFS to rediculously small value...  */
 			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_EIFS,
-				     (OS_REG_READ(ah, 
+				     (OS_REG_READ(ah,
 						  AR5K_AR5212_DCU_GBL_IFS_EIFS) &
 				      ~AR5K_AR5212_DCU_GBL_IFS_EIFS_M) | 1);
 			/*  Set slot time to rediculously small value...  */
 			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SLOT,
-				     (OS_REG_READ(ah, 
+				     (OS_REG_READ(ah,
 						  AR5K_AR5212_DCU_GBL_IFS_SLOT) &
 				      ~AR5K_AR5212_DCU_GBL_IFS_SLOT_M) | 1);
 			/* Do we even know what we're negating here? */
@@ -11339,27 +11376,70 @@ static int disable_cca(struct ath_softc *sc)
 				     ~AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR &
 				     ~AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY &
 				     ~AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE);
+		} else if ((mask & 0x02) == 0 && (changed & 0x02) > 0) {
+			/* restore original values */
+			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SIFS, sc->orig_dcu_gbl_ifs_sifs);
+			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_EIFS, sc->orig_dcu_gbl_ifs_eifs);
+			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_SLOT, sc->orig_dcu_gbl_ifs_slot);
+			OS_REG_WRITE(ah, AR5K_AR5212_DCU_GBL_IFS_MISC, sc->orig_dcu_gbl_ifs_misc);
 		} /* mask 0x02 */
-		if((mask & 0x04) >0){
+
+		if ((mask & 0x04) > 0) {
 			int q;
 			EWA_PRINTK("Queue backoff, queue full?");
+
 			/*  Disable queue backoff (default was like 256 or 0x100) */
 			for (q = 0; q < 4; q++) {
-				OS_REG_WRITE(ah, AR5K_AR5212_DCU_MISC(q), 
+				if ((changed & 0x04) > 0) {
+					/* store original values */
+					sc->orig_dcu_misc[q] = OS_REG_READ(ah, AR5K_AR5212_DCU_MISC(q));
+					sc->orig_dcu_chan_time[q] = OS_REG_READ(ah, AR5K_AR5212_DCU_CHAN_TIME(q));
+				}
+				OS_REG_WRITE(ah, AR5K_AR5212_DCU_MISC(q),
 					     AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS);
-				/*  Set the channel time (burst time) to the 
-				 *  highest setting the register can take, 
+				/*  Set the channel time (burst time) to the
+				 *  highest setting the register can take,
 				 *  forget this compliant 8192 limit... */
-				OS_REG_WRITE(ah, AR5K_AR5212_DCU_CHAN_TIME(q), 
-					     AR5K_AR5212_DCU_CHAN_TIME_ENABLE | 
+				OS_REG_WRITE(ah, AR5K_AR5212_DCU_CHAN_TIME(q),
+					     AR5K_AR5212_DCU_CHAN_TIME_ENABLE |
 					     AR5K_AR5212_DCU_CHAN_TIME_DUR);
 			}
-		}	/* mask 0x04 */
-		return 0;
+		} else if ((mask & 0x04) == 0 && (changed & 0x04) > 0) {
+			int q;
+			for (q = 0; q < 4; q++) {
+				/* restore original values */
+				OS_REG_WRITE(ah, AR5K_AR5212_DCU_MISC(q), sc->orig_dcu_misc[q]);
+				OS_REG_WRITE(ah, AR5K_AR5212_DCU_CHAN_TIME(q), sc->orig_dcu_chan_time[q]);
+			}
+		} /* mask 0x04 */
+
+		if ((mask & 0x08) > 0) {
+			if ((changed & 0x08) > 0) {
+				/* store orginal values */
+				sc->orig_sc_beacons = sc->sc_beacons;
+				sc->orig_sc_imask = sc->sc_imask;
+			}
+
+			/* Disable beacons and beacon miss interrupts */
+			sc->sc_beacons = 0;
+			sc->sc_imask &= ~(HAL_INT_SWBA | HAL_INT_BMISS);
+			ath_hal_intrset(ah, sc->sc_imask);
+		} else if ((mask & 0x08) == 0 && (changed & 0x08) > 0) {
+			/* restore original values */
+			sc->sc_beacons = sc->orig_sc_beacons;
+			sc->sc_imask = sc->orig_sc_imask;
+			ath_hal_intrset(ah, sc->sc_imask);
+		} /* mask 0x08 */
+		ret = 0;
 	}  else {
-		return -1;
+		ret = 1;
 	}
-	
+
+	sc->sc_prev_disable_cca_mask = sc->sc_disable_cca_mask;
+	return ret;
+
+#undef AR5K_AR5212_TXCFG
+#undef AR5K_AR5212_TXCFG_TXCONT_ENABLE
 #undef AR5K_AR5212_PHY_NF
 #undef AR5K_AR5212_DIAG_SW
 #undef AR5K_AR5212_ADDAC_TEST
@@ -11387,6 +11467,7 @@ static int disable_cca(struct ath_softc *sc)
 #undef AR5K_AR5212_DCU_CHAN_TIME_DUR
 	
 }
+
 
 /*
 Configure the radio for continuous transmission

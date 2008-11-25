@@ -432,491 +432,6 @@ int main(741,21491
 		int valid;755,21875
 		int value;756,21888
 
-R488if_ath.c,17825
-#define	AR_DEBUG45,2109
-#define LE_READ_2(106,3411
-#define LE_READ_4(109,3527
-#define DEF_RATE_CTL 116,3783
-#define DEF_RATE_CTL 118,3838
-	ATH_LED_TX,122,3883
-	ATH_LED_RX,123,3896
-	ATH_LED_POLL,124,3909
-#define ath_return_txbuf(286,11749
-#define ath_return_txbuf_locked(295,12145
-#define ath_return_txbuf_list(304,12569
-#define ath_return_txbuf_list_locked(313,12983
-#define cleanup_ath_buf(322,13425
-#define ath_cac_running_dbgmsg(350,14614
-#define ath_chan_unavail_dbgmsg(352,14694
-static int ath_calinterval 379,15842
-static int ath_countrycode 380,15894
-static int ath_outdoor 381,15956
-static int ath_xchanmode 382,16017
-static int ath_maxvaps 383,16085
-static char *autocreate autocreate384,16164
-static char *ratectl ratectl385,16196
-static int rfkill 386,16233
-static int tpc 387,16256
-static int countrycode 388,16276
-static int maxvaps 389,16305
-static int outdoor 390,16330
-static int xchanmode 391,16355
-static int beacon_cal 392,16382
-static const char *hal_status_desc[hal_status_desc394,16410
-static struct notifier_block ath_event_block 413,16949
-static int	ath_debug 458,18431
-static int	ieee80211_debug 470,18816
-#define ATH_SETUP_XR_VAP(480,19111
-#define ATH_SET_VAP_BSSID_MASK(501,19908
-#define ATH_GET_VAP_ID(503,20011
-#define ATH_SET_VAP_BSSID(504,20077
-ath_attach(513,20252
-ath_detach(1150,39174
-ath_vap_create(1209,40708
-ath_vap_delete(1463,48428
-ath_suspend(1564,51318
-ath_resume(1573,51471
-ath_chan_unavail(1584,51728
-_ath_cac_running_dbgmsg(1591,51920
-_ath_chan_unavail_dbgmsg(1601,52175
-ath_extend_tsf(1618,52721
-#define TSTAMP_RX_MASK 1620,52771
-ath_uapsd_processtriggers(1637,53093
-#define	PA2DESC(1657,53613
-#undef PA2DESC2128,68152
-ath_intr(2136,68304
-ath_fatal_tasklet(2333,75385
-ath_rxorn_tasklet(2343,75589
-ath_bmiss_tasklet(2353,75799
-ath_chan2flags(2369,76286
-ath_init(2396,76924
-ath_stop_locked(2522,80381
-static void ath_set_beacon_cal(2583,81990
-ath_stop(2604,82519
-ar_device(2636,83289
-ath_set_ack_bitrate(2681,84168
-#define AR5K_AR5212_STA_ID1 2686,84384
-#define AR5K_AR5212_STA_ID1_ACKCTS_6MB 2687,84439
-#define AR5K_AR5212_STA_ID1_BASE_RATE_11B 2688,84498
-#undef AR5K_AR5212_STA_ID12697,84849
-#undef AR5K_AR5212_STA_ID1_BASE_RATE_11B2698,84876
-#undef AR5K_AR5212_STA_ID1_ACKCTS_6MB2699,84917
-ath_reset(2713,85309
-ath_desc_swap(2782,87314
-ath_tx_txqaddbuf(2799,87695
-dot11_to_ratecode(2864,89713
-ath_tx_startraw(2875,89986
-ath_ff_neverflushtestdone(2982,93111
-ath_ff_ageflushtestdone(2988,93205
-ath_ffstageq_flush(3001,93471
-ath_get_buffers_available(3045,94659
-ath_get_buffer_count(3054,94907
-_take_txbuf_locked_debug(3063,95102
-_take_txbuf_debug(3117,96797
-#define ath_take_txbuf_locked(3135,97276
-#define ath_take_txbuf_locked_debug(3137,97367
-#define ath_take_txbuf_mgmt_locked(3140,97473
-#define ath_take_txbuf_mgmt_locked_debug(3142,97569
-#define ath_take_txbuf(3145,97680
-#define ath_take_txbuf_debug(3147,97757
-#define ath_take_txbuf_mgmt(3150,97849
-#define ath_take_txbuf_mgmt_debug(3152,97931
-#define ath_take_txbuf_locked(3157,98071
-#define ath_take_txbuf_locked_debug(3159,98136
-#define ath_take_txbuf_mgmt_locked(3162,98222
-#define ath_take_txbuf_mgmt_locked_debug(3164,98292
-#define ath_take_txbuf(3167,98383
-#define ath_take_txbuf_debug(3169,98434
-#define ath_take_txbuf_mgmt(3172,98506
-#define ath_take_txbuf_mgmt_debug(3174,98562
-ath_hardstart(3188,98893
-ath_mgtstart(3519,107766
-ath_keyprint(3566,108851
-ath_keyset_tkip(3627,110224
-#define	IEEE80211_KEY_XR	3630,110352
-#undef IEEE80211_KEY_XR3679,112066
-ath_keyset(3688,112276
-key_alloc_2pair(3749,114222
-key_alloc_pair(3800,115517
-key_alloc_single(3844,116453
-ath_key_alloc(3878,117437
-ath_key_delete(3942,119466
-ath_key_set(4018,121627
-ath_key_update_begin(4034,122110
-ath_key_update_end(4055,122646
-ath_calcrxfilter(4085,123683
-#define	RX_FILTER_PRESERVE	4087,123724
-#undef RX_FILTER_PRESERVE4110,124668
-ath_merge_mcast(4121,124954
-ath_mode_init(4146,125625
-ath_setslottime(4178,126396
-ath_updateslot(4197,126887
-ath_beacon_dturbo_config(4223,127508
-#define	IS_CAPABLE(4225,127579
-#undef IS_CAPABLE4266,129007
-ath_beacon_dturbo_update(4274,129166
-ath_check_beacon_done(4378,132692
-ath_turbo_switch_mode(4415,133476
-ath_beaconq_setup(4463,134834
-ath_beaconq_config(4491,135454
-#define	ATH_EXPONENT_TO_VALUE(4493,135497
-#undef ATH_EXPONENT_TO_VALUE4530,136618
-ath_beacon_alloc(4534,136661
-ath_beacon_alloc_internal(4550,137006
-ath_beacon_setup(4629,139545
-#define	USE_SHPREAMBLE(4631,139606
-#undef USE_SHPREAMBLE4726,142393
-ath_beacon_generate(4733,142504
-ath_beacon_send(4897,147209
-ath_bstuck_tasklet(5073,152977
-ath_beacon_return(5095,153536
-ath_beacon_free(5105,153745
-ath_beacon_config(5134,154886
-#define	FUDGE	5178,156260
-#undef FUDGE5240,158357
-ath_descdma_setup(5382,162573
-#define	DS2PHYS(5386,162699
-#undef DS2PHYS5434,163943
-ath_descdma_cleanup(5438,163973
-ath_desc_alloc(5454,164390
-ath_desc_free(5485,165136
-ath_node_alloc_debug(5500,165579
-ath_node_cleanup_debug(5535,166625
-ath_node_free_debug(5593,168311
-ath_node_getrssi(5612,168679
-#define	HAL_EP_RND(5614,168731
-#undef HAL_EP_RND5630,169282
-ath_node_move_data(5641,169462
-#define ath_alloc_skb(6005,178113
-ath_alloc_skb_debug(6007,178208
-ath_rxbuf_init(6029,178676
-ath_skb_removepad(6133,181886
-ath_capture(6163,182715
-ath_recv_mgmt(6194,183621
-ath_setdefantenna(6318,187392
-ath_rx_tasklet(6331,187687
-#define	PA2DESC(6333,187721
-#undef PA2DESC6624,196388
-ath_grppoll_period_update(6630,196440
-ath_grppoll_txq_update(6692,197855
-ath_grppoll_txq_setup(6717,198476
-static void ath_grppoll_start(6767,199767
-	struct rate_to_str_map 6788,200429
-		u_int8_t str[str6789,200455
-		int ratekbps;6790,200474
-#define MAX_GRPPOLL_RATE 6804,200714
-#define	USE_SHPREAMBLE(6805,200741
-#undef USE_SHPREAMBLE6989,206474
-static void ath_grppoll_stop(6992,206499
-ath_txq_setup(7037,207485
-ath_tx_setup(7151,210888
-ath_txq_update(7173,211349
-#define	ATH_EXPONENT_TO_VALUE(7175,211417
-#define	ATH_TXOP_TO_US(7176,211461
-#undef ATH_TXOP_TO_US7197,212190
-#undef ATH_EXPONENT_TO_VALUE7198,212212
-ath_wme_update(7205,212322
-ath_uapsd_flush(7222,212823
-ath_tx_cleanupq(7260,213930
-ath_tx_cleanup(7280,214386
-ath_get_icvlen(7292,214624
-ath_get_ivlen(7304,214894
-ath_tx_findindex(7323,215261
-ath_tx_uapsdqueue(7341,215517
-ath_tx_start(7411,217737
-#define	MIN(7414,217864
-#undef MIN8030,236693
-ath_tx_processq(8038,236836
-#define TSTAMP_TX_MASK 8206,241722
-txqactive(8258,243048
-ath_tx_tasklet_q0(8270,243328
-ath_tx_tasklet_q0123(8291,243832
-ath_tx_tasklet(8326,244750
-ath_tx_timeout(8345,245204
-ath_tx_draintxq(8366,245661
-ath_tx_stopdma(8395,246339
-ath_draintxq(8409,246688
-ath_stoprecv(8437,247476
-#define	PA2DESC(8439,247513
-#undef PA2DESC8465,248500
-ath_startrecv(8472,248581
-ath_flushrecv(8514,249724
-ath_chan_change(8525,249945
-ath_chan_set(8559,250892
-ath_mib_enable(8724,256359
-ath_calibrate(8737,256627
-ath_scan_start(8813,258825
-ath_scan_end(8833,259311
-ath_set_channel(8851,259775
-ath_set_coverageclass(8868,260285
-ath_mhz2ieee(8878,260466
-ath_newstate(8890,260688
-ath_dfs_cac_completed(9210,270588
-ath_comp_set(9322,273993
-ath_setup_comp(9330,274167
-#define	IEEE80211_KEY_XR	9332,274223
-#undef IEEE80211_KEY_XR9372,275397
-ath_setup_stationkey(9385,275749
-ath_setup_stationwepkey(9422,276846
-ath_setup_keycacheslot(9514,279736
-ath_newassoc(9545,280667
-ath_getchannels(9577,281558
-ath_led_done(9728,286440
-ath_led_off(9740,286679
-ath_led_blink(9754,287025
-ath_led_event(9766,287365
-set_node_txpower(9789,287916
-ath_set_clamped_maxtxpower(9800,288315
-ath_get_clamped_maxtxpower(9812,288762
-ath_get_real_maxtxpower(9827,289358
-ath_update_txpow(9843,289801
-ath_xr_rate_setup(9878,291113
-ath_setup_subrates(9907,291904
-ath_rate_setup(9950,293179
-ath_setcurmode(9997,294477
-		u_int		rate;10001,294636
-		u_int16_t	timeOn;10002,294676
-		u_int16_t	timeOff;10003,294720
-athff_approx_txtime(10064,296607
-athff_can_aggregate(10099,297800
-#define US_PER_4MS 10108,298132
-#define	MIN(10109,298156
-#undef US_PER_4MS10148,299257
-#undef MIN10149,299275
-ath_printrxbuf(10156,299325
-ath_printtxbuf(10178,300194
-ath_getstats(10207,301309
-ath_set_mac_address(10230,301994
-ath_change_mtu(10259,302702
-ath_ioctl_diag(10291,303568
-ath_ioctl(10346,304948
-	ATH_SLOTTIME	10404,306552
-	ATH_ACKTIMEOUT	10405,306572
-	ATH_CTSTIMEOUT	10406,306594
-	ATH_SOFTLED	10407,306616
-	ATH_LEDPIN	10408,306635
-	ATH_COUNTRYCODE	10409,306653
-	ATH_REGDOMAIN	10410,306676
-	ATH_DEBUG	10411,306697
-	ATH_TXANTENNA	10412,306714
-	ATH_RXANTENNA	10413,306735
-	ATH_DIVERSITY	10414,306757
-	ATH_TXINTRPERIOD	10415,306779
-	ATH_FFTXQMIN	10416,306803
-	ATH_XR_POLL_PERIOD	10417,306824
-	ATH_XR_POLL_COUNT	10418,306850
-	ATH_ACKRATE	10419,306875
-	ATH_RP 10420,306895
-	ATH_RP_PRINT 10421,306919
-	ATH_RP_PRINT_ALL 10422,306943
-	ATH_RP_PRINT_MEM 10423,306968
-	ATH_RP_PRINT_MEM_ALL 10424,306993
-	ATH_RP_FLUSH 10425,307022
-	ATH_PANIC 10426,307046
-	ATH_RP_IGNORED 10427,307077
-	ATH_RADAR_IGNORED 10428,307101
-	ATH_MAXVAPS 10429,307132
-ATH_SYSCTL_DECL(10433,307169
-static int mincalibrate 10690,312715
-static int maxint 10691,312765
-static const ctl_table ath_sysctl_template[ath_sysctl_template10693,312816
-ath_dynamic_sysctl_register(10858,316974
-ath_dynamic_sysctl_unregister(10923,319094
-ath_announce(10943,319545
-#define	HAL_MODE_DUALBAND	10945,319584
-#undef HAL_MODE_DUALBAND11001,321264
-static ctl_table ath_static_sysctls[ath_static_sysctls11008,321422
-static ctl_table ath_ath_table[ath_ath_table11057,322572
-static ctl_table ath_root_table[ath_root_table11064,322717
-static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header11071,322858
-ath_sysctl_register(11074,322915
-ath_sysctl_unregister(11086,323138
-ath_get_hal_status_desc(11094,323310
-ath_get_txcont_adj_ratecode(11106,323624
-txcont_configure_radio(11142,324659
-#define AR5K_AR5212_TXCFG	11291,329909
-#define AR5K_AR5212_TXCFG_TXCONT_ENABLE	11292,329945
-#define AR5K_AR5212_RSSI_THR	11293,329998
-#define AR5K_AR5212_PHY_NF	11294,330037
-#define AR5K_AR5212_ADDAC_TEST	11295,330074
-#define AR5K_AR5212_DIAG_SW	11296,330115
-#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS	11297,330153
-#define AR5K_AR5212_DIAG_SW_IGNORENAV	11298,330206
-#define AR5K_AR5212_DCU_GBL_IFS_SIFS	11299,330257
-#define AR5K_AR5212_DCU_GBL_IFS_SIFS_M	11300,330303
-#define AR5K_AR5212_DCU_GBL_IFS_EIFS	11301,330355
-#define AR5K_AR5212_DCU_GBL_IFS_EIFS_M	11302,330401
-#define AR5K_AR5212_DCU_GBL_IFS_SLOT	11303,330453
-#define AR5K_AR5212_DCU_GBL_IFS_SLOT_M	11304,330499
-#define AR5K_AR5212_DCU_GBL_IFS_MISC	11305,330551
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE	11306,330597
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE	11307,330657
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	11308,330717
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR	11309,330779
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	11310,330837
-#define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS	11311,330899
-#define	AR5K_AR5212_DCU_CHAN_TIME_DUR	11312,330958
-#define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE	11313,331009
-#define	AR5K_AR5212_QCU(11314,331062
-#define	AR5K_AR5212_DCU(11315,331130
-#define AR5K_AR5212_DCU_MISC(11316,331203
-#define AR5K_AR5212_DCU_CHAN_TIME(11317,331266
-#undef AR5K_AR5212_TXCFG11375,333894
-#undef AR5K_AR5212_TXCFG_TXCONT_ENABLE11376,333919
-#undef AR5K_AR5212_RSSI_THR11377,333958
-#undef AR5K_AR5212_PHY_NF11378,333986
-#undef AR5K_AR5212_ADDAC_TEST11379,334012
-#undef AR5K_AR5212_DIAG_SW11380,334042
-#undef AR5K_AR5212_DIAG_SW_IGNOREPHYCS11381,334069
-#undef AR5K_AR5212_DIAG_SW_IGNORENAV11382,334108
-#undef AR5K_AR5212_DCU_GBL_IFS_SIFS11383,334145
-#undef AR5K_AR5212_DCU_GBL_IFS_SIFS_M11384,334181
-#undef AR5K_AR5212_DCU_GBL_IFS_EIFS11385,334219
-#undef AR5K_AR5212_DCU_GBL_IFS_EIFS_M11386,334255
-#undef AR5K_AR5212_DCU_GBL_IFS_SLOT11387,334293
-#undef AR5K_AR5212_DCU_GBL_IFS_SLOT_M11388,334329
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC11389,334367
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE11390,334403
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE11391,334450
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC11392,334497
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR11393,334547
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY11394,334592
-#undef AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS11395,334642
-#undef AR5K_AR5212_DCU_CHAN_TIME_DUR11396,334688
-#undef AR5K_AR5212_DCU_CHAN_TIME_ENABLE11397,334725
-#undef AR5K_AR5212_QCU11398,334765
-#undef AR5K_AR5212_DCU11399,334788
-#undef AR5K_AR5212_DCU_MISC11400,334811
-#undef AR5K_AR5212_DCU_CHAN_TIME11401,334839
-txcont_queue_packet(11416,335192
-txcont_on(11549,339491
-txcont_off(11570,340065
-ath_get_dfs_testmode(11584,340364
-ath_set_dfs_testmode(11611,341615
-ath_get_txcont(11621,341919
-ath_set_txcont(11631,342192
-ath_set_txcont_power(11639,342415
-ath_get_txcont_power(11657,342914
-ath_set_txcont_rate(11667,343220
-ath_get_txcont_rate(11684,343698
-ath_set_dfs_cac_time(11694,344015
-ath_get_dfs_cac_time(11704,344342
-ath_set_dfs_excl_period(11724,345232
-ath_get_dfs_excl_period(11733,345481
-ath_test_radar(11745,345836
-ath_dump_hal_map(11760,346365
-ath_interrupt_dfs_cac(11772,346749
-ath_radar_detected(11804,347924
-ath_rcv_dev_event(11867,349831
-ath_print_register_details(11892,350491
-#define AR5K_AR5212_PHY_ERR_FIL	11896,350640
-#define AR5K_AR5212_PHY_ERR_FIL_RADAR	11897,350684
-#define AR5K_AR5212_PHY_ERR_FIL_OFDM	11898,350733
-#define AR5K_AR5212_PHY_ERR_FIL_CCK 11899,350781
-#define AR5K_AR5212_PIMR	11900,350832
-#define AR5K_AR5212_PISR	11901,350869
-#define AR5K_AR5212_PIMR_RXOK	11902,350906
-#define AR5K_AR5212_PIMR_RXDESC	11903,350948
-#define AR5K_AR5212_PIMR_RXERR	11904,350992
-#define AR5K_AR5212_PIMR_RXNOFRM	11905,351035
-#define AR5K_AR5212_PIMR_RXEOL	11906,351079
-#define AR5K_AR5212_PIMR_RXORN	11907,351122
-#define AR5K_AR5212_PIMR_TXOK	11908,351165
-#define AR5K_AR5212_PIMR_TXDESC	11909,351207
-#define AR5K_AR5212_PIMR_TXERR	11910,351251
-#define AR5K_AR5212_PIMR_TXNOFRM	11911,351294
-#define AR5K_AR5212_PIMR_TXEOL	11912,351338
-#define AR5K_AR5212_PIMR_TXURN	11913,351381
-#define AR5K_AR5212_PIMR_MIB	11914,351424
-#define AR5K_AR5212_PIMR_SWI	11915,351465
-#define AR5K_AR5212_PIMR_RXPHY	11916,351506
-#define AR5K_AR5212_PIMR_RXKCM	11917,351549
-#define AR5K_AR5212_PIMR_SWBA	11918,351592
-#define AR5K_AR5212_PIMR_BRSSI	11919,351634
-#define AR5K_AR5212_PIMR_BMISS	11920,351677
-#define AR5K_AR5212_PIMR_HIUERR	11921,351720
-#define AR5K_AR5212_PIMR_BNR	11922,351764
-#define AR5K_AR5212_PIMR_RXCHIRP	11923,351805
-#define AR5K_AR5212_PIMR_TIM	11924,351849
-#define AR5K_AR5212_PIMR_BCNMISC	11925,351890
-#define AR5K_AR5212_PIMR_GPIO	11926,351934
-#define AR5K_AR5212_PIMR_QCBRORN	11927,351976
-#define AR5K_AR5212_PIMR_QCBRURN	11928,352020
-#define AR5K_AR5212_PIMR_QTRIG	11929,352064
-#undef AR5K_AR5212_PHY_ERR_FIL12011,356665
-#undef AR5K_AR5212_PHY_ERR_FIL_RADAR12012,356696
-#undef AR5K_AR5212_PHY_ERR_FIL_OFDM12013,356733
-#undef AR5K_AR5212_PHY_ERR_FIL_CCK12014,356769
-#undef AR5K_AR5212_PIMR12015,356804
-#undef AR5K_AR5212_PISR12016,356828
-#undef AR5K_AR5212_PIMR_RXOK12017,356852
-#undef AR5K_AR5212_PIMR_RXDESC12018,356881
-#undef AR5K_AR5212_PIMR_RXERR12019,356912
-#undef AR5K_AR5212_PIMR_RXNOFRM12020,356942
-#undef AR5K_AR5212_PIMR_RXEOL12021,356974
-#undef AR5K_AR5212_PIMR_RXORN12022,357004
-#undef AR5K_AR5212_PIMR_TXOK12023,357034
-#undef AR5K_AR5212_PIMR_TXDESC12024,357063
-#undef AR5K_AR5212_PIMR_TXERR12025,357094
-#undef AR5K_AR5212_PIMR_TXNOFRM12026,357124
-#undef AR5K_AR5212_PIMR_TXEOL12027,357156
-#undef AR5K_AR5212_PIMR_TXURN12028,357186
-#undef AR5K_AR5212_PIMR_MIB12029,357216
-#undef AR5K_AR5212_PIMR_SWI12030,357244
-#undef AR5K_AR5212_PIMR_RXPHY12031,357272
-#undef AR5K_AR5212_PIMR_RXKCM12032,357302
-#undef AR5K_AR5212_PIMR_SWBA12033,357332
-#undef AR5K_AR5212_PIMR_BRSSI12034,357361
-#undef AR5K_AR5212_PIMR_BMISS12035,357391
-#undef AR5K_AR5212_PIMR_HIUERR12036,357421
-#undef AR5K_AR5212_PIMR_BNR12037,357452
-#undef AR5K_AR5212_PIMR_RXCHIRP12038,357480
-#undef AR5K_AR5212_PIMR_TIM12039,357512
-#undef AR5K_AR5212_PIMR_BCNMISC12040,357540
-#undef AR5K_AR5212_PIMR_GPIO12041,357572
-#undef AR5K_AR5212_PIMR_QCBRORN12042,357601
-#undef AR5K_AR5212_PIMR_QCBRURN12043,357633
-#undef AR5K_AR5212_PIMR_QTRIG12044,357665
-ath_print_register_delta(12055,358108
-#define BIT_UNCHANGED_ON 12058,358233
-#define BIT_UNCHANGED_OFF 12059,358263
-#define BIT_CHANGED_ON 12060,358293
-#define BIT_CHANGED_OFF 12061,358323
-#define NYBBLE_SEPARATOR 12062,358353
-#define BYTE_SEPARATOR 12063,358383
-#define BIT_STATUS(12064,358413
-#undef BIT_UNCHANGED_ON12137,360198
-#undef BIT_UNCHANGED_OFF12138,360222
-#undef BIT_CHANGED_ON12139,360247
-#undef BIT_CHANGED_OFF12140,360269
-#undef NYBBLE_SEPARATOR12141,360292
-#undef BYTE_SEPARATOR12142,360316
-#undef BIT_STATUS12143,360338
-ath_lookup_register_name(12152,360664
-#define keytable_entry_reg_count 12444,378428
-#define keytable_entry_size 12445,378465
-#undef keytable_entry_reg_count12463,379241
-#undef keytable_entry_size12464,379273
-ath_print_register(12492,379966
-ath_regdump_filter(12505,380454
-	#define UNFILTERED 12509,380602
-	#define FILTERED 12510,380631
-	#undef UNFILTERED12533,381610
-	#undef FILTERED12534,381629
-ath_ar5212_registers_dump(12541,381800
-ath_ar5212_registers_dump_delta(12561,382460
-ath_ar5212_registers_mark(12588,383353
-ath_read_register(12603,383789
-ath_write_register(12633,384821
-ath_registers_dump(12661,385595
-ath_registers_mark(12673,385962
-ath_registers_dump_delta(12685,386286
-ath_return_txbuf_locked_debug(12696,386576
-ath_return_txbuf_debug(12742,387851
-ath_return_txbuf_list_debug(12760,388310
-ath_return_txbuf_list_locked_debug(12786,388946
-cleanup_ath_buf_debug(12812,389624
-
 ath_rate/amrr/amrr.c,1441
 #define	AMRR_DEBUG73,2747
 #define	DPRINTF(75,2784
@@ -963,12 +478,12 @@ exit_ath_rate_amrr(587,17095
 ath_rate/amrr/ath_rate_amrr.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__44,1257
+__attribute_used__41,1142
 
 ath_rate/sample/ath_rate_sample.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__45,1292
+__attribute_used__42,1178
 
 ath_rate/sample/sample.c,1314
 #define	SAMPLE_DEBUG71,2552
@@ -1054,12 +569,12 @@ exit_ath_rate_onoe(533,15480
 ath_rate/onoe/ath_rate_onoe.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__41,1168
+__attribute_used__38,1054
 
 ath_rate/minstrel/ath_rate_minstrel.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__50,1455
+__attribute_used__47,1341
 
 ath_rate/minstrel/minstrel.c,1337
 #define	MINSTREL_DEBUG120,5153
@@ -1104,7 +619,7 @@ static void __exit ath_rate_minstrel_exit(1074,33619
 net80211/wlan_scan_sta.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__57,1771
+__attribute_used__52,1587
 
 net80211/ieee80211_output.c,1782
 #define	EXPORT_SYMTAB35,1787
@@ -1168,7 +683,7 @@ ieee80211_getcfframe(2237,65096
 net80211/wlan_wep.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__41,1144
+__attribute_used__38,1030
 
 net80211/ieee80211_node.c,2728
 #define	EXPORT_SYMTAB35,1786
@@ -1287,10 +802,10 @@ struct ar5212_openbsd_desc 90,2647
 ieee80211_monitor_encap(129,3372
 ieee80211_input_monitor(301,8013
 
-net80211/wlan_acl.mod.c,87
+net80211/wlan_acl.mod.c,86
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__39,1076
+__attribute_used__34,893
 
 net80211/ieee80211_crypto_ccmp.c,861
 #define AES_BLOCK_LEN 58,2285
@@ -1817,12 +1332,12 @@ ieee80211_sta_pwrsave(348,9956
 net80211/wlan_scan_ap.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__53,1596
+__attribute_used__48,1412
 
 net80211/wlan_tkip.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__43,1247
+__attribute_used__40,1132
 
 net80211/ieee80211_proto.c,3047
 #define	EXPORT_SYMTAB35,1787
@@ -1903,7 +1418,7 @@ ieee80211_start_xrvap(1956,56980
 net80211/wlan.mod.c,88
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__109,3469
+__attribute_used__105,3313
 
 net80211/if_media.c,1873
 #define	EXPORT_SYMTAB49,2240
@@ -2172,7 +1687,7 @@ exit_wlan(1007,27019
 net80211/wlan_ccmp.mod.c,87
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__44,1268
+__attribute_used__41,1153
 
 net80211/ieee80211_skb.c,2261
 #define	EXPORT_SYMTAB31,1568
@@ -2356,7 +1871,7 @@ ieee80211_discard_mac(4428,129749
 ath/ath_pci.mod.c,88
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__165,5924
+__attribute_used__162,5829
 
 ath/if_ath_pci.c,583
 #define	EXPORT_SYMTAB42,2051
@@ -2459,554 +1974,557 @@ void ath_rp_print_mem(1642,49030
 void ath_rp_print(1679,50152
 void ath_rp_flush(1715,51267
 
-ath/if_ath.c,20811
-#define	AR_DEBUG45,2109
-#define LE_READ_2(106,3411
-#define LE_READ_4(109,3527
-#define DEF_RATE_CTL 116,3783
-#define DEF_RATE_CTL 118,3838
-	ATH_LED_TX,122,3883
-	ATH_LED_RX,123,3896
-	ATH_LED_POLL,124,3909
-#define ath_return_txbuf(286,11749
-#define ath_return_txbuf_locked(295,12145
-#define ath_return_txbuf_list(304,12569
-#define ath_return_txbuf_list_locked(313,12983
-#define cleanup_ath_buf(322,13425
-#define AR5K_TUNE_RSSI_THRES 335,13981
-#define AR5K_RSSI_THR	336,14025
-#define AR5K_RSSI_THR_M	339,14083
-#define AR5K_RSSI_THR_BMISS_5211	341,14195
-#define	AR5K_RSSI_THR_BMISS_S	342,14286
-#define AR5K_TUNE_BMISS_THRES 343,14319
-#define	AR5K_PHY_BASE	345,14362
-#define	AR5K_PHY(346,14393
-#define AR5K_PHY_SHIFT_2GHZ	347,14446
-#define AR5K_PHY_SHIFT_5GHZ	348,14486
-#define EWA_PRINTK(353,14546
-#define EWA_PRINTK(357,14683
-#define ath_cac_running_dbgmsg(380,15552
-#define ath_chan_unavail_dbgmsg(382,15632
-static int ath_calinterval 409,16780
-static int ath_countrycode 410,16832
-static int ath_outdoor 411,16894
-static int ath_xchanmode 412,16955
-static int ath_maxvaps 413,17023
-static char *autocreate autocreate414,17102
-static char *ratectl ratectl415,17134
-static int rfkill 416,17171
-static int tpc 417,17194
-static int countrycode 418,17214
-static int maxvaps 419,17243
-static int outdoor 420,17268
-static int xchanmode 421,17293
-static int beacon_cal 422,17320
-static const char *hal_status_desc[hal_status_desc424,17348
-static struct notifier_block ath_event_block 443,17887
-static int	ath_debug 488,19369
-static int	ieee80211_debug 500,19754
-#define ATH_SETUP_XR_VAP(510,20049
-#define ATH_SET_VAP_BSSID_MASK(531,20846
-#define ATH_GET_VAP_ID(533,20949
-#define ATH_SET_VAP_BSSID(534,21015
-ath_attach(543,21190
-ath_detach(1180,40112
-ath_vap_create(1239,41646
-ath_vap_delete(1499,49492
-ath_suspend(1600,52382
-ath_resume(1609,52535
-ath_chan_unavail(1620,52792
-_ath_cac_running_dbgmsg(1627,52984
-_ath_chan_unavail_dbgmsg(1637,53239
-ath_extend_tsf(1654,53785
-#define TSTAMP_RX_MASK 1656,53835
-ath_uapsd_processtriggers(1673,54157
-#define	PA2DESC(1693,54677
-#undef PA2DESC2164,69216
-ath_intr(2172,69368
-ath_fatal_tasklet(2369,76449
-ath_rxorn_tasklet(2379,76653
-ath_bmiss_tasklet(2389,76863
-ath_chan2flags(2405,77350
-ath_init(2432,77988
-ath_stop_locked(2566,81567
-static void ath_set_beacon_cal(2627,83176
-ath_stop(2648,83705
-ar_device(2680,84475
-ath_set_ack_bitrate(2725,85354
-#define AR5K_AR5212_STA_ID1 2730,85570
-#define AR5K_AR5212_STA_ID1_ACKCTS_6MB 2731,85625
-#define AR5K_AR5212_STA_ID1_BASE_RATE_11B 2732,85684
-#undef AR5K_AR5212_STA_ID12741,86035
-#undef AR5K_AR5212_STA_ID1_BASE_RATE_11B2742,86062
-#undef AR5K_AR5212_STA_ID1_ACKCTS_6MB2743,86103
-ath_reset(2757,86495
-ath_desc_swap(2834,88658
-ath_tx_txqaddbuf(2851,89039
-dot11_to_ratecode(2916,91057
-ath_tx_startraw(2927,91330
-ath_ff_neverflushtestdone(3034,94455
-ath_ff_ageflushtestdone(3040,94549
-ath_ffstageq_flush(3053,94815
-ath_get_buffers_available(3097,96003
-ath_get_buffer_count(3106,96251
-_take_txbuf_locked_debug(3115,96446
-_take_txbuf_debug(3169,98141
-#define ath_take_txbuf_locked(3187,98620
-#define ath_take_txbuf_locked_debug(3189,98711
-#define ath_take_txbuf_mgmt_locked(3192,98817
-#define ath_take_txbuf_mgmt_locked_debug(3194,98913
-#define ath_take_txbuf(3197,99024
-#define ath_take_txbuf_debug(3199,99101
-#define ath_take_txbuf_mgmt(3202,99193
-#define ath_take_txbuf_mgmt_debug(3204,99275
-#define ath_take_txbuf_locked(3209,99415
-#define ath_take_txbuf_locked_debug(3211,99480
-#define ath_take_txbuf_mgmt_locked(3214,99566
-#define ath_take_txbuf_mgmt_locked_debug(3216,99636
-#define ath_take_txbuf(3219,99727
-#define ath_take_txbuf_debug(3221,99778
-#define ath_take_txbuf_mgmt(3224,99850
-#define ath_take_txbuf_mgmt_debug(3226,99906
-ath_hardstart(3240,100237
-ath_mgtstart(3571,109110
-ath_keyprint(3618,110195
-ath_keyset_tkip(3679,111568
-#define	IEEE80211_KEY_XR	3682,111696
-#undef IEEE80211_KEY_XR3731,113410
-ath_keyset(3740,113620
-key_alloc_2pair(3801,115566
-key_alloc_pair(3852,116861
-key_alloc_single(3896,117797
-ath_key_alloc(3930,118781
-ath_key_delete(3994,120810
-ath_key_set(4070,122971
-ath_key_update_begin(4086,123454
-ath_key_update_end(4107,123990
-ath_calcrxfilter(4137,125027
-#define	RX_FILTER_PRESERVE	4139,125068
-#undef RX_FILTER_PRESERVE4162,126012
-ath_merge_mcast(4173,126298
-ath_mode_init(4198,126969
-ath_setslottime(4230,127740
-ath_updateslot(4249,128231
-ath_beacon_dturbo_config(4275,128852
-#define	IS_CAPABLE(4277,128923
-#undef IS_CAPABLE4318,130351
-ath_beacon_dturbo_update(4326,130510
-ath_check_beacon_done(4430,134036
-ath_turbo_switch_mode(4467,134820
-ath_beaconq_setup(4515,136178
-ath_beaconq_config(4543,136798
-#define	ATH_EXPONENT_TO_VALUE(4545,136841
-#undef ATH_EXPONENT_TO_VALUE4582,137962
-ath_beacon_alloc(4586,138005
-ath_beacon_alloc_internal(4602,138350
-ath_beacon_setup(4681,140889
-#define	USE_SHPREAMBLE(4683,140950
-#undef USE_SHPREAMBLE4778,143737
-ath_beacon_generate(4785,143848
-ath_beacon_send(4949,148553
-ath_bstuck_tasklet(5125,154321
-ath_beacon_return(5147,154880
-ath_beacon_free(5157,155089
-ath_beacon_config(5186,156230
-#define	FUDGE	5230,157604
-#undef FUDGE5292,159701
-ath_descdma_setup(5434,163917
-#define	DS2PHYS(5438,164043
-#undef DS2PHYS5486,165287
-ath_descdma_cleanup(5490,165317
-ath_desc_alloc(5506,165734
-ath_desc_free(5537,166480
-ath_node_alloc_debug(5552,166923
-ath_node_cleanup_debug(5587,167969
-ath_node_free_debug(5645,169655
-ath_node_getrssi(5664,170023
-#define	HAL_EP_RND(5666,170075
-#undef HAL_EP_RND5682,170626
-ath_node_move_data(5693,170806
-#define ath_alloc_skb(6057,179457
-ath_alloc_skb_debug(6059,179552
-ath_rxbuf_init(6081,180020
-ath_skb_removepad(6185,183230
-ath_capture(6215,184059
-ath_recv_mgmt(6246,184965
-ath_setdefantenna(6370,188736
-ath_rx_tasklet(6383,189031
-#define	PA2DESC(6385,189065
-#undef PA2DESC6676,197732
-ath_grppoll_period_update(6682,197784
-ath_grppoll_txq_update(6744,199199
-ath_grppoll_txq_setup(6769,199820
-static void ath_grppoll_start(6819,201111
-	struct rate_to_str_map 6840,201773
-		u_int8_t str[str6841,201799
-		int ratekbps;6842,201818
-#define MAX_GRPPOLL_RATE 6856,202058
-#define	USE_SHPREAMBLE(6857,202085
-#undef USE_SHPREAMBLE7041,207818
-static void ath_grppoll_stop(7044,207843
-ath_txq_setup(7089,208829
-ath_tx_setup(7203,212232
-ath_txq_update(7225,212693
-#define	ATH_EXPONENT_TO_VALUE(7227,212761
-#define	ATH_TXOP_TO_US(7228,212805
-#undef ATH_TXOP_TO_US7249,213534
-#undef ATH_EXPONENT_TO_VALUE7250,213556
-ath_wme_update(7257,213666
-ath_uapsd_flush(7274,214167
-ath_tx_cleanupq(7312,215274
-ath_tx_cleanup(7332,215730
-ath_get_icvlen(7344,215968
-ath_get_ivlen(7356,216238
-ath_tx_findindex(7375,216605
-ath_tx_uapsdqueue(7393,216861
-ath_tx_start(7463,219081
-#define	MIN(7466,219208
-#undef MIN8082,238037
-ath_tx_processq(8090,238180
-#define TSTAMP_TX_MASK 8258,243066
-txqactive(8310,244392
-ath_tx_tasklet_q0(8322,244672
-ath_tx_tasklet_q0123(8343,245176
-ath_tx_tasklet(8378,246094
-ath_tx_timeout(8397,246548
-ath_tx_draintxq(8418,247005
-ath_tx_stopdma(8447,247683
-ath_draintxq(8461,248032
-ath_stoprecv(8489,248820
-#define	PA2DESC(8491,248857
-#undef PA2DESC8517,249844
-ath_startrecv(8524,249925
-ath_flushrecv(8566,251068
-ath_chan_change(8577,251289
-ath_chan_set(8611,252236
-ath_mib_enable(8776,257703
-ath_calibrate(8789,257971
-ath_scan_start(8865,260169
-ath_scan_end(8885,260655
-ath_set_channel(8903,261119
-ath_set_coverageclass(8920,261629
-ath_mhz2ieee(8930,261810
-ath_newstate(8942,262032
-ath_dfs_cac_completed(9262,271932
-ath_comp_set(9374,275337
-ath_setup_comp(9382,275511
-#define	IEEE80211_KEY_XR	9384,275567
-#undef IEEE80211_KEY_XR9424,276741
-ath_setup_stationkey(9437,277093
-ath_setup_stationwepkey(9474,278190
-ath_setup_keycacheslot(9566,281080
-ath_newassoc(9597,282011
-ath_getchannels(9629,282902
-ath_led_done(9780,287784
-ath_led_off(9792,288023
-ath_led_blink(9806,288369
-ath_led_event(9818,288709
-set_node_txpower(9841,289260
-ath_set_clamped_maxtxpower(9852,289659
-ath_get_clamped_maxtxpower(9864,290106
-ath_get_real_maxtxpower(9879,290702
-ath_update_txpow(9895,291145
-ath_xr_rate_setup(9930,292457
-ath_setup_subrates(9959,293248
-ath_rate_setup(10002,294523
-ath_setcurmode(10049,295821
-		u_int		rate;10053,295980
-		u_int16_t	timeOn;10054,296020
-		u_int16_t	timeOff;10055,296064
-athff_approx_txtime(10116,297951
-athff_can_aggregate(10151,299144
-#define US_PER_4MS 10160,299476
-#define	MIN(10161,299500
-#undef US_PER_4MS10200,300601
-#undef MIN10201,300619
-ath_printrxbuf(10208,300669
-ath_printtxbuf(10230,301538
-ath_getstats(10259,302653
-ath_set_mac_address(10282,303338
-ath_change_mtu(10311,304046
-ath_ioctl_diag(10343,304912
-ath_ioctl(10398,306292
-	ATH_SLOTTIME	10456,307896
-	ATH_ACKTIMEOUT	10457,307916
-	ATH_CTSTIMEOUT	10458,307938
-	ATH_SOFTLED	10459,307960
-	ATH_LEDPIN	10460,307979
-	ATH_COUNTRYCODE	10461,307997
-	ATH_REGDOMAIN	10462,308020
-	ATH_DEBUG	10463,308041
-	ATH_TXANTENNA	10464,308058
-	ATH_RXANTENNA	10465,308079
-	ATH_DIVERSITY	10466,308101
-	ATH_TXINTRPERIOD	10467,308123
-	ATH_FFTXQMIN	10468,308147
-	ATH_XR_POLL_PERIOD	10469,308168
-	ATH_XR_POLL_COUNT	10470,308194
-	ATH_ACKRATE	10471,308219
-	ATH_RP 10472,308239
-	ATH_RP_PRINT 10473,308263
-	ATH_RP_PRINT_ALL 10474,308287
-	ATH_RP_PRINT_MEM 10475,308312
-	ATH_RP_PRINT_MEM_ALL 10476,308337
-	ATH_RP_FLUSH 10477,308366
-	ATH_PANIC 10478,308390
-	ATH_RP_IGNORED 10479,308421
-	ATH_RADAR_IGNORED 10480,308445
-	ATH_MAXVAPS 10481,308476
-	ATH_NOCCA 10483,308515
-ATH_SYSCTL_DECL(10488,308568
-static int mincalibrate 10760,314517
-static int maxint 10761,314567
-static const ctl_table ath_sysctl_template[ath_sysctl_template10763,314618
-ath_dynamic_sysctl_register(10936,318975
-ath_dynamic_sysctl_unregister(11001,321095
-ath_announce(11021,321546
-#define	HAL_MODE_DUALBAND	11023,321585
-#undef HAL_MODE_DUALBAND11079,323265
-static ctl_table ath_static_sysctls[ath_static_sysctls11086,323423
-static ctl_table ath_ath_table[ath_ath_table11135,324573
-static ctl_table ath_root_table[ath_root_table11142,324718
-static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header11149,324859
-ath_sysctl_register(11152,324916
-ath_sysctl_unregister(11164,325139
-ath_get_hal_status_desc(11172,325311
-ath_get_txcont_adj_ratecode(11184,325625
-static int disable_cca(11221,326642
-#define AR5K_AR5212_PHY_NF	11231,326904
-#define AR5K_AR5212_DIAG_SW	11232,326941
-#define AR5K_AR5212_ADDAC_TEST	11233,326979
-#define AR5K_AR5212_DIAG_SW	11234,327020
-#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS	11235,327058
-#define AR5K_AR5212_DIAG_SW_IGNORENAV	11236,327111
-#define AR5K_AR5212_RSSI_THR	11237,327162
-#define AR5K_AR5212_DCU_GBL_IFS_SIFS	11238,327201
-#define AR5K_AR5212_DCU_GBL_IFS_SIFS_M	11239,327247
-#define AR5K_AR5212_DCU_GBL_IFS_EIFS	11240,327299
-#define AR5K_AR5212_DCU_GBL_IFS_EIFS_M	11241,327345
-#define AR5K_AR5212_DCU_GBL_IFS_SLOT	11242,327397
-#define AR5K_AR5212_DCU_GBL_IFS_SLOT_M	11243,327443
-#define AR5K_AR5212_DCU_GBL_IFS_MISC	11244,327495
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR	11245,327541
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	11246,327599
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	11247,327661
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE	11248,327723
-#define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS	11249,327783
-#define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE	11250,327842
-#define	AR5K_AR5212_DCU(11251,327895
-#define	AR5K_AR5212_QCU(11252,327968
-#define AR5K_AR5212_DCU_CHAN_TIME(11253,328036
-#define AR5K_AR5212_DCU_MISC(11254,328104
-#define	AR5K_AR5212_DCU_CHAN_TIME_DUR	11255,328167
-#undef AR5K_AR5212_PHY_NF11329,330958
-#undef AR5K_AR5212_DIAG_SW11330,330984
-#undef AR5K_AR5212_ADDAC_TEST11331,331011
-#undef AR5K_AR5212_DIAG_SW11332,331041
-#undef AR5K_AR5212_DIAG_SW_IGNOREPHYCS11333,331068
-#undef AR5K_AR5212_DIAG_SW_IGNORENAV11334,331107
-#undef AR5K_AR5212_RSSI_THR11335,331144
-#undef AR5K_AR5212_DCU_GBL_IFS_SIFS11336,331172
-#undef AR5K_AR5212_DCU_GBL_IFS_SIFS_M11337,331208
-#undef AR5K_AR5212_DCU_GBL_IFS_EIFS11338,331246
-#undef AR5K_AR5212_DCU_GBL_IFS_EIFS_M11339,331282
-#undef AR5K_AR5212_DCU_GBL_IFS_SLOT11340,331320
-#undef AR5K_AR5212_DCU_GBL_IFS_SLOT_M11341,331356
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC11342,331394
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR11343,331430
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY11344,331475
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC11345,331525
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE11346,331575
-#undef AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS11347,331622
-#undef AR5K_AR5212_DCU_CHAN_TIME_ENABLE11348,331668
-#undef AR5K_AR5212_DCU11349,331708
-#undef AR5K_AR5212_QCU11350,331731
-#undef AR5K_AR5212_DCU_CHAN_TIME11351,331754
-#undef AR5K_AR5212_DCU_MISC11352,331787
-#undef AR5K_AR5212_DCU_CHAN_TIME_DUR11353,331815
-txcont_configure_radio(11361,331923
-#define AR5K_AR5212_TXCFG	11510,337173
-#define AR5K_AR5212_TXCFG_TXCONT_ENABLE	11511,337209
-#define AR5K_AR5212_RSSI_THR	11512,337262
-#define AR5K_AR5212_PHY_NF	11513,337301
-#define AR5K_AR5212_ADDAC_TEST	11514,337338
-#define AR5K_AR5212_DIAG_SW	11515,337379
-#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS	11516,337417
-#define AR5K_AR5212_DIAG_SW_IGNORENAV	11517,337470
-#define AR5K_AR5212_DCU_GBL_IFS_SIFS	11518,337521
-#define AR5K_AR5212_DCU_GBL_IFS_SIFS_M	11519,337567
-#define AR5K_AR5212_DCU_GBL_IFS_EIFS	11520,337619
-#define AR5K_AR5212_DCU_GBL_IFS_EIFS_M	11521,337665
-#define AR5K_AR5212_DCU_GBL_IFS_SLOT	11522,337717
-#define AR5K_AR5212_DCU_GBL_IFS_SLOT_M	11523,337763
-#define AR5K_AR5212_DCU_GBL_IFS_MISC	11524,337815
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE	11525,337861
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE	11526,337921
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	11527,337981
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR	11528,338043
-#define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	11529,338101
-#define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS	11530,338163
-#define	AR5K_AR5212_DCU_CHAN_TIME_DUR	11531,338222
-#define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE	11532,338273
-#define	AR5K_AR5212_QCU(11533,338326
-#define	AR5K_AR5212_DCU(11534,338394
-#define AR5K_AR5212_DCU_MISC(11535,338467
-#define AR5K_AR5212_DCU_CHAN_TIME(11536,338530
-#undef AR5K_AR5212_TXCFG11594,341158
-#undef AR5K_AR5212_TXCFG_TXCONT_ENABLE11595,341183
-#undef AR5K_AR5212_RSSI_THR11596,341222
-#undef AR5K_AR5212_PHY_NF11597,341250
-#undef AR5K_AR5212_ADDAC_TEST11598,341276
-#undef AR5K_AR5212_DIAG_SW11599,341306
-#undef AR5K_AR5212_DIAG_SW_IGNOREPHYCS11600,341333
-#undef AR5K_AR5212_DIAG_SW_IGNORENAV11601,341372
-#undef AR5K_AR5212_DCU_GBL_IFS_SIFS11602,341409
-#undef AR5K_AR5212_DCU_GBL_IFS_SIFS_M11603,341445
-#undef AR5K_AR5212_DCU_GBL_IFS_EIFS11604,341483
-#undef AR5K_AR5212_DCU_GBL_IFS_EIFS_M11605,341519
-#undef AR5K_AR5212_DCU_GBL_IFS_SLOT11606,341557
-#undef AR5K_AR5212_DCU_GBL_IFS_SLOT_M11607,341593
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC11608,341631
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE11609,341667
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE11610,341714
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC11611,341761
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR11612,341811
-#undef AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY11613,341856
-#undef AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS11614,341906
-#undef AR5K_AR5212_DCU_CHAN_TIME_DUR11615,341952
-#undef AR5K_AR5212_DCU_CHAN_TIME_ENABLE11616,341989
-#undef AR5K_AR5212_QCU11617,342029
-#undef AR5K_AR5212_DCU11618,342052
-#undef AR5K_AR5212_DCU_MISC11619,342075
-#undef AR5K_AR5212_DCU_CHAN_TIME11620,342103
-txcont_queue_packet(11635,342456
-txcont_on(11768,346755
-txcont_off(11789,347329
-ath_get_dfs_testmode(11803,347628
-ath_set_dfs_testmode(11830,348879
-ath_get_txcont(11840,349183
-ath_set_txcont(11850,349456
-ath_set_txcont_power(11858,349679
-ath_get_txcont_power(11876,350178
-ath_set_txcont_rate(11886,350484
-ath_get_txcont_rate(11903,350962
-ath_set_dfs_cac_time(11913,351279
-ath_get_dfs_cac_time(11923,351606
-ath_set_dfs_excl_period(11943,352496
-ath_get_dfs_excl_period(11952,352745
-ath_test_radar(11964,353100
-ath_dump_hal_map(11979,353629
-ath_interrupt_dfs_cac(11991,354013
-ath_radar_detected(12023,355188
-ath_rcv_dev_event(12086,357095
-ath_print_register_details(12111,357755
-#define AR5K_AR5212_PHY_ERR_FIL	12115,357904
-#define AR5K_AR5212_PHY_ERR_FIL_RADAR	12116,357948
-#define AR5K_AR5212_PHY_ERR_FIL_OFDM	12117,357997
-#define AR5K_AR5212_PHY_ERR_FIL_CCK 12118,358045
-#define AR5K_AR5212_PIMR	12119,358096
-#define AR5K_AR5212_PISR	12120,358133
-#define AR5K_AR5212_PIMR_RXOK	12121,358170
-#define AR5K_AR5212_PIMR_RXDESC	12122,358212
-#define AR5K_AR5212_PIMR_RXERR	12123,358256
-#define AR5K_AR5212_PIMR_RXNOFRM	12124,358299
-#define AR5K_AR5212_PIMR_RXEOL	12125,358343
-#define AR5K_AR5212_PIMR_RXORN	12126,358386
-#define AR5K_AR5212_PIMR_TXOK	12127,358429
-#define AR5K_AR5212_PIMR_TXDESC	12128,358471
-#define AR5K_AR5212_PIMR_TXERR	12129,358515
-#define AR5K_AR5212_PIMR_TXNOFRM	12130,358558
-#define AR5K_AR5212_PIMR_TXEOL	12131,358602
-#define AR5K_AR5212_PIMR_TXURN	12132,358645
-#define AR5K_AR5212_PIMR_MIB	12133,358688
-#define AR5K_AR5212_PIMR_SWI	12134,358729
-#define AR5K_AR5212_PIMR_RXPHY	12135,358770
-#define AR5K_AR5212_PIMR_RXKCM	12136,358813
-#define AR5K_AR5212_PIMR_SWBA	12137,358856
-#define AR5K_AR5212_PIMR_BRSSI	12138,358898
-#define AR5K_AR5212_PIMR_BMISS	12139,358941
-#define AR5K_AR5212_PIMR_HIUERR	12140,358984
-#define AR5K_AR5212_PIMR_BNR	12141,359028
-#define AR5K_AR5212_PIMR_RXCHIRP	12142,359069
-#define AR5K_AR5212_PIMR_TIM	12143,359113
-#define AR5K_AR5212_PIMR_BCNMISC	12144,359154
-#define AR5K_AR5212_PIMR_GPIO	12145,359198
-#define AR5K_AR5212_PIMR_QCBRORN	12146,359240
-#define AR5K_AR5212_PIMR_QCBRURN	12147,359284
-#define AR5K_AR5212_PIMR_QTRIG	12148,359328
-#undef AR5K_AR5212_PHY_ERR_FIL12230,363929
-#undef AR5K_AR5212_PHY_ERR_FIL_RADAR12231,363960
-#undef AR5K_AR5212_PHY_ERR_FIL_OFDM12232,363997
-#undef AR5K_AR5212_PHY_ERR_FIL_CCK12233,364033
-#undef AR5K_AR5212_PIMR12234,364068
-#undef AR5K_AR5212_PISR12235,364092
-#undef AR5K_AR5212_PIMR_RXOK12236,364116
-#undef AR5K_AR5212_PIMR_RXDESC12237,364145
-#undef AR5K_AR5212_PIMR_RXERR12238,364176
-#undef AR5K_AR5212_PIMR_RXNOFRM12239,364206
-#undef AR5K_AR5212_PIMR_RXEOL12240,364238
-#undef AR5K_AR5212_PIMR_RXORN12241,364268
-#undef AR5K_AR5212_PIMR_TXOK12242,364298
-#undef AR5K_AR5212_PIMR_TXDESC12243,364327
-#undef AR5K_AR5212_PIMR_TXERR12244,364358
-#undef AR5K_AR5212_PIMR_TXNOFRM12245,364388
-#undef AR5K_AR5212_PIMR_TXEOL12246,364420
-#undef AR5K_AR5212_PIMR_TXURN12247,364450
-#undef AR5K_AR5212_PIMR_MIB12248,364480
-#undef AR5K_AR5212_PIMR_SWI12249,364508
-#undef AR5K_AR5212_PIMR_RXPHY12250,364536
-#undef AR5K_AR5212_PIMR_RXKCM12251,364566
-#undef AR5K_AR5212_PIMR_SWBA12252,364596
-#undef AR5K_AR5212_PIMR_BRSSI12253,364625
-#undef AR5K_AR5212_PIMR_BMISS12254,364655
-#undef AR5K_AR5212_PIMR_HIUERR12255,364685
-#undef AR5K_AR5212_PIMR_BNR12256,364716
-#undef AR5K_AR5212_PIMR_RXCHIRP12257,364744
-#undef AR5K_AR5212_PIMR_TIM12258,364776
-#undef AR5K_AR5212_PIMR_BCNMISC12259,364804
-#undef AR5K_AR5212_PIMR_GPIO12260,364836
-#undef AR5K_AR5212_PIMR_QCBRORN12261,364865
-#undef AR5K_AR5212_PIMR_QCBRURN12262,364897
-#undef AR5K_AR5212_PIMR_QTRIG12263,364929
-ath_print_register_delta(12274,365372
-#define BIT_UNCHANGED_ON 12277,365497
-#define BIT_UNCHANGED_OFF 12278,365527
-#define BIT_CHANGED_ON 12279,365557
-#define BIT_CHANGED_OFF 12280,365587
-#define NYBBLE_SEPARATOR 12281,365617
-#define BYTE_SEPARATOR 12282,365647
-#define BIT_STATUS(12283,365677
-#undef BIT_UNCHANGED_ON12356,367462
-#undef BIT_UNCHANGED_OFF12357,367486
-#undef BIT_CHANGED_ON12358,367511
-#undef BIT_CHANGED_OFF12359,367533
-#undef NYBBLE_SEPARATOR12360,367556
-#undef BYTE_SEPARATOR12361,367580
-#undef BIT_STATUS12362,367602
-ath_lookup_register_name(12371,367928
-#define keytable_entry_reg_count 12663,385692
-#define keytable_entry_size 12664,385729
-#undef keytable_entry_reg_count12682,386505
-#undef keytable_entry_size12683,386537
-ath_print_register(12711,387230
-ath_regdump_filter(12724,387718
-	#define UNFILTERED 12728,387866
-	#define FILTERED 12729,387895
-	#undef UNFILTERED12752,388874
-	#undef FILTERED12753,388893
-ath_ar5212_registers_dump(12760,389064
-ath_ar5212_registers_dump_delta(12780,389724
-ath_ar5212_registers_mark(12807,390617
-ath_read_register(12822,391053
-ath_write_register(12852,392085
-ath_registers_dump(12880,392859
-ath_registers_mark(12892,393226
-ath_registers_dump_delta(12904,393550
-ath_return_txbuf_locked_debug(12915,393840
-ath_return_txbuf_debug(12961,395115
-ath_return_txbuf_list_debug(12979,395574
-ath_return_txbuf_list_locked_debug(13005,396210
-cleanup_ath_buf_debug(13031,396888
+ath/if_ath.c,20972
+#define	AR_DEBUG74,3795
+#define LE_READ_2(135,5097
+#define LE_READ_4(138,5213
+#define DEF_RATE_CTL 145,5469
+#define DEF_RATE_CTL 147,5524
+	ATH_LED_TX,151,5569
+	ATH_LED_RX,152,5582
+	ATH_LED_POLL,153,5595
+#define ath_return_txbuf(315,13435
+#define ath_return_txbuf_locked(324,13831
+#define ath_return_txbuf_list(333,14255
+#define ath_return_txbuf_list_locked(342,14669
+#define cleanup_ath_buf(351,15111
+#define AR5K_TUNE_RSSI_THRES 364,15668
+#define AR5K_RSSI_THR	365,15712
+#define AR5K_RSSI_THR_M	368,15770
+#define AR5K_RSSI_THR_BMISS_5211	370,15882
+#define	AR5K_RSSI_THR_BMISS_S	371,15973
+#define AR5K_TUNE_BMISS_THRES 372,16006
+#define	AR5K_PHY_BASE	374,16049
+#define	AR5K_PHY(375,16080
+#define AR5K_PHY_SHIFT_2GHZ	376,16133
+#define AR5K_PHY_SHIFT_5GHZ	377,16173
+#define EWA_PRINTK(382,16233
+#define EWA_PRINTK(386,16370
+#define ath_cac_running_dbgmsg(409,17239
+#define ath_chan_unavail_dbgmsg(411,17319
+static int ath_calinterval 438,18467
+static int ath_countrycode 439,18519
+static int ath_outdoor 440,18581
+static int ath_xchanmode 441,18642
+static int ath_maxvaps 442,18710
+static char *autocreate autocreate443,18789
+static char *ratectl ratectl444,18821
+static int rfkill 445,18858
+static int tpc 446,18881
+static int countrycode 447,18901
+static int maxvaps 448,18930
+static int outdoor 449,18955
+static int xchanmode 450,18980
+static int beacon_cal 451,19007
+static const char *hal_status_desc[hal_status_desc453,19035
+static struct notifier_block ath_event_block 472,19574
+static int	ath_debug 517,21056
+static int	ieee80211_debug 529,21441
+#define ATH_SETUP_XR_VAP(539,21736
+#define ATH_SET_VAP_BSSID_MASK(560,22533
+#define ATH_GET_VAP_ID(562,22636
+#define ATH_SET_VAP_BSSID(563,22702
+ath_attach(572,22877
+ath_detach(1209,41799
+ath_vap_create(1268,43333
+ath_vap_delete(1529,51212
+ath_suspend(1630,54102
+ath_resume(1639,54255
+ath_chan_unavail(1650,54512
+_ath_cac_running_dbgmsg(1657,54704
+_ath_chan_unavail_dbgmsg(1667,54959
+ath_extend_tsf(1684,55505
+#define TSTAMP_RX_MASK 1686,55555
+ath_uapsd_processtriggers(1703,55877
+#define	PA2DESC(1723,56397
+#undef PA2DESC2194,70936
+ath_intr(2202,71088
+ath_fatal_tasklet(2399,78169
+ath_rxorn_tasklet(2409,78373
+ath_bmiss_tasklet(2419,78583
+ath_chan2flags(2435,79070
+ath_init(2462,79708
+ath_stop_locked(2598,83358
+static void ath_set_beacon_cal(2659,84967
+ath_stop(2680,85496
+ar_device(2712,86266
+ath_set_ack_bitrate(2757,87145
+#define AR5K_AR5212_STA_ID1 2762,87361
+#define AR5K_AR5212_STA_ID1_ACKCTS_6MB 2763,87416
+#define AR5K_AR5212_STA_ID1_BASE_RATE_11B 2764,87475
+#undef AR5K_AR5212_STA_ID12773,87826
+#undef AR5K_AR5212_STA_ID1_BASE_RATE_11B2774,87853
+#undef AR5K_AR5212_STA_ID1_ACKCTS_6MB2775,87894
+ath_reset(2789,88286
+ath_desc_swap(2868,90521
+ath_tx_txqaddbuf(2885,90902
+dot11_to_ratecode(2950,92920
+ath_tx_startraw(2961,93193
+ath_ff_neverflushtestdone(3068,96318
+ath_ff_ageflushtestdone(3074,96412
+ath_ffstageq_flush(3087,96678
+ath_get_buffers_available(3131,97866
+ath_get_buffer_count(3140,98114
+_take_txbuf_locked_debug(3149,98309
+_take_txbuf_debug(3203,100004
+#define ath_take_txbuf_locked(3221,100483
+#define ath_take_txbuf_locked_debug(3223,100574
+#define ath_take_txbuf_mgmt_locked(3226,100680
+#define ath_take_txbuf_mgmt_locked_debug(3228,100776
+#define ath_take_txbuf(3231,100887
+#define ath_take_txbuf_debug(3233,100964
+#define ath_take_txbuf_mgmt(3236,101056
+#define ath_take_txbuf_mgmt_debug(3238,101138
+#define ath_take_txbuf_locked(3243,101278
+#define ath_take_txbuf_locked_debug(3245,101343
+#define ath_take_txbuf_mgmt_locked(3248,101429
+#define ath_take_txbuf_mgmt_locked_debug(3250,101499
+#define ath_take_txbuf(3253,101590
+#define ath_take_txbuf_debug(3255,101641
+#define ath_take_txbuf_mgmt(3258,101713
+#define ath_take_txbuf_mgmt_debug(3260,101769
+ath_hardstart(3274,102100
+ath_mgtstart(3605,110973
+ath_keyprint(3652,112058
+ath_keyset_tkip(3713,113431
+#define	IEEE80211_KEY_XR	3716,113559
+#undef IEEE80211_KEY_XR3765,115273
+ath_keyset(3774,115483
+key_alloc_2pair(3835,117429
+key_alloc_pair(3886,118724
+key_alloc_single(3930,119660
+ath_key_alloc(3964,120644
+ath_key_delete(4028,122673
+ath_key_set(4104,124834
+ath_key_update_begin(4120,125317
+ath_key_update_end(4141,125853
+ath_calcrxfilter(4171,126890
+#define	RX_FILTER_PRESERVE	4173,126931
+#undef RX_FILTER_PRESERVE4196,127875
+ath_merge_mcast(4207,128161
+ath_mode_init(4232,128832
+ath_setslottime(4264,129603
+ath_updateslot(4283,130094
+ath_beacon_dturbo_config(4309,130715
+#define	IS_CAPABLE(4311,130786
+#undef IS_CAPABLE4352,132214
+ath_beacon_dturbo_update(4360,132373
+ath_check_beacon_done(4464,135899
+ath_turbo_switch_mode(4501,136683
+ath_beaconq_setup(4549,138041
+ath_beaconq_config(4577,138661
+#define	ATH_EXPONENT_TO_VALUE(4579,138704
+#undef ATH_EXPONENT_TO_VALUE4616,139825
+ath_beacon_alloc(4620,139868
+ath_beacon_alloc_internal(4636,140213
+ath_beacon_setup(4715,142752
+#define	USE_SHPREAMBLE(4717,142813
+#undef USE_SHPREAMBLE4812,145600
+ath_beacon_generate(4819,145711
+ath_beacon_send(4983,150416
+ath_bstuck_tasklet(5159,156184
+ath_beacon_return(5181,156743
+ath_beacon_free(5191,156952
+ath_beacon_config(5220,158093
+#define	FUDGE	5264,159467
+#undef FUDGE5326,161564
+ath_descdma_setup(5483,166124
+#define	DS2PHYS(5487,166250
+#undef DS2PHYS5535,167494
+ath_descdma_cleanup(5539,167524
+ath_desc_alloc(5555,167941
+ath_desc_free(5586,168687
+ath_node_alloc_debug(5601,169130
+ath_node_cleanup_debug(5636,170176
+ath_node_free_debug(5694,171862
+ath_node_getrssi(5713,172230
+#define	HAL_EP_RND(5715,172282
+#undef HAL_EP_RND5731,172833
+ath_node_move_data(5742,173013
+#define ath_alloc_skb(6106,181664
+ath_alloc_skb_debug(6108,181759
+ath_rxbuf_init(6130,182227
+ath_skb_removepad(6234,185437
+ath_capture(6264,186266
+ath_recv_mgmt(6295,187172
+ath_setdefantenna(6419,190943
+ath_rx_tasklet(6432,191238
+#define	PA2DESC(6434,191272
+#undef PA2DESC6725,199939
+ath_grppoll_period_update(6731,199991
+ath_grppoll_txq_update(6793,201406
+ath_grppoll_txq_setup(6818,202027
+static void ath_grppoll_start(6868,203318
+	struct rate_to_str_map 6889,203980
+		u_int8_t str[str6890,204006
+		int ratekbps;6891,204025
+#define MAX_GRPPOLL_RATE 6905,204265
+#define	USE_SHPREAMBLE(6906,204292
+#undef USE_SHPREAMBLE7090,210025
+static void ath_grppoll_stop(7093,210050
+ath_txq_setup(7138,211036
+ath_tx_setup(7252,214439
+ath_txq_update(7274,214900
+#define	ATH_EXPONENT_TO_VALUE(7276,214968
+#define	ATH_TXOP_TO_US(7277,215012
+#undef ATH_TXOP_TO_US7298,215741
+#undef ATH_EXPONENT_TO_VALUE7299,215763
+ath_wme_update(7306,215873
+ath_uapsd_flush(7323,216374
+ath_tx_cleanupq(7361,217481
+ath_tx_cleanup(7381,217937
+ath_get_icvlen(7393,218175
+ath_get_ivlen(7405,218445
+ath_tx_findindex(7424,218812
+ath_tx_uapsdqueue(7442,219068
+ath_tx_start(7512,221288
+#define	MIN(7515,221415
+#undef MIN8131,240244
+ath_tx_processq(8139,240387
+#define TSTAMP_TX_MASK 8307,245273
+txqactive(8359,246599
+ath_tx_tasklet_q0(8371,246879
+ath_tx_tasklet_q0123(8392,247383
+ath_tx_tasklet(8427,248301
+ath_tx_timeout(8446,248755
+ath_tx_draintxq(8467,249212
+ath_tx_stopdma(8496,249890
+ath_draintxq(8510,250239
+ath_stoprecv(8538,251027
+#define	PA2DESC(8540,251064
+#undef PA2DESC8566,252051
+ath_startrecv(8573,252132
+ath_flushrecv(8615,253275
+ath_chan_change(8626,253496
+ath_chan_set(8660,254443
+ath_mib_enable(8832,260027
+ath_calibrate(8845,260295
+ath_scan_start(8921,262493
+ath_scan_end(8941,262979
+ath_set_channel(8959,263443
+ath_set_coverageclass(8976,263953
+ath_mhz2ieee(8986,264134
+ath_newstate(8998,264356
+ath_dfs_cac_completed(9318,274256
+ath_comp_set(9430,277661
+ath_setup_comp(9438,277835
+#define	IEEE80211_KEY_XR	9440,277891
+#undef IEEE80211_KEY_XR9480,279065
+ath_setup_stationkey(9493,279417
+ath_setup_stationwepkey(9530,280514
+ath_setup_keycacheslot(9622,283404
+ath_newassoc(9653,284335
+ath_getchannels(9685,285226
+ath_led_done(9836,290108
+ath_led_off(9848,290347
+ath_led_blink(9862,290693
+ath_led_event(9874,291033
+set_node_txpower(9897,291584
+ath_set_clamped_maxtxpower(9908,291983
+ath_get_clamped_maxtxpower(9920,292430
+ath_get_real_maxtxpower(9935,293026
+ath_update_txpow(9951,293469
+ath_xr_rate_setup(9986,294781
+ath_setup_subrates(10015,295572
+ath_rate_setup(10058,296847
+ath_setcurmode(10105,298145
+		u_int		rate;10109,298304
+		u_int16_t	timeOn;10110,298344
+		u_int16_t	timeOff;10111,298388
+athff_approx_txtime(10172,300275
+athff_can_aggregate(10207,301468
+#define US_PER_4MS 10216,301800
+#define	MIN(10217,301824
+#undef US_PER_4MS10256,302925
+#undef MIN10257,302943
+ath_printrxbuf(10264,302993
+ath_printtxbuf(10286,303862
+ath_getstats(10315,304977
+ath_set_mac_address(10338,305662
+ath_change_mtu(10367,306370
+ath_ioctl_diag(10399,307236
+ath_ioctl(10454,308616
+	ATH_SLOTTIME	10512,310220
+	ATH_ACKTIMEOUT	10513,310240
+	ATH_CTSTIMEOUT	10514,310262
+	ATH_SOFTLED	10515,310284
+	ATH_LEDPIN	10516,310303
+	ATH_COUNTRYCODE	10517,310321
+	ATH_REGDOMAIN	10518,310344
+	ATH_DEBUG	10519,310365
+	ATH_TXANTENNA	10520,310382
+	ATH_RXANTENNA	10521,310403
+	ATH_DIVERSITY	10522,310425
+	ATH_TXINTRPERIOD	10523,310447
+	ATH_FFTXQMIN	10524,310471
+	ATH_XR_POLL_PERIOD	10525,310492
+	ATH_XR_POLL_COUNT	10526,310518
+	ATH_ACKRATE	10527,310543
+	ATH_RP 10528,310563
+	ATH_RP_PRINT 10529,310587
+	ATH_RP_PRINT_ALL 10530,310611
+	ATH_RP_PRINT_MEM 10531,310636
+	ATH_RP_PRINT_MEM_ALL 10532,310661
+	ATH_RP_FLUSH 10533,310690
+	ATH_PANIC 10534,310714
+	ATH_RP_IGNORED 10535,310745
+	ATH_RADAR_IGNORED 10536,310769
+	ATH_MAXVAPS 10537,310800
+	ATH_NOCCA 10539,310839
+ATH_SYSCTL_DECL(10544,310892
+static int mincalibrate 10817,316909
+static int maxint 10818,316959
+static const ctl_table ath_sysctl_template[ath_sysctl_template10820,317010
+ath_dynamic_sysctl_register(10993,321370
+ath_dynamic_sysctl_unregister(11058,323490
+ath_announce(11078,323941
+#define	HAL_MODE_DUALBAND	11080,323980
+#undef HAL_MODE_DUALBAND11136,325660
+static ctl_table ath_static_sysctls[ath_static_sysctls11143,325818
+static ctl_table ath_ath_table[ath_ath_table11192,326968
+static ctl_table ath_root_table[ath_root_table11199,327113
+static struct ctl_table_header *ath_sysctl_header;ath_sysctl_header11206,327254
+ath_sysctl_register(11209,327311
+ath_sysctl_unregister(11221,327534
+ath_get_hal_status_desc(11229,327706
+ath_get_txcont_adj_ratecode(11241,328020
+static int set_cca_mode(11275,329043
+#define AR5K_AR5212_TXCFG	11285,329363
+#define AR5K_AR5212_TXCFG_TXCONT_ENABLE	11286,329399
+#define AR5K_AR5212_PHY_NF	11288,329453
+#define AR5K_AR5212_ADDAC_TEST	11289,329490
+#define AR5K_AR5212_DIAG_SW	11290,329531
+#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS	11291,329569
+#define AR5K_AR5212_DIAG_SW_IGNORENAV	11292,329622
+#define AR5K_AR5212_RSSI_THR	11293,329673
+#define AR5K_AR5212_DCU_GBL_IFS_SIFS	11295,329713
+#define AR5K_AR5212_DCU_GBL_IFS_SIFS_M	11296,329759
+#define AR5K_AR5212_DCU_GBL_IFS_EIFS	11298,329812
+#define AR5K_AR5212_DCU_GBL_IFS_EIFS_M	11299,329858
+#define AR5K_AR5212_DCU_GBL_IFS_SLOT	11301,329911
+#define AR5K_AR5212_DCU_GBL_IFS_SLOT_M	11302,329957
+#define AR5K_AR5212_DCU_GBL_IFS_MISC	11304,330010
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR	11305,330056
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	11306,330114
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	11307,330176
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE	11308,330238
+#define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS	11309,330298
+#define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE	11310,330357
+#define	AR5K_AR5212_DCU(11312,330411
+#define	AR5K_AR5212_QCU(11313,330484
+#define AR5K_AR5212_DCU_CHAN_TIME(11314,330552
+#define AR5K_AR5212_DCU_MISC(11315,330620
+#define	AR5K_AR5212_DCU_CHAN_TIME_DUR	11316,330683
+#undef AR5K_AR5212_TXCFG11441,335633
+#undef AR5K_AR5212_TXCFG_TXCONT_ENABLE11442,335658
+#undef AR5K_AR5212_PHY_NF11443,335697
+#undef AR5K_AR5212_DIAG_SW11444,335723
+#undef AR5K_AR5212_ADDAC_TEST11445,335750
+#undef AR5K_AR5212_DIAG_SW11446,335780
+#undef AR5K_AR5212_DIAG_SW_IGNOREPHYCS11447,335807
+#undef AR5K_AR5212_DIAG_SW_IGNORENAV11448,335846
+#undef AR5K_AR5212_RSSI_THR11449,335883
+#undef AR5K_AR5212_DCU_GBL_IFS_SIFS11450,335911
+#undef AR5K_AR5212_DCU_GBL_IFS_SIFS_M11451,335947
+#undef AR5K_AR5212_DCU_GBL_IFS_EIFS11452,335985
+#undef AR5K_AR5212_DCU_GBL_IFS_EIFS_M11453,336021
+#undef AR5K_AR5212_DCU_GBL_IFS_SLOT11454,336059
+#undef AR5K_AR5212_DCU_GBL_IFS_SLOT_M11455,336095
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC11456,336133
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR11457,336169
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY11458,336214
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC11459,336264
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE11460,336314
+#undef AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS11461,336361
+#undef AR5K_AR5212_DCU_CHAN_TIME_ENABLE11462,336407
+#undef AR5K_AR5212_DCU11463,336447
+#undef AR5K_AR5212_QCU11464,336470
+#undef AR5K_AR5212_DCU_CHAN_TIME11465,336493
+#undef AR5K_AR5212_DCU_MISC11466,336526
+#undef AR5K_AR5212_DCU_CHAN_TIME_DUR11467,336554
+txcont_configure_radio(11476,336663
+#define AR5K_AR5212_TXCFG	11625,341913
+#define AR5K_AR5212_TXCFG_TXCONT_ENABLE	11626,341949
+#define AR5K_AR5212_RSSI_THR	11627,342002
+#define AR5K_AR5212_PHY_NF	11628,342041
+#define AR5K_AR5212_ADDAC_TEST	11629,342078
+#define AR5K_AR5212_DIAG_SW	11630,342119
+#define AR5K_AR5212_DIAG_SW_IGNOREPHYCS	11631,342157
+#define AR5K_AR5212_DIAG_SW_IGNORENAV	11632,342210
+#define AR5K_AR5212_DCU_GBL_IFS_SIFS	11633,342261
+#define AR5K_AR5212_DCU_GBL_IFS_SIFS_M	11634,342307
+#define AR5K_AR5212_DCU_GBL_IFS_EIFS	11635,342359
+#define AR5K_AR5212_DCU_GBL_IFS_EIFS_M	11636,342405
+#define AR5K_AR5212_DCU_GBL_IFS_SLOT	11637,342457
+#define AR5K_AR5212_DCU_GBL_IFS_SLOT_M	11638,342503
+#define AR5K_AR5212_DCU_GBL_IFS_MISC	11639,342555
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE	11640,342601
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE	11641,342661
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	11642,342721
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR	11643,342783
+#define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	11644,342841
+#define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS	11645,342903
+#define	AR5K_AR5212_DCU_CHAN_TIME_DUR	11646,342962
+#define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE	11647,343013
+#define	AR5K_AR5212_QCU(11648,343066
+#define	AR5K_AR5212_DCU(11649,343134
+#define AR5K_AR5212_DCU_MISC(11650,343207
+#define AR5K_AR5212_DCU_CHAN_TIME(11651,343270
+#undef AR5K_AR5212_TXCFG11709,345898
+#undef AR5K_AR5212_TXCFG_TXCONT_ENABLE11710,345923
+#undef AR5K_AR5212_RSSI_THR11711,345962
+#undef AR5K_AR5212_PHY_NF11712,345990
+#undef AR5K_AR5212_ADDAC_TEST11713,346016
+#undef AR5K_AR5212_DIAG_SW11714,346046
+#undef AR5K_AR5212_DIAG_SW_IGNOREPHYCS11715,346073
+#undef AR5K_AR5212_DIAG_SW_IGNORENAV11716,346112
+#undef AR5K_AR5212_DCU_GBL_IFS_SIFS11717,346149
+#undef AR5K_AR5212_DCU_GBL_IFS_SIFS_M11718,346185
+#undef AR5K_AR5212_DCU_GBL_IFS_EIFS11719,346223
+#undef AR5K_AR5212_DCU_GBL_IFS_EIFS_M11720,346259
+#undef AR5K_AR5212_DCU_GBL_IFS_SLOT11721,346297
+#undef AR5K_AR5212_DCU_GBL_IFS_SLOT_M11722,346333
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC11723,346371
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE11724,346407
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_TURBO_MODE11725,346454
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC11726,346501
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR11727,346551
+#undef AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY11728,346596
+#undef AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS11729,346646
+#undef AR5K_AR5212_DCU_CHAN_TIME_DUR11730,346692
+#undef AR5K_AR5212_DCU_CHAN_TIME_ENABLE11731,346729
+#undef AR5K_AR5212_QCU11732,346769
+#undef AR5K_AR5212_DCU11733,346792
+#undef AR5K_AR5212_DCU_MISC11734,346815
+#undef AR5K_AR5212_DCU_CHAN_TIME11735,346843
+txcont_queue_packet(11750,347196
+txcont_on(11883,351495
+txcont_off(11904,352069
+ath_get_dfs_testmode(11918,352368
+ath_set_dfs_testmode(11945,353619
+ath_get_txcont(11955,353923
+ath_set_txcont(11965,354196
+ath_set_txcont_power(11973,354419
+ath_get_txcont_power(11991,354918
+ath_set_txcont_rate(12001,355224
+ath_get_txcont_rate(12018,355702
+ath_set_dfs_cac_time(12028,356019
+ath_get_dfs_cac_time(12038,356346
+ath_set_dfs_excl_period(12058,357236
+ath_get_dfs_excl_period(12067,357485
+ath_test_radar(12079,357840
+ath_dump_hal_map(12094,358369
+ath_interrupt_dfs_cac(12106,358753
+ath_radar_detected(12138,359928
+ath_rcv_dev_event(12201,361835
+ath_print_register_details(12226,362495
+#define AR5K_AR5212_PHY_ERR_FIL	12230,362644
+#define AR5K_AR5212_PHY_ERR_FIL_RADAR	12231,362688
+#define AR5K_AR5212_PHY_ERR_FIL_OFDM	12232,362737
+#define AR5K_AR5212_PHY_ERR_FIL_CCK 12233,362785
+#define AR5K_AR5212_PIMR	12234,362836
+#define AR5K_AR5212_PISR	12235,362873
+#define AR5K_AR5212_PIMR_RXOK	12236,362910
+#define AR5K_AR5212_PIMR_RXDESC	12237,362952
+#define AR5K_AR5212_PIMR_RXERR	12238,362996
+#define AR5K_AR5212_PIMR_RXNOFRM	12239,363039
+#define AR5K_AR5212_PIMR_RXEOL	12240,363083
+#define AR5K_AR5212_PIMR_RXORN	12241,363126
+#define AR5K_AR5212_PIMR_TXOK	12242,363169
+#define AR5K_AR5212_PIMR_TXDESC	12243,363211
+#define AR5K_AR5212_PIMR_TXERR	12244,363255
+#define AR5K_AR5212_PIMR_TXNOFRM	12245,363298
+#define AR5K_AR5212_PIMR_TXEOL	12246,363342
+#define AR5K_AR5212_PIMR_TXURN	12247,363385
+#define AR5K_AR5212_PIMR_MIB	12248,363428
+#define AR5K_AR5212_PIMR_SWI	12249,363469
+#define AR5K_AR5212_PIMR_RXPHY	12250,363510
+#define AR5K_AR5212_PIMR_RXKCM	12251,363553
+#define AR5K_AR5212_PIMR_SWBA	12252,363596
+#define AR5K_AR5212_PIMR_BRSSI	12253,363638
+#define AR5K_AR5212_PIMR_BMISS	12254,363681
+#define AR5K_AR5212_PIMR_HIUERR	12255,363724
+#define AR5K_AR5212_PIMR_BNR	12256,363768
+#define AR5K_AR5212_PIMR_RXCHIRP	12257,363809
+#define AR5K_AR5212_PIMR_TIM	12258,363853
+#define AR5K_AR5212_PIMR_BCNMISC	12259,363894
+#define AR5K_AR5212_PIMR_GPIO	12260,363938
+#define AR5K_AR5212_PIMR_QCBRORN	12261,363980
+#define AR5K_AR5212_PIMR_QCBRURN	12262,364024
+#define AR5K_AR5212_PIMR_QTRIG	12263,364068
+#undef AR5K_AR5212_PHY_ERR_FIL12345,368669
+#undef AR5K_AR5212_PHY_ERR_FIL_RADAR12346,368700
+#undef AR5K_AR5212_PHY_ERR_FIL_OFDM12347,368737
+#undef AR5K_AR5212_PHY_ERR_FIL_CCK12348,368773
+#undef AR5K_AR5212_PIMR12349,368808
+#undef AR5K_AR5212_PISR12350,368832
+#undef AR5K_AR5212_PIMR_RXOK12351,368856
+#undef AR5K_AR5212_PIMR_RXDESC12352,368885
+#undef AR5K_AR5212_PIMR_RXERR12353,368916
+#undef AR5K_AR5212_PIMR_RXNOFRM12354,368946
+#undef AR5K_AR5212_PIMR_RXEOL12355,368978
+#undef AR5K_AR5212_PIMR_RXORN12356,369008
+#undef AR5K_AR5212_PIMR_TXOK12357,369038
+#undef AR5K_AR5212_PIMR_TXDESC12358,369067
+#undef AR5K_AR5212_PIMR_TXERR12359,369098
+#undef AR5K_AR5212_PIMR_TXNOFRM12360,369128
+#undef AR5K_AR5212_PIMR_TXEOL12361,369160
+#undef AR5K_AR5212_PIMR_TXURN12362,369190
+#undef AR5K_AR5212_PIMR_MIB12363,369220
+#undef AR5K_AR5212_PIMR_SWI12364,369248
+#undef AR5K_AR5212_PIMR_RXPHY12365,369276
+#undef AR5K_AR5212_PIMR_RXKCM12366,369306
+#undef AR5K_AR5212_PIMR_SWBA12367,369336
+#undef AR5K_AR5212_PIMR_BRSSI12368,369365
+#undef AR5K_AR5212_PIMR_BMISS12369,369395
+#undef AR5K_AR5212_PIMR_HIUERR12370,369425
+#undef AR5K_AR5212_PIMR_BNR12371,369456
+#undef AR5K_AR5212_PIMR_RXCHIRP12372,369484
+#undef AR5K_AR5212_PIMR_TIM12373,369516
+#undef AR5K_AR5212_PIMR_BCNMISC12374,369544
+#undef AR5K_AR5212_PIMR_GPIO12375,369576
+#undef AR5K_AR5212_PIMR_QCBRORN12376,369605
+#undef AR5K_AR5212_PIMR_QCBRURN12377,369637
+#undef AR5K_AR5212_PIMR_QTRIG12378,369669
+ath_print_register_delta(12389,370112
+#define BIT_UNCHANGED_ON 12392,370237
+#define BIT_UNCHANGED_OFF 12393,370267
+#define BIT_CHANGED_ON 12394,370297
+#define BIT_CHANGED_OFF 12395,370327
+#define NYBBLE_SEPARATOR 12396,370357
+#define BYTE_SEPARATOR 12397,370387
+#define BIT_STATUS(12398,370417
+#undef BIT_UNCHANGED_ON12471,372202
+#undef BIT_UNCHANGED_OFF12472,372226
+#undef BIT_CHANGED_ON12473,372251
+#undef BIT_CHANGED_OFF12474,372273
+#undef NYBBLE_SEPARATOR12475,372296
+#undef BYTE_SEPARATOR12476,372320
+#undef BIT_STATUS12477,372342
+ath_lookup_register_name(12486,372668
+#define keytable_entry_reg_count 12778,390432
+#define keytable_entry_size 12779,390469
+#undef keytable_entry_reg_count12797,391245
+#undef keytable_entry_size12798,391277
+ath_print_register(12826,391970
+ath_regdump_filter(12839,392458
+	#define UNFILTERED 12843,392606
+	#define FILTERED 12844,392635
+	#undef UNFILTERED12867,393614
+	#undef FILTERED12868,393633
+ath_ar5212_registers_dump(12875,393804
+ath_ar5212_registers_dump_delta(12895,394464
+ath_ar5212_registers_mark(12922,395357
+ath_read_register(12937,395793
+ath_write_register(12967,396825
+ath_registers_dump(12995,397599
+ath_registers_mark(13007,397966
+ath_registers_dump_delta(13019,398290
+ath_return_txbuf_locked_debug(13030,398580
+ath_return_txbuf_debug(13076,399855
+ath_return_txbuf_list_debug(13094,400314
+ath_return_txbuf_list_locked_debug(13120,400950
+cleanup_ath_buf_debug(13146,401628
 
 ath/if_ath_ahb.c,625
 #define	EXPORT_SYMTAB10,184
@@ -3144,10 +2662,10 @@ static int debug 358,11035
 init_crypto_tkip_test(373,11397
 exit_crypto_tkip_test(402,12074
 
-ath_hal/ath_hal.mod.c,87
+ath_hal/ath_hal.mod.c,86
 struct module __this_module7,124
 __attribute_used__18,399
-__attribute_used__39,1040
+__attribute_used__36,924
 
 ath_hal/ah_os.c,1738
 #define	EXPORT_SYMTAB41,1991
