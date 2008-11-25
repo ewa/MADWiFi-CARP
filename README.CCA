@@ -28,19 +28,11 @@ USAGE:
 CCA suppression is controlled with the "dev.wifiX.disable_cca"
 sysctl. A value of 0 means "do not perform any CCA suppression."
 Non-zero values are interpreted as a bit-mask: Bits 0, 1 and 2 each
-enable the function groups described above.  The mask is stored as
-seven bits, but only the bottom three are significant.
-
-Right now, this sysctl should be regarded as write-once: This patch
-contains no functionality to restore the hardware registers to normal
-values.  If you set "dev.wifiX.disable_cca=0x3" and then
-"dev.wifiX.disable_cca=0," CCA suppression will remain in effect!
-Actually, it's slightly more complex than that: The stored mask value
-is used to re-set the CCA registers to ensure that CCA suppression
-remains in effect across various events.  So, if you set disable_cca
-to 0 and then some event causes the CCA-related registers to be
-returned to default values, this code will respect the value of 0 and
-not re-disable CCA.
+enable the function groups described above.  Bit 3 disables interrupts
+for beacons and missed beacons.  This is largely unrelated
+functionality; if you don't know why you want it, then you don't.  The
+mask is stored as seven bits, but only the bottom four are
+significant.
 
 
 MISC:
@@ -68,17 +60,19 @@ If you use this software in your research, please cite it as:
 COPYRIGHT:
 ----------
 
-This patch and accompanying text, are
-Copyright (c) 2008, Regents of the University of Colorado.
-All rights reserved.
+This patch and accompanying text are Copyright (c) 2008, Regents of
+the University of Colorado.  All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
+
     * Redistributions of source code must retain the above copyright
       notice, this list of conditions and the following disclaimer.
+
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
+
     * Neither the name of the University of Colorado nor the names of its
       contributors may be used to endorse or promote products derived from
       this software without specific prior written permission.  
