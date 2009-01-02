@@ -11282,31 +11282,65 @@ static int set_cca_mode(struct ath_softc *sc)
 	int ret;
 
 	/* Register defns and code from ar5k driver & txcont */
+
+// ar5211/ar5211reg.h:#define    AR_TXCFG        0x0030          /* tx DMA size config register */
 #define AR5K_AR5212_TXCFG				0x0030
+
+//HAL: AR_PHY_TESTCTRL_TXSRC_ALT /* Select input to tsdac along with bit 1 */
 #define AR5K_AR5212_TXCFG_TXCONT_ENABLE			0x00000080
 
+// ar5416/ar5416phy.h:#define AR_PHY_CCA          0x9864
 #define AR5K_AR5212_PHY_NF				0x9864
+
+// ar5212/ar5212reg.h:272:#define    AR_TST_ADDAC    0x8054  /* ADDAC test register */
 #define AR5K_AR5212_ADDAC_TEST				0x8054
+
+// ar5212/ar5212reg.h:269:#define        AR_DIAG_SW      0x8048  /* MAC PCU control register */
 #define AR5K_AR5212_DIAG_SW				0x8048
+
+// Many definitions in HAL.  Two likely candidates:
+// ar5212/ar5212reg.h:919:#define AR_DIAG_RX_CLR_HI      0x00100000 /* Force rx_clear high */
+// ar5211/ar5211reg.h:754:#define        AR_STA_ID1_PCF  0x00100000      /* Observe PCF */
 #define AR5K_AR5212_DIAG_SW_IGNOREPHYCS			0x00100000
+
+// Again, among others:
+// ar5212/ar5212reg.h:920:#define AR_DIAG_IGNORE_CS      0x00200000 /* Force virtual carrier sense */
 #define AR5K_AR5212_DIAG_SW_IGNORENAV			0x00200000
+
+// ar5212/ar5212reg.h:257:#define        AR_RSSI_THR     0x8018  /* MAC RSSI warning & missed beacon threshold */
 #define AR5K_AR5212_RSSI_THR				0x8018
 
+
+// ar5212/ar5212reg.h:218:#define        AR_D_GBL_IFS_SIFS       0x1030  /* DCU global SIFS settings */
 #define AR5K_AR5212_DCU_GBL_IFS_SIFS			0x1030
 #define AR5K_AR5212_DCU_GBL_IFS_SIFS_M			0x0000ffff
 
+// ar5212/ar5212reg.h:220:#define        AR_D_GBL_IFS_EIFS       0x10b0  /* DCU global EIFS setting */
 #define AR5K_AR5212_DCU_GBL_IFS_EIFS			0x10b0
 #define AR5K_AR5212_DCU_GBL_IFS_EIFS_M			0x0000ffff
 
+// ar5212/ar5212reg.h:219:#define        AR_D_GBL_IFS_SLOT       0x1070  /* DC global slot interval */
 #define AR5K_AR5212_DCU_GBL_IFS_SLOT			0x1070
 #define AR5K_AR5212_DCU_GBL_IFS_SLOT_M			0x0000ffff
 
+// ar5212/ar5212reg.h:221:#define        AR_D_GBL_IFS_MISC       0x10f0  /* DCU global misc. IFS settings */
 #define AR5K_AR5212_DCU_GBL_IFS_MISC			0x10f0
 #define	AR5K_AR5212_DCU_GBL_IFS_MISC_USEC_DUR		0x000ffc00
+
+// ar5212/ar5212reg.h:675:#define        AR_D_GBL_IFS_MISC_DCU_ARBITER_DLY       0x00300000 /* DCU arbiter delay */
 #define	AR5K_AR5212_DCU_GBL_IFS_MISC_DCU_ARB_DELAY	0x00300000
+
+
 #define	AR5K_AR5212_DCU_GBL_IFS_MISC_SIFS_DUR_USEC	0x000003f0
+
+// ar5212/ar5212reg.h:670:#define        AR_D_GBL_IFS_MISC_LFSR_SLICE_SEL        0x00000007 /* LFSR slice select */
 #define	AR5K_AR5212_DCU_GBL_IFS_MISC_LFSR_SLICE		0x00000007
+
+// ar5212/ar5212reg.h:663:#define        AR_D_MISC_POST_FR_BKOFF_DIS     0x00200000 /* Post-frame backoff disable */
 #define	AR5K_AR5212_DCU_MISC_POST_FR_BKOFF_DIS		0x00200000
+
+
+// ar5212/ar5212reg.h:634:#define        AR_D_CHNTIME_EN                 0x00100000 /* ChannelTime enable */
 #define	AR5K_AR5212_DCU_CHAN_TIME_ENABLE		0x00100000
 
 #define	AR5K_AR5212_DCU(_n, _a)		                AR5K_AR5212_QCU(_n, _a)
